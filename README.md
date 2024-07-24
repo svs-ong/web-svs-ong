@@ -1,1 +1,2 @@
-# Hello
+### Run Locally
+- docsify serve ./site

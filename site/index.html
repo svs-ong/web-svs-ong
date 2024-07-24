@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <style>
+    .toggle-answer {
+      padding: 10px;
+      margin-top: 5px;
+      background-color: #1f282d;
+      border-radius: 5px;
+    }
+    .toggle-button {
+      background-color: #34434b; /* Green background */
+      color: white; /* White text */
+      padding: 12px 12px; /* Padding around the text */
+      border: none; /* No border */
+      cursor: pointer; /* Cursor changes to pointer to indicate it's clickable */
+      border-radius: 5px; /* Rounded corners */
+      font-size: 14px; /* Slightly larger font size for readability */
+      transition: background-color 0.3s; /* Smooth transition for the hover effect */
+  }
+
+  .toggle-button:hover {
+    background-color: #0b631a; /* Darker shade of green when hovered */
+  }
+  </style>
+
+  <!-- !Theme: Simple Dark -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css" /> -->
+
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: '',
+      repo: '',
+      loadSidebar: true,
+      subMaxLevel: 2,
+      copyCode: {
+        buttonText : 'Copy',
+        errorText  : 'Error',
+        successText: 'Copied'
+      },
+      plugins:[
+        // toggle_plugin
+      ]
+    }
+  </script>
+   <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
+  <!-- Docsify plugins -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+
+  <!-- Code Colors -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-c.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-cpp.js"></script>
+
+  <!-- Ours -->
+  <script src="./toggle_plugin.js"></script>
+</body>
+</html>
