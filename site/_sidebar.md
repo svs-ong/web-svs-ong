@@ -1,7 +1,10 @@
 * [Home](/)
 * ***Cursuri***
 * Introduction
-  * [HTML & CSS](introduction/html_css.md)
+  * [Tools](introduction/tools.md)
+  * [HTML](introduction/html.md)
+  * [CSS](introduction/css.md)
+  * [Javascript](introduction/javascript.md)
 * Git
 
 
