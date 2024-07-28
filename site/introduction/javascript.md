@@ -1,6 +1,6 @@
 # Vanilla JavaScript Tutorial 
 
-## Primitives Types in JavaScript 
+## Primitives Types
 
 JavaScript defines six primitive data types:
  
@@ -123,7 +123,7 @@ const greet = function(name) {
 console.log(greet('Bob'));  // Output: Hello, Bob!
 ```
 
-## Classes and Objects (Complex Types) 
+## Classes and Objects
 
 ### Classes 
 
@@ -299,9 +299,9 @@ newDiv.innerText = "Inserted at the beginning";
 container.insertBefore(newDiv, container.firstChild);
 ```
 
-## JavaScript Event Listeners and onLoad Property
+## Events & onload 
 
-Event listeners are crucial for making web pages interactive. They listen for events like clicks, keystrokes, and loads, and then trigger specific functions in response. The `onLoad` property of the `window` object is a specific event listener that executes code after the entire page, including all dependent resources like stylesheets and images, is fully loaded.
+Event listeners are crucial for making web pages interactive. They listen for events like clicks, keystrokes, and loads, and then trigger specific functions in response. The `onload` property of the `window` object is a specific event listener that executes code after the entire page, including all dependent resources like stylesheets and images, is fully loaded.
 
 ### Using Event Listeners
 **1. Basic Event Listener** You can add an event listener to any DOM element to handle events like `click`, `mouseover`, etc. Here's an example of how to add a click event listener to a button:**HTML:** 
@@ -339,11 +339,11 @@ hoverDiv.addEventListener('mouseout', function() {
 ```
 In this example, the text color of the `div` changes to red when the mouse hovers over it and returns to black when the mouse moves away.
 
-### Using the onLoad Property
-The `onLoad` property is especially useful when you need to be sure that all the HTML elements are fully loaded before your JavaScript code attempts to manipulate them.**Using onLoad in Body Tag** You can specify an `onLoad` event directly in the HTML `body` tag to run JavaScript code after the entire page is loaded:**HTML:** 
+### Using the onload Property
+The `onload` property is especially useful when you need to be sure that all the HTML elements are fully loaded before your JavaScript code attempts to manipulate them.**Using onload in Body Tag** You can specify an `onload` event directly in the HTML `body` tag to run JavaScript code after the entire page is loaded:**HTML:** 
 
 ```html
-<body onLoad="doSomething();">
+<body onload="doSomething();">
     <!-- page content -->
 </body>
 ```
@@ -354,22 +354,22 @@ function doSomething() {
     console.log("Page fully loaded!");
 }
 ```
-**Using onLoad with the Window Object** Alternatively, you can add an `onLoad` event listener to the `window` object in your JavaScript file:**JavaScript:** 
+**Using onload with the Window Object** Alternatively, you can add an `onload` event listener to the `window` object in your JavaScript file:**JavaScript:** 
 
 ```javascript
 window.onload = function() {
     console.log("Page fully loaded and all resources are ready!");
 };
 ```
-**When to Use onLoad** Use the `onLoad` property when:
+**When to Use onload** Use the `onload` property when:
 - Your JavaScript needs to manipulate DOM elements, and you want to ensure they are fully loaded before accessing them.
 
 - Your script depends on external resources like images or stylesheets, and you need everything to be loaded before your script runs.
 
 - You want to initialize JavaScript functionality, such as setting up event listeners or starting animations, only after the entire page is ready.
-Using `onLoad` ensures that your JavaScript code doesn't run prematurely, preventing errors related to trying to manipulate non-existent DOM elements and ensuring a smoother user experience.**Conclusion** Understanding and using event listeners and the `onLoad` property effectively are fundamental skills in web development. They make your web applications interactive and ensure that scripts run at the appropriate time, enhancing reliability and user experience.
+Using `onload` ensures that your JavaScript code doesn't run prematurely, preventing errors related to trying to manipulate non-existent DOM elements and ensuring a smoother user experience.**Conclusion** Understanding and using event listeners and the `onload` property effectively are fundamental skills in web development. They make your web applications interactive and ensure that scripts run at the appropriate time, enhancing reliability and user experience.
 
-## Promise 
+## Promises
 
 A Promise in JavaScript is an object representing the eventual completion or failure of an asynchronous operation. It allows you to attach callbacks for handling success (`resolve`) or failure (`reject`) without blocking the main thread.
 
@@ -456,127 +456,9 @@ secureFetch('https://api.example.com/data')
     .catch(error => console.error('Caught in then:', error));
 ```
 
-## Async Function Example 
 
- **Purpose and Functionality** The `getElementFromFile` function is designed to asynchronously fetch HTML content from a specified file path and then extract a specific HTML element by its ID. This approach is useful in scenarios where you need to load and display content dynamically without reloading the page or when the content is stored in separate files for organizational purposes.**How the Function Works**  
-1. **Fetching the File** : It uses the Fetch API to retrieve the file at the provided `filePath`.
- 
-2. **Reading the Content** : After fetching the file, it reads the content as text.
- 
-3. **Parsing HTML Content** : The function then uses `DOMParser` to parse the text content into a usable Document Object Model (DOM).
- 
-4. **Extracting the Element** : Finally, it retrieves an element by its specified `elementId` from the parsed HTML.
-**Step-by-Step Explanation** 
 
-```javascript
-async function getElementFromFile(filePath, elementId) {
-  try {
-    // Use Fetch API to get the element content
-    const response = await fetch(filePath); // Fetch the file
-    const elementAsString = await response.text(); // Convert response to text
-
-    // Parse the elementAsString into a Document Object Model (DOM)
-    const parser = new DOMParser(); // Create a new DOMParser instance
-    const parsedElement = parser.parseFromString(elementAsString, "text/html"); // Parse the string to a HTML document
-
-    // Return the element with the specified ID
-    return parsedElement.getElementById(elementId);
-  } catch (error) {
-    console.error(`Failed to load element from file: ${filePath}`, error);
-    return null; // Return null in case of an error
-  }
-}
-```
-**Example Usage** Imagine you have multiple HTML files containing different sections of a webpage, like `header.html`, `footer.html`, etc., and you want to load these into specific elements on your main page dynamically.**HTML Structure of Main Page** 
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Content Loading</title>
-</head>
-<body>
-    <div id="header"></div>
-    <div id="main-content">Main Content Goes Here</div>
-    <div id="footer"></div>
-
-    <script src="loadContent.js"></script>
-</body>
-</html>
-```
-JavaScript File: `loadContent.js`** 
-
-```javascript
-async function loadContent() {
-    const header = await getElementFromFile('header.html', 'header');
-    const footer = await getElementFromFile('footer.html', 'footer');
-
-    document.getElementById('header').appendChild(header);
-    document.getElementById('footer').appendChild(footer);
-}
-
-loadContent();
-```
-**Certainly! Let's delve into a tutorial centered around the `getElementFromFile` JavaScript function. This function demonstrates how to fetch HTML content from a file, parse it, and extract a specific element using its ID. Using this function effectively can reduce repetitive code and enhance modularity in your web projects.
-
----
-
-**Certainly! Let's delve into a tutorial centered around the `getElementFromFile` JavaScript function. This function demonstrates how to fetch HTML content from a file, parse it, and extract a specific element using its ID. Using this function effectively can reduce repetitive code and enhance modularity in your web projects.
-
----
-
-Using the `getElementFromFile` Function** **Purpose and Functionality** The `getElementFromFile` function is designed to asynchronously fetch HTML content from a specified file path and then extract a specific HTML element by its ID. This approach is useful in scenarios where you need to load and display content dynamically without reloading the page or when the content is stored in separate files for organizational purposes.**How the Function Works**  
-1. **Fetching the File** : It uses the Fetch API to retrieve the file at the provided `filePath`.
- 
-2. **Reading the Content** : After fetching the file, it reads the content as text.
- 
-3. **Parsing HTML Content** : The function then uses `DOMParser` to parse the text content into a usable Document Object Model (DOM).
- 
-4. **Extracting the Element** : Finally, it retrieves an element by its specified `elementId` from the parsed HTML.
-**Step-by-Step Explanation** 
-
-```javascript
-async function getElementFromFile(filePath, elementId) {
-  try {
-    // Use Fetch API to get the element content
-    const response = await fetch(filePath); // Fetch the file
-    const elementAsString = await response.text(); // Convert response to text
-
-    // Parse the elementAsString into a Document Object Model (DOM)
-    const parser = new DOMParser(); // Create a new DOMParser instance
-    const parsedElement = parser.parseFromString(elementAsString, "text/html"); // Parse the string to a HTML document
-
-    // Return the element with the specified ID
-    return parsedElement.getElementById(elementId);
-  } catch (error) {
-    console.error(`Failed to load element from file: ${filePath}`, error);
-    return null; // Return null in case of an error
-  }
-}
-```
-**Example Usage** Imagine you have multiple HTML files containing different sections of a webpage, like `header.html`, `footer.html`, etc., and you want to load these into specific elements on your main page dynamically.**HTML Structure of Main Page** 
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Content Loading</title>
-</head>
-<body>
-    <div id="header"></div>
-    <div id="main-content">Main Content Goes Here</div>
-    <div id="footer"></div>
-
-    <script src="loadContent.js"></script>
-</body>
-</html>
-```
-
-## Using the `getElementFromFile` Function
+## `getElementFromFile`
  The `getElementFromFile` function is designed to asynchronously fetch HTML content from a specified file path and then extract a specific HTML element by its ID. This approach is useful in scenarios where you need to load and display content dynamically without reloading the page or when the content is stored in separate files for organizational purposes.
  
  **How the Function Works**  
