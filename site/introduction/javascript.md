@@ -109,6 +109,7 @@ function greet(name) {
 }
 
 console.log(greet('Alice'));  // Output: Hello, Alice!
+console.log(greet(123));  // Output: Hello, 123!
 ```
 
 ### Function Expression 
@@ -163,183 +164,487 @@ console.log(person.greet());  // Output: Hello, my name is Alice and I am 25 yea
 ```
 
 ## Try Catch 
-`try...catch` statement is an effective tool in JavaScript for managing errors within a program. It allows developers to catch exceptions—errors that may occur during execution—and handle them without halting the entire application. This error handling approach is essential for maintaining the stability and reliability of applications, especially when dealing with user input or external data sources. Below are two examples illustrating practical uses of `try...catch`:
-### Example 1: Safe Number Conversion 
-This example demonstrates using `try...catch` to safely convert user input to a number, which is a common requirement in many applications.
+In JavaScript, error handling is an important part of writing robust code. The `try-catch` statement allows you to handle exceptions gracefully. This tutorial will guide you through using `try-catch` to manage errors in your JavaScript code.**1. Basic Try-Catch Structure** The `try` block lets you test a block of code for errors. The `catch` block lets you handle the error.
 
 ```javascript
 try {
-  let userInput = "1024x"; // Incorrect format due to the 'x'
-  let number = parseInt(userInput);
-  if (isNaN(number)) {
-    throw new Error("Conversion failed: Input is not a valid number.");
-  }
-  console.log('Converted number:', number);
-} catch (error) {
-  console.error('Error:', error.message);
+  // Code to try
+  console.log("Start of try runs");  // This will run
+
+  // Error occurs here
+  lalala;  // This will throw ReferenceError: lalala is not defined
+
+  console.log("End of try runs");   // This will not run
+} catch (err) {
+  console.log("Error has occurred!");  // This will run
+  console.log(err.name);  // Output: ReferenceError
+  console.log(err.message);  // Output: lalala is not defined
 }
 ```
-
-### Example 2: Propagating Errors in Function Calls 
-
-In this scenario, errors are not only caught but also rethrown to higher-level functions, which allows for centralized and more flexible error management.
-
+**2. The Finally Block** Optionally, you can use a `finally` block after `catch`. Code inside the `finally` block will run regardless of the result from the `try-catch`.
 
 ```javascript
-function parseInput(input) {
-  try {
-    let number = parseInt(input);
-    if (isNaN(number)) {
-      throw new Error("Invalid number format.");
-    }
-    return number;
-  } catch (error) {
-    console.error("Error in parseInput:", error.message);
-    throw error; // Rethrow to be handled by the caller
-  }
+try {
+  console.log("Try block executed.");
+  throw new Error("Something went wrong!");
+} catch (err) {
+  console.log("Caught an error:", err.message);
+} finally {
+  console.log("Finally block executed.");
 }
-
-function main() {
-  try {
-    let userInput = "123abc";
-    let result = parseInput(userInput);
-    console.log('Result:', result);
-  } catch (error) {
-    console.error("Error in main:", error.message);
-  }
-}
-
-main();
 ```
-These examples show how `try...catch` can be used to handle and propagate errors, ensuring that your program remains robust and user-friendly.
+**3. Throwing Custom Errors** You can throw your own exceptions using the `throw` statement. This is useful when you want to create custom error responses.
 
-
+```javascript
+try {
+  let user = {name: "John", age: 30};
+  if (!user.email) {
+    throw new Error("User has no email!");
+  }
+} catch (err) {
+  console.log(err.message);  // Output: User has no email!
+}
+```
 ## DOM Manipulation 
 
-DOM (Document Object Model) manipulation is used to interact with HTML elements.
+DOM (Document Object Model) manipulation is a powerful feature in JavaScript that allows you to dynamically change the contents and structure of HTML documents.
 
-### Selecting Elements 
-
-
-```javascript
-let element = document.getElementById('myElement');
-let elements = document.getElementsByClassName('myClass');
-let queryElement = document.querySelector('.myClass');
-```
-
-### Changing Content 
-
-
-```javascript
-let element = document.getElementById('myElement');
-element.innerHTML = 'New Content';
-```
-
-### Event Listeners 
-
-
-```javascript
-let button = document.getElementById('myButton');
-button.addEventListener('click', function() {
-  alert('Button clicked!');
-});
-```
-`onLoad`The `onLoad` event occurs when the document or an element has finished loading.
-### HTML 
-
+**HTML and CSS** 
+Start by setting up the basic HTML and CSS for the page. This will provide the structure and styling we will manipulate with JavaScript.
+**HTML Code:** 
 
 ```html
-<body onload="init()">
-  <script>
-    function init() {
-      console.log('Page loaded');
-    }
-  </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Tutorial</title>
+    <style>
+        div {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+        }
+        .example {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="example">This is a div element identified by ID.</div>
+    <div class="example">First Element with class</div>
+    <div class="example">Second Element with class</div>
+    <div id="changeColor">Color me!</div>
+    <div id="textContent">Initial text content.</div>
+    <div id="parentDiv">Parent Div:</div>
+    <div id="container">
+        <div id="firstChild">First child</div>
+    </div>
+</body>
+</html>
+```
+**CSS Included in HTML:**  
+- General styling is applied to all `div` elements to ensure they are visually distinct.
+ 
+- Elements with the class `.example` are styled with green text color.
+**JavaScript Manipulations** 
+Below, find the JavaScript needed to interact and manipulate the above HTML elements.
+**1. getElementById** `getElementById` selects a single element with the specified ID.**JavaScript Example:** 
+
+```javascript
+const element = document.getElementById("example");
+console.log(element.innerText); // Output: This is a div element identified by ID.
+```
+**2. getElementsByClassName** `getElementsByClassName` selects all elements that share the same class name.**JavaScript Example:** 
+
+```javascript
+const elements = document.getElementsByClassName("example");
+console.log(elements[0].innerText); // Output: First Element with class
+console.log(elements[1].innerText); // Output: Second Element with class
+```
+**3. Changing Background Color and Other Properties** 
+Modify CSS properties of elements dynamically.
+**JavaScript Example:** 
+
+```javascript
+const colorDiv = document.getElementById("changeColor");
+colorDiv.style.backgroundColor = "lightblue";
+colorDiv.style.color = "white";
+colorDiv.style.padding = "10px";
+```
+**4. Changing innerText and innerHTML** `innerText` changes the text content, and `innerHTML` changes the inner HTML of an element.**JavaScript Example:** 
+
+```javascript
+const textDiv = document.getElementById("textContent");
+textDiv.innerText = "Updated text content using innerText.";
+textDiv.innerHTML = "<strong>Now with bold HTML content!</strong>";
+```
+**5. Appending and Inserting Elements** 
+Demonstrate how to add new elements to the DOM.
+**JavaScript for Appending Elements:** 
+
+```javascript
+const parent = document.getElementById("parentDiv");
+const newElement = document.createElement("div");
+newElement.innerText = "I am a new child!";
+parent.appendChild(newElement);
+```
+**JavaScript for Inserting Elements:** 
+
+```javascript
+const container = document.getElementById("container");
+const newDiv = document.createElement("div");
+newDiv.innerText = "Inserted at the beginning";
+container.insertBefore(newDiv, container.firstChild);
+```
+
+## JavaScript Event Listeners and onLoad Property
+
+Event listeners are crucial for making web pages interactive. They listen for events like clicks, keystrokes, and loads, and then trigger specific functions in response. The `onLoad` property of the `window` object is a specific event listener that executes code after the entire page, including all dependent resources like stylesheets and images, is fully loaded.
+
+### Using Event Listeners
+**1. Basic Event Listener** You can add an event listener to any DOM element to handle events like `click`, `mouseover`, etc. Here's an example of how to add a click event listener to a button:**HTML:** 
+
+```html
+<button id="clickButton">Click Me!</button>
+```
+**JavaScript:** 
+
+```javascript
+const button = document.getElementById("clickButton");
+button.addEventListener('click', function() {
+    alert("Button was clicked!");
+});
+```
+
+This code snippet creates a button that, when clicked, will show an alert box saying "Button was clicked!".
+**2. Event Listener with Multiple Events** 
+You can also add event listeners for different types of events on the same element:
+**HTML:** 
+
+```html
+<div id="hoverDiv">Hover over me!</div>
+```
+**JavaScript:** 
+
+```javascript
+const hoverDiv = document.getElementById("hoverDiv");
+hoverDiv.addEventListener('mouseover', function() {
+    hoverDiv.style.color = 'red';
+});
+hoverDiv.addEventListener('mouseout', function() {
+    hoverDiv.style.color = 'black';
+});
+```
+In this example, the text color of the `div` changes to red when the mouse hovers over it and returns to black when the mouse moves away.
+
+### Using the onLoad Property
+The `onLoad` property is especially useful when you need to be sure that all the HTML elements are fully loaded before your JavaScript code attempts to manipulate them.**Using onLoad in Body Tag** You can specify an `onLoad` event directly in the HTML `body` tag to run JavaScript code after the entire page is loaded:**HTML:** 
+
+```html
+<body onLoad="doSomething();">
+    <!-- page content -->
 </body>
 ```
+**JavaScript:** 
+
+```javascript
+function doSomething() {
+    console.log("Page fully loaded!");
+}
+```
+**Using onLoad with the Window Object** Alternatively, you can add an `onLoad` event listener to the `window` object in your JavaScript file:**JavaScript:** 
+
+```javascript
+window.onload = function() {
+    console.log("Page fully loaded and all resources are ready!");
+};
+```
+**When to Use onLoad** Use the `onLoad` property when:
+- Your JavaScript needs to manipulate DOM elements, and you want to ensure they are fully loaded before accessing them.
+
+- Your script depends on external resources like images or stylesheets, and you need everything to be loaded before your script runs.
+
+- You want to initialize JavaScript functionality, such as setting up event listeners or starting animations, only after the entire page is ready.
+Using `onLoad` ensures that your JavaScript code doesn't run prematurely, preventing errors related to trying to manipulate non-existent DOM elements and ensuring a smoother user experience.**Conclusion** Understanding and using event listeners and the `onLoad` property effectively are fundamental skills in web development. They make your web applications interactive and ensure that scripts run at the appropriate time, enhancing reliability and user experience.
 
 ## Promise 
 
-Promises represent the eventual completion (or failure) of an asynchronous operation and its resulting value.
+A Promise in JavaScript is an object representing the eventual completion or failure of an asynchronous operation. It allows you to attach callbacks for handling success (`resolve`) or failure (`reject`) without blocking the main thread.
 
-### Creating a Promise 
+**Creating a Promise** 
+Here’s a simple example of creating and using a promise:
 
 
 ```javascript
 let promise = new Promise((resolve, reject) => {
-  let success = true;  // Change to false to test reject path
-  if (success) {
-    resolve('Operation successful');
-  } else {
-    reject('Operation failed');
-  }
+    setTimeout(() => {
+        const success = true;  // Simulate a condition
+        if (success) {
+            resolve("Promise resolved successfully.");
+        } else {
+            reject("Promise rejected.");
+        }
+    }, 1000);
 });
 
 promise
-  .then(result => console.log(result))  // Output: Operation successful
-  .catch(error => console.error(error));
+    .then(result => console.log(result))  // Handle success
+    .catch(error => console.error(error));  // Handle error
 ```
+### Async/Await Mechanism
 
-## Fetch 
-The `fetch` API is used to make network requests.
-### Example 
-
+`async` and `await` are built on top of promises and make working with them more intuitive and easier to manage. 
+- **`async` function** : Declares a function as asynchronous and enables the use of `await` within it.
+ 
+- **`await`** : Pauses the function execution until the Promise is resolved or rejected, and then returns the resolved value or throws the rejected error.
+**Example of Async/Await** 
 
 ```javascript
-fetch('https://api.example.com/data')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error('Error fetching data:', error));
-```
-`this` KeywordThe `this` keyword refers to the object it belongs to.
-### Example in a Function 
+async function fetchUserData(userId) {
+    try {
+        const response = await fetch(`https://api.example.com/users/${userId}`);
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Error fetching user data:', error);
+    }
+}
 
+fetchUserData(1);
+```
+In this example, the `fetchUserData` function waits for the `fetch` and `json()` promises to resolve before proceeding, handling errors with a `try/catch` block.**Using .then() and .catch() with Async/Await** While `async/await` makes code cleaner, `.then()` and `.catch()` are still useful for handling specific scenarios within promises, especially when dealing with multiple asynchronous actions in a sequence or parallel.
+
+
+### Combining Async/Await with .then() and .catch()
 
 ```javascript
-const person = {
-  name: 'John',
-  greet() {
-    console.log(`Hello, my name is ${this.name}`);
-  }
-};
+async function processUserAndPosts(userId) {
+    try {
+        const user = await fetch(`https://api.example.com/users/${userId}`).then(response => response.json());
+        const posts = await fetch(`https://api.example.com/users/${userId}/posts`).then(response => response.json());
+        console.log('User:', user, 'Posts:', posts);
+    } catch (error) {
+        console.error('Error processing user and posts:', error);
+    }
+}
 
-person.greet();  // Output: Hello, my name is John
+processUserAndPosts(1);
+```
+In this example, `then()` is used for converting the fetch response to JSON, separating data transformation from error handling, which is managed by `await` and `try/catch`.**Handling Errors in Async/Await** Handling errors in `async/await` is straightforward with `try/catch`, as it closely resembles synchronous error handling, which makes it a preferred method in modern JavaScript.
+
+### Detailed Error Handling
+
+```javascript
+async function secureFetch(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Failed to fetch:', error);
+        return null;  // Return a neutral value or further handle the error
+    }
+}
+
+secureFetch('https://api.example.com/data')
+    .then(data => console.log(data))
+    .catch(error => console.error('Caught in then:', error));
 ```
 
 ## Async Function Example 
 
-### Function Definition 
-
+ **Purpose and Functionality** The `getElementFromFile` function is designed to asynchronously fetch HTML content from a specified file path and then extract a specific HTML element by its ID. This approach is useful in scenarios where you need to load and display content dynamically without reloading the page or when the content is stored in separate files for organizational purposes.**How the Function Works**  
+1. **Fetching the File** : It uses the Fetch API to retrieve the file at the provided `filePath`.
+ 
+2. **Reading the Content** : After fetching the file, it reads the content as text.
+ 
+3. **Parsing HTML Content** : The function then uses `DOMParser` to parse the text content into a usable Document Object Model (DOM).
+ 
+4. **Extracting the Element** : Finally, it retrieves an element by its specified `elementId` from the parsed HTML.
+**Step-by-Step Explanation** 
 
 ```javascript
-/**
- *
- * @param {*} filePath - the relative path of the file containing the element
- * @param {*} elementId - the id of the top most element in the file
- * @returns
- */
-export async function getElementFromFile(filePath, elementId) {
+async function getElementFromFile(filePath, elementId) {
   try {
     // Use Fetch API to get the element content
-    // elementAsString is a string containing the HTML content of the element
-    const elementAsString = await (await fetch(filePath)).text();
+    const response = await fetch(filePath); // Fetch the file
+    const elementAsString = await response.text(); // Convert response to text
 
     // Parse the elementAsString into a Document Object Model (DOM)
-    const parser = new DOMParser();
-    const parsedElement = parser.parseFromString(elementAsString, "text/html");
+    const parser = new DOMParser(); // Create a new DOMParser instance
+    const parsedElement = parser.parseFromString(elementAsString, "text/html"); // Parse the string to a HTML document
 
+    // Return the element with the specified ID
     return parsedElement.getElementById(elementId);
   } catch (error) {
     console.error(`Failed to load element from file: ${filePath}`, error);
-    return null;
+    return null; // Return null in case of an error
   }
 }
 ```
+**Example Usage** Imagine you have multiple HTML files containing different sections of a webpage, like `header.html`, `footer.html`, etc., and you want to load these into specific elements on your main page dynamically.**HTML Structure of Main Page** 
 
-### Explanation 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content Loading</title>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="main-content">Main Content Goes Here</div>
+    <div id="footer"></div>
+
+    <script src="loadContent.js"></script>
+</body>
+</html>
+```
+JavaScript File: `loadContent.js`** 
+
+```javascript
+async function loadContent() {
+    const header = await getElementFromFile('header.html', 'header');
+    const footer = await getElementFromFile('footer.html', 'footer');
+
+    document.getElementById('header').appendChild(header);
+    document.getElementById('footer').appendChild(footer);
+}
+
+loadContent();
+```
+**Certainly! Let's delve into a tutorial centered around the `getElementFromFile` JavaScript function. This function demonstrates how to fetch HTML content from a file, parse it, and extract a specific element using its ID. Using this function effectively can reduce repetitive code and enhance modularity in your web projects.
+
+---
+
+**Certainly! Let's delve into a tutorial centered around the `getElementFromFile` JavaScript function. This function demonstrates how to fetch HTML content from a file, parse it, and extract a specific element using its ID. Using this function effectively can reduce repetitive code and enhance modularity in your web projects.
+
+---
+
+Using the `getElementFromFile` Function** **Purpose and Functionality** The `getElementFromFile` function is designed to asynchronously fetch HTML content from a specified file path and then extract a specific HTML element by its ID. This approach is useful in scenarios where you need to load and display content dynamically without reloading the page or when the content is stored in separate files for organizational purposes.**How the Function Works**  
+1. **Fetching the File** : It uses the Fetch API to retrieve the file at the provided `filePath`.
  
-- **Fetch API** : Retrieves the file content.
+2. **Reading the Content** : After fetching the file, it reads the content as text.
  
-- **DOMParser** : Parses the HTML string into a DOM.
+3. **Parsing HTML Content** : The function then uses `DOMParser` to parse the text content into a usable Document Object Model (DOM).
  
-- **Error Handling** : Logs errors if the fetch operation fails.
+4. **Extracting the Element** : Finally, it retrieves an element by its specified `elementId` from the parsed HTML.
+**Step-by-Step Explanation** 
+
+```javascript
+async function getElementFromFile(filePath, elementId) {
+  try {
+    // Use Fetch API to get the element content
+    const response = await fetch(filePath); // Fetch the file
+    const elementAsString = await response.text(); // Convert response to text
+
+    // Parse the elementAsString into a Document Object Model (DOM)
+    const parser = new DOMParser(); // Create a new DOMParser instance
+    const parsedElement = parser.parseFromString(elementAsString, "text/html"); // Parse the string to a HTML document
+
+    // Return the element with the specified ID
+    return parsedElement.getElementById(elementId);
+  } catch (error) {
+    console.error(`Failed to load element from file: ${filePath}`, error);
+    return null; // Return null in case of an error
+  }
+}
+```
+**Example Usage** Imagine you have multiple HTML files containing different sections of a webpage, like `header.html`, `footer.html`, etc., and you want to load these into specific elements on your main page dynamically.**HTML Structure of Main Page** 
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content Loading</title>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="main-content">Main Content Goes Here</div>
+    <div id="footer"></div>
+
+    <script src="loadContent.js"></script>
+</body>
+</html>
+```
+
+## Using the `getElementFromFile` Function
+ The `getElementFromFile` function is designed to asynchronously fetch HTML content from a specified file path and then extract a specific HTML element by its ID. This approach is useful in scenarios where you need to load and display content dynamically without reloading the page or when the content is stored in separate files for organizational purposes.
+ 
+ **How the Function Works**  
+1. **Fetching the File** : It uses the Fetch API to retrieve the file at the provided `filePath`.
+ 
+2. **Reading the Content** : After fetching the file, it reads the content as text.
+ 
+3. **Parsing HTML Content** : The function then uses `DOMParser` to parse the text content into a usable Document Object Model (DOM).
+ 
+4. **Extracting the Element** : Finally, it retrieves an element by its specified `elementId` from the parsed HTML.
+**Step-by-Step Explanation** 
+
+```javascript
+async function getElementFromFile(filePath, elementId) {
+  try {
+    // Use Fetch API to get the element content
+    const response = await fetch(filePath); // Fetch the file
+    const elementAsString = await response.text(); // Convert response to text
+
+    // Parse the elementAsString into a Document Object Model (DOM)
+    const parser = new DOMParser(); // Create a new DOMParser instance
+    const parsedElement = parser.parseFromString(elementAsString, "text/html"); // Parse the string to a HTML document
+
+    // Return the element with the specified ID
+    return parsedElement.getElementById(elementId);
+  } catch (error) {
+    console.error(`Failed to load element from file: ${filePath}`, error);
+    return null; // Return null in case of an error
+  }
+}
+```
+**Example Usage** Imagine you have multiple HTML files containing different sections of a webpage, like `header.html`, `footer.html`, etc., and you want to load these into specific elements on your main page dynamically.
+
+**HTML Structure of Main Page** 
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content Loading</title>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="main-content">Main Content Goes Here</div>
+    <div id="footer"></div>
+
+    <script src="loadContent.js"></script>
+</body>
+</html>
+```
+JavaScript File: `loadContent.js`** 
+
+```javascript
+async function loadContent() {
+    const header = await getElementFromFile('header.html', 'header');
+    const footer = await getElementFromFile('footer.html', 'footer');
+
+    document.getElementById('header').appendChild(header);
+    document.getElementById('footer').appendChild(footer);
+}
+
+window.onload = loadContent;
+```
+Benefits of Using `getElementFromFile`**  
+1. **Modularity** : By keeping different parts of the webpage in separate files, you can manage content more efficiently.
+ 
+2. **Reusability** : The function can be reused across different projects or within the same project to load various elements dynamically.
+ 
+3. **Maintainability** : Updating the HTML content in separate files does not require changes to the main HTML file, easing maintenance.
