@@ -251,4 +251,4 @@ git merge matei
 
 However, we will have some issues, as both we and Matei have added 4 lines at line 4 in the `style.css` file.
 
-When two people have modified a file in the same place and we want to merge our changes togheter, we will get what is called a conflict.
+When two people have modified a file in the same place and we want to merge our changes togheter, we will get what is called a `merge conflict`.
