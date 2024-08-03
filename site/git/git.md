@@ -128,8 +128,6 @@ Now, our official state of the project is the one from the last commit. The last
 
 The timeline of changes we made from the start of the project and until the `HEAD` commit is called a `branch`. Each project starts from the `main` branch, or `master` branch.
 
-> 🤓 The official git initial branch is called `master` however github wanted to make a statement on slavery at one point and they changed their starter branches to `main`. This will become relevant later.
-
 Our project currently looks like this:
 
 ![!img](img/step-1.png)
@@ -156,7 +154,15 @@ What he can do is create another branch, using the comand:
 git branch matei
 ```
 
-This will create a new timeline of changes, whose base commit is the HEAD of the previously selected branch (in our case our `master branch`). The branch will be called "matei".
+Then, we will select our branch with the `checkout` command:
+
+```bash
+git checkout matei
+```
+
+Now, all commands will apply to the `matei` branch.
+
+This will create a new timeline of changes, whose base commit is the HEAD of the previously selected branch (in our case our `main branch`). The branch will be called "matei".
 
 Now let's say that Matei would like to modify the font-size of the paragraphs on your website. He will write the following:
 
@@ -186,13 +192,13 @@ Now we return to the computer and want to make our own changes, however, we want
 - We don't want to have Matei's changes on our work.
 - We don't want to discard or modify what he changed either.
 
-So what we can do is to return to the `master` branch. To select a different branch from the current one, we simply run:
+So what we can do is to return to the `main` branch. To select a different branch from the current one, we simply run:
 
 ```bash
-git checkout master
+git checkout main
 ```
 
-What this does is it reverts the state of the project to the `HEAD` of the selected branch, in this case `master HEAD`.
+What this does is it reverts the state of the project to the `HEAD` of the selected branch, in this case `main HEAD`.
 
 Now, we want to add styling for the h1 elements:
 
@@ -252,3 +258,163 @@ git merge matei
 However, we will have some issues, as both we and Matei have added 4 lines at line 4 in the `style.css` file.
 
 When two people have modified a file in the same place and we want to merge our changes togheter, we will get what is called a `merge conflict`.
+
+When we have two lines which conflict, then they will be marked with certain symbols that promt you to choose one or both implementations to keep, or combine the changes togheter. It will look something like this:
+```css
+/* style.css */
+p {
+    font-size: 24px;
+}
+<<<<<< HEAD
+h1 {
+    color: blue;
+    font-style: italic;
+}
+=======
+h1 {
+    color: yellow;
+    font-weight: bold;
+}
+>>>>>> matei
+```
+
+Here we can look at both the changes and pick the one we want to eventually keep. Normally, you just pull your coleague and look at these togheter, or if you know what to do, you can just apply the changes yourself. In our case, we want to keep the color blue and font-style italic.
+
+```css
+/* style.css */
+p {
+    font-size: 24px;
+}
+h1 {
+    color: yellow;
+    font-style: italic;
+}
+```
+
+The merge will combine all changes and after all conflicts are resolved, we can just add everything and create a commit (it will be a special merge commit).
+
+```bash
+git add .
+git commit -m "merge commit"
+```
+
+Now, the timeline of our project will look something like this:
+
+![!img](img/step-4.png)
+
+Now both of our changes and Matei's changes will be integrated into the master branch.
+
+## Remote repositories
+
+Ok, ok, but in the previous example both Matei and us were still dependent on working on the same computer. This is impractical if we are not in the same room, and would like to work at the same time on the project.
+
+This is where Github comes in.
+
+Many people confuse git with github, thinking that they are the same thing, however there is a very big distinction between the two. Git is the actual program that runs and keeps track of the changes in a repository. Github on the other hand is a platform for storing and accessing remote repositories stored on a git server.
+
+Basically, our project lives on our machine. But we would like to share it with other people. 
+
+We would do this by literally copying the project from our machine and creating a clone on a remote server, which can be provided by different websites like Github, Gitlab, Bitbucket or even our own personal remote git server.
+
+First, we would need to go to github and to create an empty repository. Once a repository is created, we can copy the link given to us, in our case `https://github.com/aniteicristi/repo_test.git`.
+
+![!github](img/github.png)
+
+With this link, we need to run a command on our machine to connect our local repository to the remote repository.
+
+```bash
+git remote add origin https://github.com/aniteicristi/repo_test.git
+```
+
+This will add the repository created on github as a remote to our current repository.
+
+Then we would run the following comand:
+```bash
+git branch -M main
+```
+
+What this command does is it renames our current branch to main, in order to match the main branch from github.
+
+Then we would do what is called a `push` using this command:
+
+```bash
+git push -u origin main
+```
+
+Now, the push command is used to push all changes on our local branches to the remote equivalent. In our case, we want to push all changes we have done to the origin (or our github repository).
+
+When we specify that `-u` flag, it will set origin as the default push location. This is so we don't have to specify origin all the time. 
+
+When we make a new change, all we have to do is the following three commands:
+
+```bash
+git add .
+git commit -m "message"
+git push
+```
+
+And git will understand that it needs to add all changes, create a commit and then push this commit to the remote repository.
+
+Now all of our work is backed up on github and we can see it by going to our own page and viewing our repository on their website.
+
+## Clone, Push & Pull
+
+Now that our repo is on github, we can take that previous url and provide it to our friend Matei.
+
+Matei is now at his computer. He would like to copy the project to his device too. In order to copy an existing repository to your device, you need to use the clone command:
+
+```bash
+git clone https://github.com/aniteicristi/repo_test.git
+```
+
+If matei runs that in a terminal, he will notice a new folder created with the title `repo_test`. This folder will contain our whole project. Now matei can add his own modifications from his computer.
+
+Let's say that Matei wants to add another change. After he is done, he will use the calssic trio:
+
+```bash
+git add .
+git commit -m "message"
+git push
+```
+
+And the main branch of the remote repository will have his updates.
+
+Now, we would like to work on the project too, but we cannot modify our project before we get the latest changes from matei, or else we will have some problems.
+
+In order to get the latest changes from the remote, we will use the `pull` command.
+
+```bash
+git pull
+```
+
+This will update our local copy of the branch and we can begin to make changes.
+
+When we are done, we repeat the classical trio of commands:
+
+```bash
+git add .
+git commit -m "message"
+git push
+```
+
+And boom. We are collaborating across computers.
+
+## Working in parallel.
+
+However, we still have to pull and push to our branch in order to avoid stupid conflicts. We would like to work truly in parallel.
+
+To do that, we can just create a separate branch with our name. When we make changes to this branch and run the command trio, this branch will also be created on github. As long as Matei stays away from our branch, then we only need to push our changes and when we are done, to merge them.
+
+If we want to check if there are changes on our branch, we can use the `fetch` command. If we want to check for changes on all branches, we would use 
+
+```bash
+git fetch --all
+```
+
+## Pull Requests
+
+Pull requests are a form of managed merging. normally, we would like to never modify the main branch locally. (in other words: we should never merge from main in our console).
+
+Instead, we should always merge into our local branch from main. This will introduce all changes merged into main before to our branch. With this merge done, we simply commit and push them to the origin branch, and from github we create a `pull request` which basically says: "ok, I want to merge my changes into the main branch."
+
+This pull request can be approved by a supervisor, or the supervisor can leave comments on your work and ask for changes. When he approves the `pull request` then the changes are introduced to the main branch.
