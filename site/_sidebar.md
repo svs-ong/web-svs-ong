@@ -1,15 +1,14 @@
-* [Home](/)
-* ***Cursuri***
-* Introduction
-  * [Tools](introduction/tools.md)
-  * [HTML](introduction/html.md)
-  * [CSS](introduction/css.md)
-  * [Javascript](introduction/javascript.md)
-* Git
-  * [Instalare](git/install.md)
-  * [Git](git/git.md)
-
-
-
-
-
+- [Home](/)
+- **_Cursuri_**
+- Introduction
+  - [Tools](introduction/tools.md)
+  - [HTML](introduction/html.md)
+  - [CSS](introduction/css.md)
+  - [Javascript](introduction/javascript.md)
+- Git
+  - [Instalare](git/install.md)
+  - [Git](git/git.md)
+- Web Dynamics
+  - [Reponsive Design](web_dynamics/responsive_design.md)
+- React
+- NextJs
