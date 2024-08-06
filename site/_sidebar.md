@@ -9,3 +9,5 @@
   - [Instalare](git/install.md)
   - [Git](git/git.md)
   - [Important commands](git/commands.md)
+- Web Dynamics
+  - [Responsive Design](web_dynamics/responsive_design.md)
