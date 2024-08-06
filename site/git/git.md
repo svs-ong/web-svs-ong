@@ -128,6 +128,8 @@ Now, our official state of the project is the one from the last commit. The last
 
 The timeline of changes we made from the start of the project and until the `HEAD` commit is called a `branch`. Each project starts from the `main` branch, or `master` branch.
 
+> 🤓 The `master` branch was the default branch in git. However, in 2020, the name of the default branch was changed to `main` in order to remove any racial connotations. You may notice that the diagrams still have the name master. When I use `main` and `master`, I reffer to the `main` branch. 
+
 Our project currently looks like this:
 
 ![!img](img/step-1.png)
@@ -251,7 +253,7 @@ Now that we've all made our changes, we need to bring them all togheter.
 To bring all changes togheter, we need to select a branch *into* which we want to make our merge using checkout. Then we want to use the `merge` command and give as an argument the branch whose changes we want to merge into ours:
 
 ```bash
-git checkout master
+git checkout main
 git merge matei
 ```
 
@@ -302,7 +304,7 @@ Now, the timeline of our project will look something like this:
 
 ![!img](img/step-4.png)
 
-Now both of our changes and Matei's changes will be integrated into the master branch.
+Now both of our changes and Matei's changes will be integrated into the main branch.
 
 ## Remote repositories
 

@@ -2,15 +2,19 @@
 
 Responsive web design is crucial as it ensures that your website looks good on all devices. A mobile-first approach is particularly important because the majority of internet searches are conducted on mobile devices. Here's how you can design responsively using CSS, particularly focusing on mobile-first strategies.
 
+## Media Query
+***How responsivness is acheved***
+
+Media queries are foundational to responsive design. They allow you to apply CSS rules based on the device characteristics.
+
 ## Mobile First Approach
 
-### Why is it Important?
+***Why is it Important?***
 
 With over 90% of internet searches happening on mobile devices, it's crucial to prioritize mobile design. Designing for mobile first ensures that the most essential elements of your website are accessible on smaller screens, which improves usability and enhances user experience. Once the mobile design is nailed down, you can enhance the experience for desktop users, adding more features that take advantage of the larger screen space.
 
-### How to Manage with Media Queries
 
-Media queries are foundational to responsive design. They allow you to apply CSS rules based on the device characteristics. When adopting a mobile-first approach, you should use `min-width` queries to scale your design up to larger screens. Here’s how to structure your CSS:
+ When adopting a mobile-first approach, you should use `min-width` queries to scale your design up to larger screens. Here’s how to structure your CSS:
 
 ## Case Study: Simple Section
 

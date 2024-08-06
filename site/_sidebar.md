@@ -8,7 +8,4 @@
 - Git
   - [Instalare](git/install.md)
   - [Git](git/git.md)
-- Web Dynamics
-  - [Reponsive Design](web_dynamics/responsive_design.md)
-- React
-- NextJs
+  - [Important commands](git/commands.md)
