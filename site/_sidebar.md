@@ -11,3 +11,8 @@
   - [Important commands](git/commands.md)
 - Web Dynamics
   - [Responsive Design](web_dynamics/responsive_design.md)
+  - [Data Fetching](web_dynamics/data_fetching.md)
+- React
+  - [Installation](react/install.md)
+  - [Typescript](react/typescript.md)
+  - [React](react/react.md)
