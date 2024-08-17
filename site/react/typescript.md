@@ -123,6 +123,74 @@ console.log(output); // Output: myString
 console.log(numericOutput); // Output: 100
 ```
 
+### Generics with Arrays 
+
+Arrays in TypeScript can also use generics, allowing them to hold values of any specified type. Here's how you can work with generic arrays:
+
+
+```js
+function logArrayElements<T>(elements: T[]): void {
+  for (const element of elements) {
+    console.log(element);
+  }
+}
+
+logArrayElements<string>(["Hello", "World"]);
+logArrayElements<number>([1, 2, 3, 4, 5]);
+```
+This function `logArrayElements` takes an array of any type `T` and logs each element to the console. The generic `<T>` allows the function to accept arrays of any type, maintaining consistency across the array's data type.
+### Generics with Interfaces 
+
+Generics can also be applied to interfaces to define properties that can hold any type. This is particularly useful when designing data structures like linked lists, stacks, or queues. Here’s an example of a generic interface for a linked list node:
+
+
+```js
+interface ListNode<T> {
+  value: T;
+  next: ListNode<T> | null;
+}
+
+function createNode<T>(value: T): ListNode<T> {
+  return { value, next: null };
+}
+
+const stringNode = createNode("Hello");
+const numberNode = createNode(123);
+
+console.log(stringNode.value); // Output: Hello
+console.log(numberNode.value); // Output: 123
+```
+In this code, `ListNode` is a generic interface that uses the type variable `T` to define the type of `value` and `next`. This setup allows you to create nodes for a linked list that can store any type of data.
+### Generics with Classes 
+
+Generics are not limited to functions and interfaces; they can also be used in classes. Here is how you can define a generic class in TypeScript:
+
+
+```js
+class Stack<T> {
+  private items: T[] = [];
+
+  push(item: T): void {
+    this.items.push(item);
+  }
+
+  pop(): T | undefined {
+    return this.items.pop();
+  }
+
+  peek(): T | undefined {
+    return this.items[this.items.length - 1];
+  }
+}
+
+const numberStack = new Stack<number>();
+numberStack.push(10);
+console.log(numberStack.peek()); // Output: 10
+console.log(numberStack.pop());  // Output: 10
+console.log(numberStack.pop());  // Output: undefined
+```
+This `Stack` class uses a generic type `T` to work with any data type. You can push items to the stack, pop them off, and peek at the top item, all while maintaining type safety.
+
 ## Conclusion
 
 TypeScript enhances JavaScript by adding types and several other useful features that help in developing large-scale applications by providing tools to write more robust and error-free code. This tutorial covered the fundamentals to get you started with TypeScript's powerful features.
