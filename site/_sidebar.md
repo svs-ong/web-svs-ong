@@ -1,5 +1,5 @@
 - [Home](/)
-- **_Cursuri_**
+- **_Modul 1_**
 - Introduction
   - [Tools](introduction/tools.md)
   - [HTML](introduction/html.md)
@@ -12,7 +12,11 @@
 - Web Dynamics
   - [Responsive Design](web_dynamics/responsive_design.md)
   - [Data Fetching](web_dynamics/data_fetching.md)
+- **_Modul 2_**
 - React
   - [Installation](react/install.md)
   - [Typescript](react/typescript.md)
   - [React](react/react.md)
+- Next.js
+  - [Installation](nextjs/installation.md)
+  - [nextjs](nextjs/nextjs.md)
