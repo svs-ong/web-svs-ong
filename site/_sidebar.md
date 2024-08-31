@@ -19,4 +19,5 @@
   - [React](react/react.md)
 - Next.js
   - [Installation](nextjs/installation.md)
-  - [nextjs](nextjs/nextjs.md)
+  - [nextjs](nextjs/next_js.md)
+  - [Material Ui](nextjs/material_ui.md)
