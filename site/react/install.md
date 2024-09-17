@@ -21,7 +21,7 @@ This will show the versions of Node.js and npm installed, confirming that the in
 #### How to Create Your First React Project 
 To create a new React project, you can use the `create-react-app` command-line utility which simplifies the setup of a new React application. 
 1. **Create a New React App** :
-Open your terminal and run the following command:
+Open your terminal and run the following command:d
 
 ```bash
 npx create-react-app project-name
