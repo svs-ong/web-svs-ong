@@ -1,17 +1,22 @@
 - [Home](/)
 - **_Modul 1_**
-- Introduction
-  - [Tools](introduction/tools.md)
+- Day 1 - Introduction
+  - [Installation](introduction/install.md)
   - [HTML](introduction/html.md)
-  - [CSS](introduction/css.md)
-  - [Javascript](introduction/javascript.md)
-- Git
-  - [Instalare](git/install.md)
+  - [CSS Basic](introduction/css_basic.md)
+- Day 2 - Layout
+  - [CSS Layout](introduction/css_layout.md)
+- Day 3 - Git
+  - [Installation](git/install.md)
   - [Git](git/git.md)
   - [Important commands](git/commands.md)
-- Web Dynamics
+- Day 4 - Javascript
+    - [Javascript](introduction/javascript.md)
+- Day 5 - Responsive Design
   - [Responsive Design](web_dynamics/responsive_design.md)
+- Day 6 - Responsive Design
   - [Data Fetching](web_dynamics/data_fetching.md)
+  
 - **_Modul 2_**
 - React
   - [Installation](react/install.md)
