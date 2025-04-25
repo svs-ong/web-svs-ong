@@ -111,60 +111,75 @@ Generics provide a way to make components work with any data type and not restri
 
 Generics can be used with both `type` and `interface` to define flexible and reusable components.
 
+<!-- prettier-ignore -->
 ```js
-function identity<T>(arg: T): T {
+const identity = <T,>(arg: T): T => {
   return arg;
-}
+};
 
-let output = identity < string > "myString";
-let numericOutput = identity < number > 100;
+const output = identity<string>("myString");
+const numericOutput = identity<number>(100);
 
 console.log(output); // Output: myString
 console.log(numericOutput); // Output: 100
 ```
 
-### Generics with Arrays 
+### Generics with Arrays
 
 Arrays in TypeScript can also use generics, allowing them to hold values of any specified type. Here's how you can work with generic arrays:
 
-
+<!-- prettier-ignore -->
 ```js
-function logArrayElements<T>(elements: T[]): void {
+const logArrayElements = <T,>(elements: T[]): void => {
   for (const element of elements) {
     console.log(element);
   }
-}
+};
 
 logArrayElements<string>(["Hello", "World"]);
 logArrayElements<number>([1, 2, 3, 4, 5]);
 ```
+
 This function `logArrayElements` takes an array of any type `T` and logs each element to the console. The generic `<T>` allows the function to accept arrays of any type, maintaining consistency across the array's data type.
-### Generics with Interfaces 
+
+### Generics with Interfaces
 
 Generics can also be applied to interfaces to define properties that can hold any type. This is particularly useful when designing data structures like linked lists, stacks, or queues. Here’s an example of a generic interface for a linked list node:
 
-
+<!-- prettier-ignore -->
 ```js
 interface ListNode<T> {
   value: T;
   next: ListNode<T> | null;
 }
 
-function createNode<T>(value: T): ListNode<T> {
+const createTreeNode = <T,>(value: T): TreeNode<T> => {
   return { value, next: null };
-}
+};
 
-const stringNode = createNode("Hello");
-const numberNode = createNode(123);
+const displayTree = <T>(node: TreeNode<T> | null): void => {
+  while (node !== null) {
+    console.log(node.value);
+    node = node.next;
+  }
+};
 
-console.log(stringNode.value); // Output: Hello
-console.log(numberNode.value); // Output: 123
+const node1 = createTreeNode(10); // Root node
+const node2 = createTreeNode(5);  // Left child
+const node3 = createTreeNode(20); // Right child
+
+node1.next = node2; 
+node2.next = node3;
+
+console.log("Tree Node Values:");
+displayTree(node1); 
 ```
+
 In this code, `ListNode` is a generic interface that uses the type variable `T` to define the type of `value` and `next`. This setup allows you to create nodes for a linked list that can store any type of data.
-### Generics with Classes 
+
+### Generics with Classes
 
 Generics are not limited to functions and interfaces; they can also be used in classes. Here is how you can define a generic class in TypeScript:
-
 
 ```js
 class Stack<T> {
@@ -189,6 +204,7 @@ console.log(numberStack.peek()); // Output: 10
 console.log(numberStack.pop());  // Output: 10
 console.log(numberStack.pop());  // Output: undefined
 ```
+
 This `Stack` class uses a generic type `T` to work with any data type. You can push items to the stack, pop them off, and peek at the top item, all while maintaining type safety.
 
 ## Conclusion

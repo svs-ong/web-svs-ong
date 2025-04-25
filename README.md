@@ -1,9 +1,10 @@
-# NextJS Internship Documentation for SVS Organization 
+# NextJS Internship Documentation for SVS Organization
 
-## Online Access 
+## Online Access
+
 Visit the deployed documentation at [nextjs.svs.ong](http://nextjs.svs.ong/) .
 
-## Local Run 
+## Local Run
 
 Install Docsify if not already installed (`npm install -g docsify-cli`) and run:
 
@@ -11,7 +12,7 @@ Install Docsify if not already installed (`npm install -g docsify-cli`) and run:
 docsify serve ./site
 ```
 
-## Deployment 
+## Deployment
 
 Deploy updates via Firebase with:
 

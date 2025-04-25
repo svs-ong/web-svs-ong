@@ -1,5 +1,5 @@
 - [Home](/)
-- **_Modul 1_**
+- **_Modul 1 web basics_**
 - Day 1 - Introduction
   - [Installation](introduction/install.md)
   - [HTML](introduction/html.md)
@@ -11,18 +11,20 @@
   - [Git](git/git.md)
   - [Important commands](git/commands.md)
 - Day 4 - Javascript
-    - [Javascript](introduction/javascript.md)
+  - [Javascript](introduction/javascript.md)
 - Day 5 - Responsive Design
   - [Responsive Design](web_dynamics/responsive_design.md)
 - Day 6 - Responsive Design
   - [Data Fetching](web_dynamics/data_fetching.md)
-  
-- **_Modul 2_**
-- React
-  - [Installation](react/install.md)
-  - [Typescript](react/typescript.md)
-  - [React](react/react.md)
-- Next.js
-  - [Installation](nextjs/installation.md)
-  - [nextjs](nextjs/next_js.md)
-  - [Material Ui](nextjs/material_ui.md)
+- **_Modul 2 Rect & Nextjs_**
+- Day 1 - React Fundamentals
+  - [Installation](modul-2/day-1/install.md)
+  - [Typescript](modul-2/day-1/typescript.md)
+  - [React Introduction](modul-2/day-1/react.md)
+  - [Lab Work](modul-2/day-1/lab-work.md)
+- Day 2 - React & MUI
+- Day 3 - React hooks
+- Day 4 - Next.js
+  - [Installation](modul-2/nextjs/installation.md)
+  - [nextjs](modul-2/nextjs/next_js.md)
+  - [Material Ui](modul-2/nextjs/material_ui.md)
