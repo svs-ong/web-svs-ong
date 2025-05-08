@@ -23,6 +23,9 @@
   - [React Introduction](modul-2/day-1/react.md)
   - [Lab Work](modul-2/day-1/lab-work.md)
 - Day 2 - React & MUI
+  - [Installation](modul-2/day-2/installation.md)
+  - [Material Ui](modul-2/day-2/material_ui.md)
+  - [Lab Work](modul-2/day-2/lab-work.md)
 - Day 3 - React hooks
   - [React Hooks](modul-2/day-3/react-hooks.md)
 - Day 4 - Next.js
