@@ -24,6 +24,7 @@
   - [Lab Work](modul-2/day-1/lab-work.md)
 - Day 2 - React & MUI
 - Day 3 - React hooks
+  - [React Hooks](modul-2/day-3/react-hooks.md)
 - Day 4 - Next.js
   - [Installation](modul-2/nextjs/installation.md)
   - [nextjs](modul-2/nextjs/next_js.md)
