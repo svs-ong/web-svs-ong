@@ -23,7 +23,7 @@ One of the core functionalities of Material-UI is its theme system. The theme co
 In the following example, we demonstrate how to create a custom theme and apply it using the `ThemeProvider` component. This setup allows us to define and use a consistent style across all components within the provider.
 
 ```js
-import * as React from 'react';
+import React from 'react';
 import { Box, ThemeProvider, createTheme } from '@mui/system';
 
 const theme = createTheme({
@@ -44,8 +44,8 @@ const theme = createTheme({
   },
 });
 
-export default function Example() {
-  return (
+export default Example:React.FC = () => {
+  return ( 
     <ThemeProvider theme={theme}>
       <Box
         sx={{
@@ -88,10 +88,10 @@ In this section, we will explore some of the fundamental components provided by 
 
 The `Typography` component is used to manage your text and apply the Material Design typography styles. It can be used to adjust font size, weight, and color according to your theme settings.
 
-```jsx
+```js
 import { Typography } from '@mui/material';
 
-function TypographyExample() {
+const TypographyExample:React.FC = () => {
   return (
     <Typography variant="h1" component="h2" gutterBottom>
       h1. Heading
@@ -103,10 +103,10 @@ function TypographyExample() {
 ### Button 
 The `Button` component is used for interactions. You can customize its size, color, and functionality based on your needs. Buttons come with several variants such as contained, outlined, and text.
 
-```jsx
+```js
 import { Button } from '@mui/material';
 
-function ButtonExample() {
+const ButtonExample:React.FC = ()  {
   return (
     <Button variant="contained" color="primary">
       Click me
@@ -118,10 +118,10 @@ function ButtonExample() {
 ### Box 
 The `Box` component serves as a utility component that can be used for custom layouts, positioning, or wrapping other components. It supports all system properties like margin, padding, width, etc.
 
-```jsx
+```js
 import { Box } from '@mui/material';
 
-function BoxExample() {
+const BoxExample:React.FC = () =>{
   return (
     <Box p={2} bgcolor="background.paper" boxShadow={1}>
       This is a box
@@ -133,10 +133,10 @@ function BoxExample() {
 ### Container 
 The `Container` component is used to align the site's content within a fixed width and properly center it. It adjusts itself on different devices with responsive layout behaviors. It is ideal for sections of your page.
 
-```jsx
+```js
 import { Container } from '@mui/material';
 
-function ContainerExample() {
+const ContainerExample:React.FC = () => {
   return (
     <Container maxWidth="sm">
       This is a centered container
@@ -148,10 +148,10 @@ function ContainerExample() {
 ### Stack 
 The `Stack` component is a flexbox container that makes it easy to align child components either horizontally or vertically. It is a handy tool for creating layouts that need simple stacks of elements.
 
-```jsx
+```js
 import { Stack, Button } from '@mui/material';
 
-function StackExample() {
+const StackExample:React.FC = () => {
   return (
     <Stack spacing={2} direction="row">
       <Button variant="contained">First</Button>
@@ -164,10 +164,10 @@ function StackExample() {
 ### Grid 
 The `Grid` component provides a flexible grid system which uses a series of containers, rows, and columns to layout and align content. It's responsive, allowing complex layouts to be designed with simplicity.
 
-```jsx
+```js
 import { Grid, Paper } from '@mui/material';
 
-function GridExample() {
+const GridExample:React.FC = () => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={6}>
@@ -192,10 +192,10 @@ Material-UI provides powerful customization options to tailor the look and feel 
 
 For quick, one-off customizations, you can use the `sx` prop directly on a component. This prop allows you to specify a wide range of CSS properties in a concise manner. Here's an example of customizing a `Slider` component:
 
-```jsx
+```js
 import { Slider } from '@mui/material';
 
-function SliderExample() {
+const SliderExample:React.FC = () => {
   return (
     <Slider
       defaultValue={30}
@@ -255,7 +255,7 @@ const theme = createTheme({
   },
 });
 
-function ButtonCustomization() {
+const ButtonCustomization:React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <Button>This button has custom font size.</Button>
@@ -319,7 +319,7 @@ const customTheme = createTheme({
   },
 });
 
-export default function GlobalThemeVariants() {
+export default const GlobalThemeVariants = () => {
   return (
     <ThemeProvider theme={customTheme}>
       <Button variant="dashed" sx={{ m: 1 }}>
@@ -371,7 +371,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MyComponent() {
+const MyComponent:React.FC = () => {
   const classes = useStyles();
   return <div className={classes.root}>Responsive Div</div>;
 }
@@ -392,7 +392,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MyComponent() {
+const MyComponent = () => {
   const classes = useStyles();
   return <div className={classes.root}>Responsive Div</div>;
 }
