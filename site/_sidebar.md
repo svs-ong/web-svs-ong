@@ -18,16 +18,18 @@
   - [Data Fetching](web_dynamics/data_fetching.md)
 - **_Modul 2 Rect & Nextjs_**
 - Day 1 - React Fundamentals
-  - [Installation](modul-2/day-1/install.md)
-  - [Typescript](modul-2/day-1/typescript.md)
-  - [React Introduction](modul-2/day-1/react.md)
-  - [Lab Work](modul-2/day-1/lab-work.md)
+  - [Installation](modul-2/day-1-react/install.md)
+  - [Typescript](modul-2/day-1-react/typescript.md)
+  - [React Introduction](modul-2/day-1-react/react.md)
+  - [Lab Work](modul-2/day-1-react/lab-work.md)
 - Day 2 - React & MUI
-  - [Installation](modul-2/day-2/installation.md)
-  - [Material Ui](modul-2/day-2/material_ui.md)
-  - [Lab Work](modul-2/day-2/lab-work.md)
+  - [Installation](modul-2/day-2-mui/installation.md)
+  - [Material Ui](modul-2/day-2-mui/material_ui.md)
+  - [Lab Work](modul-2/day-2-mui/lab-work.md)
 - Day 3 - React hooks
+  - [React Hooks](modul-2/day-3-react-hooks/react-hooks.md)
+  - [Lab Work](modul-2/day-3-react-hooks/lab-work.md)
 - Day 4 - Next.js
-  - [Installation](modul-2/nextjs/installation.md)
-  - [nextjs](modul-2/nextjs/next_js.md)
-  - [Material Ui](modul-2/nextjs/material_ui.md)
+  - [Installation](modul-2/day-4-nextjs/installation.md)
+  - [Next.js](modul-2/day-4-nextjs/nextjs.md)
+  - [Material Ui](modul-2/day-4-nextjs/material-ui.md)
