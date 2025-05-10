@@ -1,6 +1,7 @@
 # Material UI in Next.js
 
 ## Introduction
+
 Material-UI is a popular React component library that implements Google's Material Design. It provides a robust set of components that are both customizable and accessible, making it an excellent choice for building dynamic and beautiful web applications quickly. In this course, we will explore how to effectively use Material-UI in a Next.js environment to create responsive, visually appealing web applications.
 
 For detailed information on Material-UI and its components, you can visit the official documentation here: [Material-UI Documentation](https://mui.com/material-ui/getting-started/overview/).
@@ -15,7 +16,6 @@ Here are some useful links to help you get started and reference throughout the 
 - [Responsive UI](https://mui.com/material-ui/guides/responsive-ui/): Guidelines for making your UI responsive using Material-UI.
 - [Next.js Integration](https://mui.com/material-ui/integrations/nextjs/): Specific guidance on integrating Material-UI with Next.js applications.
 
-
 ## Basic Example
 
 One of the core functionalities of Material-UI is its theme system. The theme contains all the constants needed for the design language of the application, such as colors, distances, and other properties. You can also customize each subcomponent within the theme.
@@ -23,7 +23,7 @@ One of the core functionalities of Material-UI is its theme system. The theme co
 In the following example, we demonstrate how to create a custom theme and apply it using the `ThemeProvider` component. This setup allows us to define and use a consistent style across all components within the provider.
 
 ```js
-import * as React from 'react';
+import React from 'react';
 import { Box, ThemeProvider, createTheme } from '@mui/system';
 
 const theme = createTheme({
@@ -44,7 +44,7 @@ const theme = createTheme({
   },
 });
 
-export default function Example() {
+export default Example:React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <Box
@@ -79,34 +79,37 @@ export default function Example() {
   );
 }
 ```
+
 This example illustrates how a `ThemeProvider` wraps the `Box` component to apply the defined theme. We use the `sx` prop on each `Box` to specify styles directly related to the theme values, such as `bgcolor`, which is set to the `background.paper` color from our custom palette. This approach ensures that all components within the `ThemeProvider` are styled consistently, aligning with the design principles specified in your theme configuration.
 
 ## Components
+
 In this section, we will explore some of the fundamental components provided by Material-UI, which serve as building blocks for constructing a user interface in a React application. Understanding these components will help you efficiently layout and style your applications.
 
 ### Typography
 
 The `Typography` component is used to manage your text and apply the Material Design typography styles. It can be used to adjust font size, weight, and color according to your theme settings.
 
-```jsx
-import { Typography } from '@mui/material';
+```js
+import { Typography } from "@mui/material";
 
-function TypographyExample() {
+const TypographyExample: React.FC = () => {
   return (
     <Typography variant="h1" component="h2" gutterBottom>
       h1. Heading
     </Typography>
   );
-}
+};
 ```
 
-### Button 
+### Button
+
 The `Button` component is used for interactions. You can customize its size, color, and functionality based on your needs. Buttons come with several variants such as contained, outlined, and text.
 
-```jsx
+```js
 import { Button } from '@mui/material';
 
-function ButtonExample() {
+const ButtonExample:React.FC = ()  {
   return (
     <Button variant="contained" color="primary">
       Click me
@@ -115,59 +118,59 @@ function ButtonExample() {
 }
 ```
 
-### Box 
+### Box
+
 The `Box` component serves as a utility component that can be used for custom layouts, positioning, or wrapping other components. It supports all system properties like margin, padding, width, etc.
 
-```jsx
-import { Box } from '@mui/material';
+```js
+import { Box } from "@mui/material";
 
-function BoxExample() {
+const BoxExample: React.FC = () => {
   return (
     <Box p={2} bgcolor="background.paper" boxShadow={1}>
       This is a box
     </Box>
   );
-}
+};
 ```
 
-### Container 
+### Container
+
 The `Container` component is used to align the site's content within a fixed width and properly center it. It adjusts itself on different devices with responsive layout behaviors. It is ideal for sections of your page.
 
-```jsx
-import { Container } from '@mui/material';
+```js
+import { Container } from "@mui/material";
 
-function ContainerExample() {
-  return (
-    <Container maxWidth="sm">
-      This is a centered container
-    </Container>
-  );
-}
+const ContainerExample: React.FC = () => {
+  return <Container maxWidth="sm">This is a centered container</Container>;
+};
 ```
 
-### Stack 
+### Stack
+
 The `Stack` component is a flexbox container that makes it easy to align child components either horizontally or vertically. It is a handy tool for creating layouts that need simple stacks of elements.
 
-```jsx
-import { Stack, Button } from '@mui/material';
+```js
+import { Stack, Button } from "@mui/material";
 
-function StackExample() {
+const StackExample: React.FC = () => {
   return (
     <Stack spacing={2} direction="row">
       <Button variant="contained">First</Button>
       <Button variant="contained">Second</Button>
     </Stack>
   );
-}
+};
 ```
 
-### Grid 
+### Grid
+
 The `Grid` component provides a flexible grid system which uses a series of containers, rows, and columns to layout and align content. It's responsive, allowing complex layouts to be designed with simplicity.
 
-```jsx
-import { Grid, Paper } from '@mui/material';
+```js
+import { Grid, Paper } from "@mui/material";
 
-function GridExample() {
+const GridExample: React.FC = () => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={6}>
@@ -178,11 +181,10 @@ function GridExample() {
       </Grid>
     </Grid>
   );
-}
+};
 ```
 
 This overview provides a starting point for understanding and utilizing some of the core Material-UI components in your projects. Each component can be further explored in the documentation to utilize its full potential.
-
 
 ## Customization
 
@@ -192,77 +194,86 @@ Material-UI provides powerful customization options to tailor the look and feel 
 
 For quick, one-off customizations, you can use the `sx` prop directly on a component. This prop allows you to specify a wide range of CSS properties in a concise manner. Here's an example of customizing a `Slider` component:
 
-```jsx
-import { Slider } from '@mui/material';
+```js
+import { Slider } from "@mui/material";
 
-function SliderExample() {
+const SliderExample: React.FC = () => {
   return (
     <Slider
       defaultValue={30}
       sx={{
         width: 300,
-        color: 'success.main',
-        '& .MuiSlider-thumb': {
-          borderRadius: '1px',
+        color: "success.main",
+        "& .MuiSlider-thumb": {
+          borderRadius: "1px",
         },
       }}
     />
   );
-}
+};
 ```
 
-### 2. Reusable component 
+### 2. Reusable component
+
 To create reusable styled components, you can use the `styled` function from MUI. This approach is beneficial when you want to extend the styling capabilities of a component and use it across different parts of your application. Here's how to create a custom `Slider` styled for success scenarios:
 
 ```js
-import * as React from 'react';
-import Slider, { SliderProps } from '@mui/material/Slider';
-import { alpha, styled } from '@mui/material/styles';
+import * as React from "react";
+import Slider, { SliderProps } from "@mui/material/Slider";
+import { alpha, styled } from "@mui/material/styles";
 
-const SuccessSlider = styled(Slider)<SliderProps>(({ theme }) => ({
-  width: 300,
-  color: theme.palette.success.main,
-  '& .MuiSlider-thumb': {
-    '&:hover, &.Mui-focusVisible': {
-      boxShadow: `0px 0px 0px 8px ${alpha(theme.palette.success.main, 0.16)}`,
+const SuccessSlider =
+  styled(Slider) <
+  SliderProps >
+  (({ theme }) => ({
+    width: 300,
+    color: theme.palette.success.main,
+    "& .MuiSlider-thumb": {
+      "&:hover, &.Mui-focusVisible": {
+        boxShadow: `0px 0px 0px 8px ${alpha(theme.palette.success.main, 0.16)}`,
+      },
+      "&.Mui-active": {
+        boxShadow: `0px 0px 0px 14px ${alpha(
+          theme.palette.success.main,
+          0.16
+        )}`,
+      },
     },
-    '&.Mui-active': {
-      boxShadow: `0px 0px 0px 14px ${alpha(theme.palette.success.main, 0.16)}`,
-    },
-  },
-}));
+  }));
 
 export default function StyledCustomization() {
   return <SuccessSlider defaultValue={30} />;
 }
 ```
 
-### 3. Global theme overrides 
+### 3. Global theme overrides
+
 For broad, application-wide style changes, you can customize the default theme. This method involves defining a custom theme with overrides for specific components. Here's an example of customizing the `Button` component globally within a theme:
 
 ```js
-import { createTheme, ThemeProvider, Button } from '@mui/material';
+import { createTheme, ThemeProvider, Button } from "@mui/material";
 
 const theme = createTheme({
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          fontSize: '1rem',
+          fontSize: "1rem",
         },
       },
     },
   },
 });
 
-function ButtonCustomization() {
+const ButtonCustomization: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <Button>This button has custom font size.</Button>
     </ThemeProvider>
   );
-}
+};
 ```
+
 Customizing component variants allows you to define new visual styles that can be applied to components using a familiar prop interface. This approach enhances the flexibility of your UI components by allowing you to define custom variants in the theme and apply them just like the default ones provided by Material-UI.
 
 In the following example, we will create a custom variant for the `Button` component called `dashed`. This variant will apply a dashed border style to the button, among other properties. We will also configure variants to respond to the `color` and `size` props to demonstrate how versatile this approach can be.
@@ -319,7 +330,7 @@ const customTheme = createTheme({
   },
 });
 
-export default function GlobalThemeVariants() {
+export default const GlobalThemeVariants = () => {
   return (
     <ThemeProvider theme={customTheme}>
       <Button variant="dashed" sx={{ m: 1 }}>
@@ -358,42 +369,43 @@ You can use these breakpoints in your theme to apply different styles based on t
 **Example 1: Applying a style from medium breakpoint upwards**
 
 ```js
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: 'blue',
+    backgroundColor: "blue",
     // Applies red background color from medium breakpoint and above
     // Matching [md, ∞) or [900px, ∞)
-    [theme.breakpoints.up('md')]: {
-      backgroundColor: 'red',
+    [theme.breakpoints.up("md")]: {
+      backgroundColor: "red",
     },
   },
 }));
 
-function MyComponent() {
+const MyComponent: React.FC = () => {
   const classes = useStyles();
   return <div className={classes.root}>Responsive Div</div>;
-}
+};
 ```
-**Example 2: Applying a style between small and medium breakpoints** 
+
+**Example 2: Applying a style between small and medium breakpoints**
 
 ```js
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: 'blue',
+    backgroundColor: "blue",
     // Applies red background color between small and medium breakpoints
     // Matching [sm, md) or [600px, 900px)
-    [theme.breakpoints.between('sm', 'md')]: {
-      backgroundColor: 'red',
+    [theme.breakpoints.between("sm", "md")]: {
+      backgroundColor: "red",
     },
   },
 }));
 
-function MyComponent() {
+const MyComponent = () => {
   const classes = useStyles();
   return <div className={classes.root}>Responsive Div</div>;
-}
+};
 ```
