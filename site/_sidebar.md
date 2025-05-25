@@ -32,4 +32,4 @@
 - Day 4 - Next.js
   - [Installation](modul-2/day-4-nextjs/installation.md)
   - [Next.js](modul-2/day-4-nextjs/nextjs.md)
-  - [Material Ui](modul-2/day-4-nextjs/material-ui.md)
+  - [Lab Work](modul-2/day-4-nextjs/lab-work.md)

@@ -147,7 +147,7 @@ src/
 
 Step 1: Creating the Home Page (`/`)** We will start by creating the home page. This page will welcome the user and include a button that allows navigation to the `page1`.`src/app/page.tsx`** :
 
-```tsx
+```js
 import React from "react";
 import { Button, Container, Typography } from "@mui/material";
 import Link from "next/link";
@@ -177,7 +177,7 @@ export default HomePage;
 - **Navigation:** The `Link` component from `next/link` is wrapped around the `Button` to enable client-side navigation to `page1`. The `passHref` prop is used to ensure the `href` is passed correctly to the `Button` component.
   Step 2: Creating Page1 (`/page1`)** Next, we will create `page1`, which will feature a similar layout to the home page but with a button to navigate back to the home page.`src/app/page1/page.tsx`** :
 
-```tsx
+```js
 import React from "react";
 import { Button, Container, Typography } from "@mui/material";
 import Link from "next/link";
