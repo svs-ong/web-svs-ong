@@ -1,35 +1,36 @@
 - [Home](/)
 - **_Modul 1 web basics_**
 - Day 1 - Introduction
-  - [Installation](introduction/install.md)
-  - [HTML](introduction/html.md)
-  - [CSS Basic](introduction/css_basic.md)
-- Day 2 - Layout
-  - [CSS Layout](introduction/css_layout.md)
-- Day 3 - Git
-  - [Installation](git/install.md)
-  - [Git](git/git.md)
-  - [Important commands](git/commands.md)
+  - [Installation](modul-1/introduction/install.md)
+  - [HTML](modul-1/introduction/html.md)
+  - [CSS Basic](modul-1/introduction/css_basic.md)
+- Day 2 - Git
+  - [Installation](modul-1/git/install.md)
+  - [Git](modul-1/git/git.md)
+  - [Important commands](modul-1/git/commands.md)
+  - [Practice](modul-1/git/practice.md)
+- Day 3 - Layout
+  - [CSS Layout](modul-1/introduction/css_layout.md)
 - Day 4 - Javascript
-  - [Javascript](introduction/javascript.md)
+  - [Javascript](modul-1/introduction/javascript.md)
 - Day 5 - Responsive Design
-  - [Responsive Design](web_dynamics/responsive_design.md)
+  - [Responsive Design](modul-1/web_dynamics/responsive_design.md)
 - Day 6 - Responsive Design
-  - [Data Fetching](web_dynamics/data_fetching.md)
+  - [Data Fetching](modul-1/web_dynamics/data_fetching.md)
 - **_Modul 2 Rect & Nextjs_**
 - Day 1 - React Fundamentals
-  - [Installation](modul-2/day-1-react/install.md)
-  - [Typescript](modul-2/day-1-react/typescript.md)
-  - [React Introduction](modul-2/day-1-react/react.md)
-  - [Lab Work](modul-2/day-1-react/lab-work.md)
+  - [Installation](modul-2/react/install.md)
+  - [Typescript](modul-2/react/typescript.md)
+  - [React Introduction](modul-2/react/react.md)
+  - [Lab Work](modul-2/react/lab-work.md)
 - Day 2 - React & MUI
-  - [Installation](modul-2/day-2-mui/installation.md)
-  - [Material Ui](modul-2/day-2-mui/material_ui.md)
-  - [Lab Work](modul-2/day-2-mui/lab-work.md)
+  - [Installation](modul-2/mui/installation.md)
+  - [Material Ui](modul-2/mui/material_ui.md)
+  - [Lab Work](modul-2/mui/lab-work.md)
 - Day 3 - React hooks
-  - [React Hooks](modul-2/day-3-react-hooks/react-hooks.md)
-  - [Lab Work](modul-2/day-3-react-hooks/lab-work.md)
+  - [React Hooks](modul-2/react-hooks/react-hooks.md)
+  - [Lab Work](modul-2/react-hooks/lab-work.md)
 - Day 4 - Next.js
-  - [Installation](modul-2/day-4-nextjs/installation.md)
-  - [Next.js](modul-2/day-4-nextjs/nextjs.md)
-  - [Lab Work](modul-2/day-4-nextjs/lab-work.md)
+  - [Installation](modul-2/nextjs/installation.md)
+  - [Next.js](modul-2/nextjs/nextjs.md)
+  - [Lab Work](modul-2/nextjs/lab-work.md)
