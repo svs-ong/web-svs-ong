@@ -7,7 +7,7 @@ Focus on the `homework` directory for this week's tasks. You can modify everythi
   - Verify and fix any broken links across the entire website to ensure seamless navigation.
  
 2. **Stylize the Home Page:**  
-  - Follow the guidelines in `design.pdf` to style the home page. Apply the required CSS to match the specified design.
+  - Follow the guidelines in `design.pdf` to style the home page. Apply the required CSS to match the specified design. Try to do your best, you will continue this task after layout course.
 
 
 
