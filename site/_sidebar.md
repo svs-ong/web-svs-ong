@@ -4,6 +4,7 @@
   - [Installation](introduction/install.md)
   - [HTML](introduction/html.md)
   - [CSS Basic](introduction/css_basic.md)
+  - [Practice](introduction/practice.md)
 - Day 2 - Layout
   - [CSS Layout](introduction/css_layout.md)
 - Day 3 - Git
