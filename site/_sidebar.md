@@ -4,6 +4,7 @@
   - [Installation](modul-1/introduction/install.md)
   - [HTML](modul-1/introduction/html.md)
   - [CSS Basic](modul-1/introduction/css_basic.md)
+  - [Practice](modul-1/introduction/practice.md)
 - Day 2 - Git
   - [Installation](modul-1/git/install.md)
   - [Git](modul-1/git/git.md)
