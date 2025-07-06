@@ -11,7 +11,8 @@
   - [Important commands](modul-1/git/commands.md)
   - [Practice](modul-1/git/practice.md)
 - Day 3 - Layout
-  - [CSS Layout](modul-1/introduction/css_layout.md)
+  - [CSS Layout](modul-1/layout/css_layout.md)
+  - [Lab Work](modul-1/layout/practice.md)
 - Day 4 - Javascript
   - [Javascript](modul-1/introduction/javascript.md)
 - Day 5 - Responsive Design
