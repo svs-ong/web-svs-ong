@@ -14,7 +14,8 @@
   - [CSS Layout](modul-1/layout/css_layout.md)
   - [Lab Work](modul-1/layout/practice.md)
 - Day 4 - Javascript
-  - [Javascript](modul-1/introduction/javascript.md)
+  - [Javascript](modul-1/javascript/javascript.md)
+  - [Practice](modul-1/javascript/practice.md)
 - Day 5 - Responsive Design
   - [Responsive Design](modul-1/web_dynamics/responsive_design.md)
 - Day 6 - Responsive Design
