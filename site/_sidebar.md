@@ -14,11 +14,11 @@
   - [CSS Layout](modul-1/introduction/css_layout.md)
 - Day 4 - Javascript
   - [Javascript](modul-1/introduction/javascript.md)
-- Day 5 - Responsive Design
+<!-- - Day 5 - Responsive Design
   - [Responsive Design](modul-1/web_dynamics/responsive_design.md)
 - Day 6 - Responsive Design
-  - [Data Fetching](modul-1/web_dynamics/data_fetching.md)
-- **_Modul 2 Rect & Nextjs_**
+  - [Data Fetching](modul-1/web_dynamics/data_fetching.md) -->
+- **_Modul 2 React & Nextjs_**
 - Day 1 - React Fundamentals
   - [Installation](modul-2/react/install.md)
   - [Typescript](modul-2/react/typescript.md)
