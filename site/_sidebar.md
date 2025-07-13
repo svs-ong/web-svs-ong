@@ -11,13 +11,11 @@
   - [Important commands](modul-1/git/commands.md)
   - [Practice](modul-1/git/practice.md)
 - Day 3 - Layout
-  - [CSS Layout](modul-1/introduction/css_layout.md)
+  - [CSS Layout](modul-1/layout/css_layout.md)
+  - [Lab Work](modul-1/layout/practice.md)
 - Day 4 - Javascript
-  - [Javascript](modul-1/introduction/javascript.md)
-<!-- - Day 5 - Responsive Design
-  - [Responsive Design](modul-1/web_dynamics/responsive_design.md)
-- Day 6 - Responsive Design
-  - [Data Fetching](modul-1/web_dynamics/data_fetching.md) -->
+  - [Javascript](modul-1/javascript/javascript.md)
+  - [Practice](modul-1/javascript/practice.md)
 - **_Modul 2 React & Nextjs_**
 - Day 1 - React Fundamentals
   - [Installation](modul-2/react/install.md)
