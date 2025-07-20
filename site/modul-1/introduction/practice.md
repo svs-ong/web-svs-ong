@@ -3,6 +3,8 @@
 Focus on the `homework` directory for this week's tasks. You can modify everything in this directory, but avoid making changes to the `server` folder.
 ### Mandatory Tasks 
 
+1. 
+
 1. **Repository Access:**
    - Visit [GitHub Repository](https://github.com/svs-ong/web-intership-homework).
    - clone the repository.
