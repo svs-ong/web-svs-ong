@@ -29,180 +29,583 @@ While React is a library for building user interfaces, Next.js is a framework th
 ## Project Structure
 
 In this section, we'll explore a well-organized project structure for a Next.js application using Material-UI (MUI). This structure is designed to enhance maintainability, scalability, and readability, ensuring that your codebase remains clean and manageable as your project grows.
+
 **Project Structure Overview**
 
 ```plaintext
-src/
-├── app/
-│   ├── page.tsx              # Home page of the application
-│   ├── page.styles.tsx       # Home page styles
-│   ├── layout.tsx            # Global layout for the entire application
-│   ├── layout.styles.tsx     # Global layout styles or configurations
-│   ├── page1/
-│   │   ├── page.tsx
-│   │   ├── page.styles.tsx
-│   │   └── components/       # Components specific to page1
-│   └── page2/
-│       ├── page.tsx
-│       └── page.styles.tsx
-├── components/               # Components common to all pages
-│   ├── atomic/               # Small, reusable components
-│   │   ├── Button/
-│   │   │   ├── Button.tsx
-│   │   │   ├── Button.styles.tsx
-│   │   │   └── index.tsx
-│   │   └── [Other atomic components]
-│   ├── organism/             # Larger, composed components
-│   │   ├── Navbar/
-│   │   ├── Footer/
-│   │   ├── Sidebar/
-│   │   └── [Other reusable components]
-├── theme/
-│   ├── theme.ts              # MUI theme configuration
-│   └── palette.ts            # Color palette configurations
-└── model/
-    ├── userModel.ts          # Example data model file
-    └── productModel.ts       # Example data model file
+project-root/
+├── public/                     # Static assets
+│   ├── images/                 # Image files
+│   │   ├── logo.png
+│   │   └── hero-bg.jpg
+│   └── icons/                  # Icon files
+└── src/
+    ├── api/                    # API-related files
+    │   ├── auth.ts             # Authentication API functions
+    │   └── users.ts            # User-related API functions
+    ├── app/
+    │   ├── layout.tsx          # Root layout component
+    │   ├── page.tsx            # Home page component
+    │   ├── about/
+    │   │   └── page.tsx        # About page component
+    │   └── contact/
+    │       ├── page.tsx        # Contact page component
+    │       └── components/     # Components specific to contact page
+    │           ├── ContactForm.tsx
+    │           └── ContactInfo.tsx
+    ├── components/
+    │   ├── atomic/             # Small, reusable components
+    │   │   ├── Button/
+    │   │   │   └── Button.tsx
+    │   │   └── [Other atomic components]
+    │   └── organism/           # Larger, composed components
+    │       ├── Header/
+    │       │   └── Header.tsx
+    │       ├── Footer/
+    │       │   └── Footer.tsx
+    │       └── [Other reusable components]
+    ├── lib/
+    │   ├── utils.ts            # Utility functions
+    │   └── hooks/              # Custom React hooks
+    │       ├── useLocalStorage.ts
+    │       └── useFetch.ts
+    └── model/
+        ├── user                # Example data model file
+        └── article             # Example data model file
 ```
 
-**Detailed Breakdown** 1. `src/app/` Directory:\*\* The `app` directory is the heart of your application, where different pages, the global layout, and styles are organized.
+### Folder Explanations
 
-- **`page.tsx`:**
+**`public/`** - Static assets directory containing images, icons, and other files served directly by the web server.
 
-  - This is the home page of your application, corresponding to the default route (`/`). It contains the React component that defines the content and structure of the home page.
+**`src/api/`** - API-related functions for communicating with backend services (authentication, user management, etc.).
 
-- **`page.styles.tsx`:**
+**`src/app/`** - Main application pages and routing structure using Next.js App Router.
 
-  - Contains styles specific to the home page. This separation of styles from the component logic keeps your code clean and modular.
+**`src/components/`** - Reusable UI components organized using atomic design principles (atomic and organism components).
 
-- **`layout.tsx`:**
+**`src/lib/`** - Utility functions and custom React hooks for common functionality across the application.
 
-  - The global layout component that wraps around all pages in the application. This typically includes elements like the `Navbar`, `Footer`, and `Sidebar`, providing a consistent structure and design across the app.
+**`src/model/`** - TypeScript interfaces and data models defining the structure of application data.
 
-- **`layout.styles.tsx`:**
+## Navigation theory
 
-  - Contains styles specific to the global layout, ensuring a consistent appearance throughout the application.
+The `src/app/` directory is the heart of Next.js 13+ applications, introducing the new App Router that replaces the older Pages Router. This directory uses file-system based routing with several important conventions and reserved names.
 
-- **`page1/`, `page2/`:**
+### How App Router Works
 
-  - Each of these directories represents an individual page within your application. Organizing pages into their own folders helps manage page-specific components and styles.
+**File-based Routing**: Each folder represents a route segment, and files define the UI for that route. The `page.tsx` file is the main component that renders when someone visits that route.
 
-    - **`page.tsx`:** The main component file for the page, defining its content and structure.
+**Reserved File Names**: Next.js reserves certain filenames for special purposes:
 
-    - **`page.styles.tsx`:** Contains styles specific to that page, ensuring modular and maintainable code.
+- `page.tsx` - Makes a route segment publicly accessible
+- `layout.tsx` - Shared UI for a segment and its children
+- `loading.tsx` - Loading UI for Suspense boundaries
+- `error.tsx` - Error UI for error boundaries
+- `not-found.tsx` - UI for not found pages
+- `route.ts` - API endpoints for the route
 
-    - **`components/`:** Contains components specific to the particular page, keeping page-specific components organized and separate from globally reused components.
+### Layout System
 
-2. `src/components/` Directory:\*\*
-   This directory houses components that are shared across multiple pages or are part of the global layout.
+**Root Layout (`app/layout.tsx`)**: This is the top-level layout that wraps all pages. It's required and must contain `html` and `body` tags. This is where you define:
 
-- **`atomic/`:**
+- Global metadata
+- Navigation components (Header, Footer)
+- Global styles
+- Providers (Theme, Context, etc.)
 
-  - This folder contains small, reusable components often referred to as "atomic" components in design systems. Examples include buttons, icons, and form inputs.
+**Nested Layouts**: You can create layouts for specific sections by adding `layout.tsx` files in subdirectories. These layouts wrap only the pages within that section.
 
-  - Example:
+**Layout Nesting Example**:
 
-    - **`Button/`:**
+```tsx
+// app/layout.tsx (Root layout)
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  );
+}
 
-      - **`Button.tsx`:** The button component logic.
+// app/dashboard/layout.tsx (Dashboard section layout)
+export default function DashboardLayout({ children }) {
+  return (
+    <div>
+      <Sidebar />
+      <main>{children}</main>
+    </div>
+  );
+}
+```
 
-      - **`Button.styles.tsx`:** Styles specific to the button component.
+### Route Groups and Organization
 
-      - **`index.tsx`:** An index file for easy imports.
+**Route Groups**: You can organize routes without affecting the URL structure using parentheses `(folderName)`. For example:
 
-- **`organism/`:**
-  - Contains larger, more complex components composed of atomic components, often used across the entire application. Examples include the `Navbar`, `Footer`, and `Sidebar`. These components help structure your layout and maintain consistent design patterns throughout the app.
+- `app/(marketing)/about/page.tsx` → `/about`
+- `app/(shop)/products/page.tsx` → `/products`
 
-3. `src/theme/` Directory:\*\* The `theme` directory is dedicated to MUI theme customization, where you define the overall look and feel of your application.
+**Dynamic Routes**: Use square brackets `[paramName]` for dynamic segments:
 
-- **`theme.ts`:**
+- `app/blog/[slug]/page.tsx` → `/blog/any-post-title`
 
-  - Contains the MUI theme configuration, including typography, spacing, and other global style settings. This ensures consistent styling across the application.
+**Parallel Routes**: Use `@folder` syntax for parallel routes that can be rendered simultaneously.
 
-- **`palette.ts`:**
-  - Manages the color palette configurations used within the theme, ensuring a consistent and easily customizable color scheme throughout your application.
+### Why App Router Matters
 
-4. `src/model/` Directory:\*\*
-   This directory is for defining TypeScript models or interfaces representing the data structures used in the application.
+1. **Server Components by Default**: Components are server-side rendered by default, improving performance
+2. **Streaming**: Supports streaming and progressive rendering
+3. **Simplified Data Fetching**: Built-in data fetching with async components
+4. **Better SEO**: Improved metadata handling and static generation
+5. **Type Safety**: Better TypeScript support and type inference
 
-- **`userModel.ts`:**
+## Navigation Example
 
-  - A TypeScript interface or model that defines the structure of user-related data, such as user profiles or authentication details.
+**Objective**: In this exercise, we will create a simple Next.js application with three pages: a main page (`/`), a contact page (`/contact`), and a dynamic article page (`/article/[id]`). We will use Material-UI components to build these pages and set up navigation between them. The goal is to demonstrate how to structure basic pages in a Next.js application, implement dynamic routing, and navigate between pages using Material-UI for the UI elements.
 
-- **`productModel.ts`:**
-  - Similar to `userModel.ts`, this file defines the structure of product-related data, useful in e-commerce applications or product management systems.
-
-## Navigation app
-
-\***\*Objective** In this exercise, we will create a simple Next.js application with two pages: a home page (`/`) and a secondary page (`/page1`). We will use Material-UI components to build these pages and set up navigation between them. The goal is to demonstrate how to structure basic pages in a Next.js application and how to navigate between them using Material-UI for the UI elements.**Project Structure**
-We'll keep the project structure straightforward, focusing on just the two pages:
+**Project Structure**
 
 ```plaintext
 src/
 ├── app/
-│   ├── page.tsx              # Home page
-│   └── page1/
-│       └── page.tsx          # Page1
+│   ├── layout.tsx              # Root layout with navigation
+│   ├── page.tsx                # Main page component
+│   ├── contact/
+│   │   └── page.tsx            # Contact page component
+│   └── article/
+│       └── [id]/
+│           └── page.tsx        # Dynamic article page component
+├── model/
+|   └── article.ts                 # Article data model
+├── theme.ts
+
 ```
 
-Step 1: Creating the Home Page (`/`)** We will start by creating the home page. This page will welcome the user and include a button that allows navigation to the `page1`.`src/app/page.tsx`** :
+**Step 1: Create theme file**
+
+`src/app/layout.tsx`:
+
+```js
+"use client";
+import { createTheme } from "@mui/material/styles";
+
+export const theme = createTheme({});
+```
+
+**Step 2: Creating the Root Layout with Navigation**
+
+First, we'll create a root layout that includes navigation between all pages.
+
+`src/app/layout.tsx`:
+
+```js
+import type { Metadata } from "next";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "../theme";
+import {
+  AppBar,
+  Button,
+  Container,
+  CssBaseline,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Create Next App",
+  description: "Generated by create next app",
+};
+
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
+  return (
+    <html lang="en">
+      <body>
+        <AppRouterCacheProvider>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <AppBar>
+              <Toolbar>
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                  My Next.js App
+                </Typography>
+                <Link href="/" passHref>
+                  <Button color="inherit">Home</Button>
+                </Link>
+                <Link href="/contact" passHref>
+                  <Button color="inherit">Contact</Button>
+                </Link>
+              </Toolbar>
+            </AppBar>
+            <Container sx={{ mt: 8 }}>{children}</Container>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+### Step 3: Creating the model
+
+```js
+export interface Article {
+  id: number;
+  title: string;
+  excerpt: string;
+}
+
+export const articlesList: Article[] = [
+  {
+    id: 1,
+    title: "Getting Started with Next.js",
+    excerpt: "Learn the basics...",
+  },
+  {
+    id: 2,
+    title: "Material-UI Integration",
+    excerpt: "How to use MUI...",
+  },
+  {
+    id: 3,
+    title: "Dynamic Routing",
+    excerpt: "Understanding [id] routes...",
+  },
+];
+```
+
+**Step 4: Creating the Main Page**
+
+The main page will display a list of articles with links to individual article pages.
+
+`src/app/page.tsx`:
 
 ```js
 import React from "react";
-import { Button, Container, Typography } from "@mui/material";
+import {
+  Typography,
+  Card,
+  CardContent,
+  Button,
+  Grid,
+  Stack,
+} from "@mui/material";
 import Link from "next/link";
+import { articlesList } from "@/model/article";
 
-const HomePage: React.FC = () => {
+export default function HomePage() {
   return (
-    <Container>
+    <Stack>
       <Typography variant="h2" gutterBottom>
-        Welcome to the Home Page
+        Welcome to Our Blog
       </Typography>
-      <Link href="/page1" passHref>
-        <Button variant="contained" color="primary">
-          Go to Page 1
-        </Button>
-      </Link>
-    </Container>
-  );
-};
+      <Typography variant="body1" paragraph>
+        Explore our latest articles and learn about Next.js development.
+      </Typography>
 
-export default HomePage;
+      <Grid container spacing={3} sx={{ mt: 4 }}>
+        {articlesList.map((article) => (
+          <Grid size={4} key={article.id}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5" gutterBottom>
+                  {article.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" paragraph>
+                  {article.excerpt}
+                </Typography>
+                <Link href={`/article/${article.id}`} passHref>
+                  <Button variant="contained" color="primary">
+                    Read More
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Stack>
+  );
+}
 ```
 
-**Explanation:**
+**Step 5: Creating the Contact Page**
 
-- **Material-UI Components:** We use the `Container` component to center the content on the page, the `Typography` component for displaying the heading, and the `Button` component to create a clickable button.
+A simple contact page with a form.
 
-- **Navigation:** The `Link` component from `next/link` is wrapped around the `Button` to enable client-side navigation to `page1`. The `passHref` prop is used to ensure the `href` is passed correctly to the `Button` component.
-  Step 2: Creating Page1 (`/page1`)** Next, we will create `page1`, which will feature a similar layout to the home page but with a button to navigate back to the home page.`src/app/page1/page.tsx`** :
+`src/app/contact/page.tsx`:
 
 ```js
 import React from "react";
-import { Button, Container, Typography } from "@mui/material";
-import Link from "next/link";
+import {
+  Typography,
+  TextField,
+  Button,
+  Box,
+  Paper,
+  Stack,
+} from "@mui/material";
 
-const Page1: React.FC = () => {
+export default function ContactPage() {
   return (
-    <Container>
+    <Stack>
       <Typography variant="h2" gutterBottom>
-        Welcome to Page 1
+        Contact Us
       </Typography>
-      <Link href="/" passHref>
-        <Button variant="contained" color="secondary">
-          Go to Home Page
-        </Button>
-      </Link>
-    </Container>
-  );
-};
+      <Typography variant="body1" paragraph>
+        Get in touch with us for any questions or feedback.
+      </Typography>
 
-export default Page1;
+      <Paper sx={{ p: 3, mt: 3 }}>
+        <Box
+          component="form"
+          sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+        >
+          <TextField label="Name" variant="outlined" required />
+          <TextField label="Email" type="email" variant="outlined" required />
+          <TextField
+            label="Message"
+            multiline
+            rows={4}
+            variant="outlined"
+            required
+          />
+          <Button variant="contained" color="primary" type="submit">
+            Send Message
+          </Button>
+        </Box>
+      </Paper>
+    </Stack>
+  );
+}
 ```
 
-**Explanation:**
+**Step 6: Creating the Dynamic Article Page**
 
-- **Material-UI Components:** This page uses the same Material-UI components (`Container`, `Typography`, `Button`) as the home page for consistency in design.
+This page demonstrates dynamic routing using the `[id]` parameter.
 
-- **Navigation:** The `Link` component is used here to navigate back to the home page (`/`). The `Button` component styled with Material-UI's `contained` variant and `secondary` color scheme allows users to return to the home page.
-  **Summary** By following these steps, we have successfully created two pages in a Next.js application: a home page and a secondary page (`page1`). We used Material-UI components to build the UI and `next/link` for navigation between the pages. This setup provides a basic structure for a simple Next.js application and demonstrates how to create and link multiple pages within the app.
+`src/app/article/[id]/page.tsx`:
+
+```js
+import React from "react";
+import { Typography, Button, Box, Paper } from "@mui/material";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { articlesList } from "@/model/article";
+
+interface ArticlePageProps {
+  params: { id: string };
+}
+
+export default function ArticlePage({ params }: ArticlePageProps) {
+  const article = articlesList.find(
+    (article) => article.id === parseInt(params.id)
+  );
+
+  if (!article) {
+    notFound();
+  }
+
+  return (
+    <Paper sx={{ p: 3 }}>
+      <Typography variant="h2" gutterBottom>
+        {article.title}
+      </Typography>
+      <Typography variant="body1" paragraph>
+        {article.excerpt}
+      </Typography>
+
+      <Box sx={{ mt: 3 }}>
+        <Link href="/" passHref>
+          <Button variant="outlined" sx={{ mr: 2 }}>
+            Back to Home
+          </Button>
+        </Link>
+      </Box>
+    </Paper>
+  );
+}
+```
+
+## Server vs Client
+
+Next.js 13+ introduces a fundamental distinction between Server Components and Client Components. Understanding this difference is crucial for building efficient applications.
+
+### What are Server Components?
+
+**Server Components** are the default in Next.js 13+. They:
+
+- Run on the server during build time or request time
+- Can directly access backend resources (databases, APIs)
+- Are not sent to the browser (no JavaScript bundle)
+- Cannot use browser APIs (localStorage, window, etc.)
+- Cannot use React hooks (useState, useEffect, etc.)
+
+### What are Client Components?
+
+**Client Components** run in the browser and:
+
+- Can use browser APIs and React hooks
+- Handle user interactions and state
+- Are interactive and dynamic
+- Increase the JavaScript bundle size
+
+### Example: Contact Page with Console Logs
+
+Let's modify our contact page to demonstrate the difference:
+
+**Server Component Version** (default):
+
+```js
+// src/app/contact/page.tsx - Server Component
+import { Typography, TextField, Button, Box, Paper } from "@mui/material";
+
+export default function ContactPage() {
+  // This will run on the server - you'll see it in server logs, not browser console
+  console.log("Contact page rendered on server");
+
+  ...
+}
+```
+
+**Client Component Version** (with "use client"):
+
+```js
+"use client";
+
+import { useState } from "react";
+import {
+  Typography,
+  TextField,
+  Button,
+  Box,
+  Paper,
+  Stack,
+} from "@mui/material";
+
+export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  // This will run in the browser - you'll see it in browser console
+  console.log("Contact page rendered on client");
+  console.log("Current form data:", formData);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Form submitted with data:", formData);
+    alert(`Form submitted with data: ${JSON.stringify(formData)}`);
+    // Handle form submission
+  };
+
+  const handleChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    console.log(`${field} changed to:`, value);
+  };
+
+  return (
+    <Stack>
+      <Typography variant="h2" gutterBottom>
+        Contact Us
+      </Typography>
+      <Typography variant="body1" paragraph>
+        Get in touch with us for any questions or feedback.
+      </Typography>
+
+      <Paper sx={{ p: 3, mt: 3 }}>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+        >
+          <TextField
+            label="Name"
+            variant="outlined"
+            required
+            value={formData.name}
+            onChange={(e) => handleChange("name", e.target.value)}
+          />
+          <TextField
+            label="Email"
+            type="email"
+            variant="outlined"
+            required
+            value={formData.email}
+            onChange={(e) => handleChange("email", e.target.value)}
+          />
+          <TextField
+            label="Message"
+            multiline
+            rows={4}
+            variant="outlined"
+            value={formData.message}
+            onChange={(e) => handleChange("message", e.target.value)}
+          />
+          <Button variant="contained" color="primary" type="submit">
+            Send Message
+          </Button>
+        </Box>
+      </Paper>
+    </Stack>
+  );
+}
+```
+
+### Console Log Differences
+
+**Server Component Console Logs:**
+
+- Appear in your terminal/server logs
+- Run during build time or server-side rendering
+- Cannot access browser-specific information
+- Example: `Contact page rendered on server`
+
+**Client Component Console Logs:**
+
+- Appear in the browser's Developer Tools console
+- Run when the component mounts and during interactions
+- Can access browser APIs and user interactions
+- Examples:
+  - `Contact page rendered on client`
+  - `Current form data: {name: "", email: "", message: ""}`
+  - `name changed to: John`
+
+### When to Use Each Type
+
+**Use Server Components when:**
+
+- Fetching data from databases or APIs
+- Accessing backend resources
+- Rendering static content
+- SEO optimization
+- Reducing client bundle size
+
+**Use Client Components when:**
+
+- Handling user interactions (forms, buttons)
+- Using React hooks (useState, useEffect)
+- Accessing browser APIs (localStorage, window)
+- Managing component state
+- Creating interactive UI elements
+
+### Best Practices
+
+1. **Start with Server Components** - They're the default and more performant
+2. **Add "use client" only when needed** - For interactivity, state, or browser APIs
+3. **Keep interactive parts small** - Convert only the components that need client-side features
+4. **Use the boundary pattern** - Keep server components as parents and client components as children
+
+This approach gives you the best of both worlds: server-side performance and client-side interactivity where needed.
