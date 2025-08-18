@@ -79,7 +79,7 @@ This command starts the Next.js server on [http://localhost:3000]() . Open this 
 Navigate to your project directory (`app-name`) and execute the following command to install the necessary Material UI packages along with Emotion for styling:
 
 ```bash
-npm install @mui/material-nextjs @emotion/cache
+npm install @mui/material @mui/material-nextjs @emotion/cache @emotion/styled
 ```
 
 ### Update Layout Configuration
