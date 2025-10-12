@@ -2,7 +2,7 @@
 
 ## Online Access
 
-Visit the deployed documentation at [nextjs.svs.ong](http://web.svs.ong/) .
+Visit the deployed documentation at [web.svs.ong](http://web.svs.ong/) .
 
 ## Local Run
 
