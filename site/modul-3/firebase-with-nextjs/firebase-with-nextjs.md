@@ -15,7 +15,23 @@ We’ll be following an existing official Google tutorial to ensure you get hand
 
 ---
 
-## ⚠️ **Important Note (Bug Fix)**
+## ⚠️ **Important Notes (Bug Fixes)**
+
+
+In **Chapter 3 : "Set up your Firebase project"**, under **"Deploy security rules"**, theres a big issue:
+
+when running `firebase deploy --only firestore,storage` , MAKE SURE `firestore,storage` are being encased in quotations like so:
+
+### **Correct :**
+
+`firebase deploy --only "firestore,storage"`
+
+### **Incorrect :**
+
+~~`firebase deploy --only firestore,storage`~~
+
+<br>
+
 
 In **Chapter 8: “Save user-submitted reviews from the web app”**, there’s a small issue in the original tutorial code.
 
