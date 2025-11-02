@@ -35,3 +35,4 @@
   - [Lab Work](modul-2/nextjs/lab-work.md)
 - **_Modul 3 Web Expert_**
   - [Firebase & Next.js Starter](modul-3/firebase-with-nextjs/firebase-with-nextjs.md)
+  - [Code Quality & Standardization](modul-3\code-quality-and-standardization\code-quality-and-standardization.md)
