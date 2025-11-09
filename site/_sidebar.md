@@ -35,6 +35,8 @@
   - [Lab Work](modul-2/nextjs/lab-work.md)
 - **_Modul 3 Web Expert_**
   - [Firebase & Next.js Starter](modul-3/firebase-with-nextjs/firebase-with-nextjs.md)
+  - [Code Quality & Standardization](modul-3\code-quality-and-standardization\code-quality-and-standardization.md)
+
 - **_Modul 4 Git Advanced_**
   - [Git History](modul-4/git_history.md)
   - [Git Activity vs Git Commits](modul-4/git-activity_vs_git-commit.md)
@@ -42,3 +44,4 @@
   - [Merging Strategies](modul-4/merging_tactics.md)
   - [Reverting Commits](modul-4/reverting_commits.md)
   - [Lab Work](modul-4/lab_work.md)
+ 
