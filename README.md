@@ -19,3 +19,11 @@ Deploy updates via Firebase with:
 ```Copy code
 firebase deploy
 ```
+
+### Generate sitemap locally.
+
+The sitemap should be also available at `https://web.svs.ong/sitemap.xml`
+
+```
+npx docsify-sitemap local -u https://web.svs.ong/ -f ./site/sitemap.xml
+```
