@@ -25,5 +25,5 @@ firebase deploy
 The sitemap should be also available at `https://web.svs.ong/sitemap.xml`
 
 ```
-npx docsify-sitemap local -u https://web.svs.ong/ -f ./site/sitemap.xml
+npx docsify-sitemap local -u https://web.svs.ong/ -b ./site -f ./site/sitemap.xml -i
 ```

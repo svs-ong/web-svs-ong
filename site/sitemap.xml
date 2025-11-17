@@ -5,675 +5,155 @@
     <priority>1.0</priority>
   </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@fastify/busboy/README</loc>
+  <loc>https://web.svs.ong/#/modul-1/git/commands</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/analytics/README</loc>
+  <loc>https://web.svs.ong/#/modul-1/git/git</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/analytics-compat/README</loc>
+  <loc>https://web.svs.ong/#/modul-1/git/install</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/analytics-types/README</loc>
+  <loc>https://web.svs.ong/#/modul-1/git/practice</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/app/README</loc>
+  <loc>https://web.svs.ong/#/modul-1/introduction/css_basic</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/app-check/README</loc>
+  <loc>https://web.svs.ong/#/modul-1/introduction/html</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/app-check-compat/README</loc>
+  <loc>https://web.svs.ong/#/modul-1/introduction/install</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/app-check-interop-types/README</loc>
+  <loc>https://web.svs.ong/#/modul-1/introduction/practice</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/app-check-types/README</loc>
+  <loc>https://web.svs.ong/#/modul-1/javascript/javascript</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/app-compat/README</loc>
+  <loc>https://web.svs.ong/#/modul-1/javascript/practice</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/app-types/README</loc>
+  <loc>https://web.svs.ong/#/modul-1/layout/css_layout</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/auth/README</loc>
+  <loc>https://web.svs.ong/#/modul-1/layout/practice</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/auth-compat/README</loc>
+  <loc>https://web.svs.ong/#/modul-1/web_dynamics/data_fetching</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/auth-interop-types/README</loc>
+  <loc>https://web.svs.ong/#/modul-1/web_dynamics/fetching_data</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/auth-types/README</loc>
+  <loc>https://web.svs.ong/#/modul-1/web_dynamics/responsive_design</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/component/README</loc>
+  <loc>https://web.svs.ong/#/modul-2/mui/installation</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/database/README</loc>
+  <loc>https://web.svs.ong/#/modul-2/mui/lab-work</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/database-compat/README</loc>
+  <loc>https://web.svs.ong/#/modul-2/mui/material_ui</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/database-types/README</loc>
+  <loc>https://web.svs.ong/#/modul-2/nextjs/installation</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/firestore/README</loc>
+  <loc>https://web.svs.ong/#/modul-2/nextjs/lab-work</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/firestore-compat/README</loc>
+  <loc>https://web.svs.ong/#/modul-2/nextjs/nextjs</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/firestore-types/README</loc>
+  <loc>https://web.svs.ong/#/modul-2/react/install</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/functions/README</loc>
+  <loc>https://web.svs.ong/#/modul-2/react/lab-work</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/functions-types/README</loc>
+  <loc>https://web.svs.ong/#/modul-2/react/react</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/installations-compat/README</loc>
+  <loc>https://web.svs.ong/#/modul-2/react/typescript</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/logger/README</loc>
+  <loc>https://web.svs.ong/#/modul-2/react-hooks/lab-work</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/messaging/README</loc>
+  <loc>https://web.svs.ong/#/modul-2/react-hooks/react-hooks</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/messaging-compat/README</loc>
+  <loc>https://web.svs.ong/#/modul-3/browser-debugging/browser-debugging</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/messaging-interop-types/README</loc>
+  <loc>https://web.svs.ong/#/modul-3/code-quality-and-standardization/code-quality-and-standardization</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/performance/README</loc>
+  <loc>https://web.svs.ong/#/modul-3/firebase-with-nextjs/firebase-with-nextjs</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/performance-compat/README</loc>
+  <loc>https://web.svs.ong/#/modul-3/responsive-design-and-testing/responsive-design-and-testing</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/remote-config/README</loc>
+  <loc>https://web.svs.ong/#/modul-4/git-activity_vs_git-commit</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/remote-config-compat/README</loc>
+  <loc>https://web.svs.ong/#/modul-4/git-merge_vs_git-pull</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/remote-config-types/README</loc>
+  <loc>https://web.svs.ong/#/modul-4/git_history</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/storage/README</loc>
+  <loc>https://web.svs.ong/#/modul-4/lab_work</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/storage-compat/README</loc>
+  <loc>https://web.svs.ong/#/modul-4/merging_tactics</loc>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/storage-types/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/util/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/vertexai-preview/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/@firebase/webchannel-wrapper/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/@grpc/grpc-js/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/@grpc/proto-loader/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/@protobufjs/aspromise/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/@protobufjs/base64/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/@protobufjs/codegen/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/@protobufjs/eventemitter/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/@protobufjs/fetch/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/@protobufjs/float/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/@protobufjs/inquire/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/@protobufjs/path/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/@protobufjs/pool/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/@protobufjs/utf8/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/@types/node/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/ansi-regex/readme</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/ansi-styles/readme</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/chalk/readme</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/cliui/CHANGELOG</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/cliui/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/color-convert/CHANGELOG</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/color-convert/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/color-name/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/commander/Readme</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/docsify-sitemap/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/emoji-regex/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/escalade/readme</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/faye-websocket/CHANGELOG</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/faye-websocket/LICENSE</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/faye-websocket/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/get-caller-file/LICENSE</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/get-caller-file/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/http-parser-js/LICENSE</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/http-parser-js/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/idb/CHANGELOG</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/idb/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/is-fullwidth-code-point/readme</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/lodash.camelcase/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/long/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/protobufjs/ext/debug/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/protobufjs/ext/descriptor/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/protobufjs/google/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/protobufjs/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/safe-buffer/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/string-width/readme</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/strip-ansi/readme</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/tslib/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/tslib/SECURITY</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/Agent</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/api-lifecycle</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/BalancedPool</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/CacheStorage</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/Client</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/Connector</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/ContentType</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/Cookies</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/DiagnosticsChannel</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/Dispatcher</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/DispatchInterceptor</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/Errors</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/Fetch</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/MockAgent</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/MockClient</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/MockErrors</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/MockPool</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/Pool</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/PoolStats</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/ProxyAgent</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/RetryHandler</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/api/WebSocket</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/best-practices/client-certificate</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/best-practices/mocking-request</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/best-practices/proxy</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/docs/best-practices/writing-tests</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici/types/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/undici-types/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/websocket-driver/CHANGELOG</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/websocket-driver/LICENSE</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/websocket-driver/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/websocket-extensions/CHANGELOG</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/websocket-extensions/lib/pipeline/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/websocket-extensions/LICENSE</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/websocket-extensions/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/wrap-ansi/readme</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/y18n/CHANGELOG</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/y18n/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/yargs/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/yargs-parser/CHANGELOG</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/node_modules/yargs-parser/README</loc>
+  <loc>https://web.svs.ong/#/modul-4/reverting_commits</loc>
   <priority>0.8</priority>
 </url>
 <url>
   <loc>https://web.svs.ong/#/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-1/git/commands</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-1/git/git</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-1/git/install</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-1/git/practice</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-1/introduction/css_basic</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-1/introduction/html</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-1/introduction/install</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-1/introduction/practice</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-1/javascript/javascript</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-1/javascript/practice</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-1/layout/css_layout</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-1/layout/practice</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-1/web_dynamics/data_fetching</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-1/web_dynamics/fetching_data</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-1/web_dynamics/responsive_design</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-2/mui/installation</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-2/mui/lab-work</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-2/mui/material_ui</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-2/nextjs/installation</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-2/nextjs/lab-work</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-2/nextjs/nextjs</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-2/react/install</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-2/react/lab-work</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-2/react/react</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-2/react/typescript</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-2/react-hooks/lab-work</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-2/react-hooks/react-hooks</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-3/browser-debugging/browser-debugging</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-3/code-quality-and-standardization/code-quality-and-standardization</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-3/firebase-with-nextjs/firebase-with-nextjs</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-3/responsive-design-and-testing/responsive-design-and-testing</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-4/git-activity_vs_git-commit</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-4/git-merge_vs_git-pull</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-4/git_history</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-4/lab_work</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-4/merging_tactics</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/modul-4/reverting_commits</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/README</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://web.svs.ong/#/site/_sidebar</loc>
   <priority>0.8</priority>
 </url>
 </urlset>
