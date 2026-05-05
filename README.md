@@ -6,10 +6,10 @@ Visit the deployed documentation at [web.svs.ong](http://web.svs.ong/) .
 
 ## Local Run
 
-Install Docsify if not already installed (`npm install -g docsify-cli`) and run:
-
+Run the following commands:
 ```bash
-docsify serve ./site
+npm install 
+npm start
 ```
 
 ## Deployment
