@@ -1,63 +1,31 @@
 ## CSS Box Model
 
-Understanding the CSS box model is essential for controlling the layout and design of HTML elements. The box model describes how the size and spacing of an element are calculated, and it consists of four regions: content, padding, border, and margin.
+The CSS box model shows how an element's size is built from four parts:
+- Content: the area for text or images.
+- Padding: space inside the border.
+- Border: the line around the box.
+- Margin: the space outside the box.
 
-### The Four Regions of the Box Model
-
-1. **Content Edge** : This is the innermost part of the box where the actual content of the element is displayed, such as text, images, or other media. The size of this area can be adjusted using properties like `width` and `height`.
-
-2. **Padding Edge** : Padding is the space between the content and the border. It provides inner spacing within the box, making the content appear with some breathing room. Padding can be set individually for each side (top, right, bottom, left) or uniformly for all sides using the `padding` property.
-
-3. **Border Edge** : The border surrounds the padding (or the content if there is no padding). It can be styled using the `border` property, which allows you to set the width, style (solid, dashed, etc.), and color of the border.
-
-4. **Margin Edge** : The margin is the outermost part of the box, creating space between the element and its surrounding elements. Like padding, margins can be set individually for each side or uniformly for all sides using the `margin` property.
-
-### Example of the Box Model
-
-To illustrate the box model, consider the following image and CSS example:
-![CSS Box Model](https://qph.cf2.quoracdn.net/main-qimg-d424c463fabd68e11736d4a7f09a14ce-pjlq)
+### Example
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Box Model Example</title>
-    <style>
-      .box {
-        width: 200px;
-        height: 100px;
-        padding: 20px;
-        border: 5px solid black;
-        margin: 10px;
-        background-color: lightblue;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="box">This is a box.</div>
-  </body>
-</html>
+<div class="box">This is a box.</div>
 ```
 
-### Explanation
+```css
+.box {
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border: 5px solid black;
+  margin: 10px;
+  background-color: lightblue;
+}
+```
 
-- **Content** : The innermost area of the `.box` element is 200px wide and 100px high. This is where the child elements are placed.
-
-- **Padding** : A 20px padding on all sides adds extra space inside the box, pushing the content inward.
-
-- **Border** : A 5px solid black border surrounds the padding.
-
-- **Margin** : A 10px margin around the box creates space between the box and other elements.
-
-To calculate the total width and height:
-
-- Total width: Content (200px) + Padding (40px) + Border (10px) + Margin (20px) = 270px
-
-- Total height: Content (100px) + Padding (40px) + Border (10px) + Margin (20px) = 170px
-
-So, the total width is 270px and the total height is 170px.
+Total size:
+- width: 200 + 40 + 10 + 20 = 270px
+- height: 100 + 40 + 10 + 20 = 170px
 
 ## CSS Display Property
 
@@ -245,7 +213,6 @@ Flexbox, or the Flexible Box Layout Module, is a layout model that allows for th
 - **Description** : Specifies the direction of the flex items within the container.
 
 - **Values** :
-
   - `row` (default): Left to right.
 
   - `row-reverse`: Right to left.
@@ -259,7 +226,6 @@ Flexbox, or the Flexible Box Layout Module, is a layout model that allows for th
 - **Description** : Aligns flex items along the main axis.
 
 - **Values** :
-
   - `flex-start` (default): Items are packed toward the start.
 
   - `flex-end`: Items are packed toward the end.
@@ -275,7 +241,6 @@ Flexbox, or the Flexible Box Layout Module, is a layout model that allows for th
 - **Description** : Aligns flex items along the cross axis.
 
 - **Values** :
-
   - `stretch` (default): Items stretch to fill the container.
 
   - `flex-start`: Items are aligned at the start.
@@ -291,7 +256,6 @@ Flexbox, or the Flexible Box Layout Module, is a layout model that allows for th
 - **Description** : Controls whether flex items are forced into a single line or can wrap onto multiple lines.
 
 - **Values** :
-
   - `nowrap` (default): All flex items will be on one line.
 
   - `wrap`: Flex items will wrap onto multiple lines.

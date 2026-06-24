@@ -1,5 +1,5 @@
 - [Home](/)
-- **_Modul 1 web basics_**
+  **_Modul 1 web basics_**
 - Day 1 - Introduction
   - [Installation](modul-1/introduction/install.md)
   - [HTML](modul-1/introduction/html.md)
@@ -10,7 +10,7 @@
   - [Git](modul-1/git/git.md)
   - [Important commands](modul-1/git/commands.md)
   - [Practice](modul-1/git/practice.md)
-- Day 3 - Layout
+- Course 3 - Layout
   - [CSS Layout](modul-1/layout/css_layout.md)
   - [Lab Work](modul-1/layout/practice.md)
 - Day 4 - Javascript
