@@ -1,4 +1,4 @@
-# Web Development Internship Documentation — SVS Organization
+# SVS Web Development Internship Documentation
 
 Course materials and documentation for the SVS web development internship, covering HTML/CSS, Git, React, and Next.js.
 
@@ -35,7 +35,7 @@ Each course topic lives in its own folder. A complete course folder contains up 
 
 | File          | Required     | Purpose                                                                 |
 | ------------- | ------------ | ----------------------------------------------------------------------- |
-| `install.md`  | Optional     | Environment setup, software installation, prerequisites for that lesson |
+| `preparation.md`  | Optional     | Environment setup, software installation, prerequisites for that lesson |
 | `<topic>.md`  | **Required** | Main course content — the lesson itself                                 |
 | `practice.md` | **Required** | Exercises — individual and team sections                                |
 
@@ -51,7 +51,7 @@ Each course is designed to be **presented in ~100 minutes**. Plan your content a
 
 A well-paced course alternates between explanation and engagement. Follow this loop:
 
-> **Explain** → (❓ Question | 🔧 Short Practice ) →💡 Hint → repeat
+> **Explain** → (❓Question || 🔧Short Practice ) →💡Hint → repeat
 
 Avoid long uninterrupted blocks of theory. Every 10–15 minutes, include at least one engagement element.
 
@@ -93,11 +93,27 @@ Exercises each student completes on their own in 1.5h. These should reinforce th
 
 ### Team Work
 
-All teams contribute to the **same long-running shared project** that spans the entire internship. Each course's team section adds a new layer on top of what was built in the previous course — the project grows incrementally from one lesson to the next.
+All teams work on the **same long-running shared project** that spans the entire internship. The starting point for that project lives in `homework/` — students clone it once and keep building on it throughout every course.
 
-When writing a team exercise, always reference what the project looks like coming in, and define exactly what should be added or improved by the end of this session. Examples:
+Each course's team section adds one layer on top of the previous course's result. When writing a team exercise, state clearly what the project looks like coming in and what must be added or improved by the end of the session. Examples:
 
-- Course 1 (HTML): set up the project repo and build the page skeleton
-- Course 2 (CSS): style the skeleton built in Course 1
-- Course 3 (Layout): refactor the layout from Course 2 using flexbox/grid
-- Course 4 (JS): add interactivity to the styled page from Course 3
+- Course 1 (HTML): clone the starter from `homework/`, build the page skeleton
+- Course 2 (CSS): style the skeleton from Course 1
+- Course 3 (Layout): refactor the layout using flexbox/grid
+- Course 4 (JS): add interactivity to the styled page
+
+## Homework Folder
+
+The `homework/` folder contains the **starting point materials** students use as the base for their practice work. Place here anything a student needs before they can begin an exercise — skeleton projects, design references, mock APIs, or partially-written starter files.
+
+```
+homework/
+├── <module-or-topic>/   ← starting project per course or module
+│   ├── README.md        ← setup instructions (how to clone/run)
+│   └── ...              ← starter files (HTML skeleton, design.pdf, etc.)
+└── server/              ← shared mock API (JSON Server) for data-fetching exercises
+```
+
+The long-running team project also lives here. Each course's team exercise builds on top of whatever state the project is in at the end of the previous course.
+
+---
