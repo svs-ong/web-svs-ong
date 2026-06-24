@@ -78,6 +78,16 @@ A micro-exercise completable in **2–5 minutes**, done during the course — no
 > 🔧 Add a `<nav>` element to your page with three links. Style it so the links are
 > horizontal using flexbox.
 
+### Mobile First
+
+All courses, exercises, and live presentations follow a **mobile-first approach**. This means:
+
+- **Course content** — introduce the mobile layout first, then show how it adapts to larger screens. Never start from desktop and shrink down.
+- **Exercises** — all 🔧 short practices and `practice.md` tasks must be built and verified on a mobile viewport first. Students resize to desktop only after the mobile version works.
+- **Live presentation** — when demoing in front of the group, start with the browser devtools open in a mobile viewport (e.g. 375px). Switch to desktop at the end to show the responsive progression.
+
+This applies across the entire curriculum — HTML layout, CSS, React components, and Next.js pages alike.
+
 ---
 
 ## Practice File Requirements
