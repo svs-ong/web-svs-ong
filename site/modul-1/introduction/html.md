@@ -33,7 +33,6 @@ Here's a brief explanation of the HTML structure shown:
 - `<html lang="en">`: The root element of the page, with an attribute specifying the content is in English. (Sadly, it doesn't translate your jokes.)
 
 - `<head>`: Contains important metadata like:
-
   - `<meta charset="UTF-8">`: Sets character encoding to UTF-8. (So your emojis don’t turn into mysterious squares! 😎)
 
   - `<meta name="viewport" content="width=device-width, initial-scale=1.0">`: Ensures the page is mobile-responsive. (Because even your phone deserves a good view!)
@@ -41,7 +40,6 @@ Here's a brief explanation of the HTML structure shown:
   - `<title>Page Title</title>`: Sets the title that appears in the browser tab. (Try not to name it "Untitled 123".)
 
 - `<body>`: Includes all visible content:
-
   - `<h1>This is a Heading</h1>`: A main heading. (The big cheese of your page!)
 
   - `<p>This is a paragraph.</p>`: A text paragraph. (Where the story begins...)
