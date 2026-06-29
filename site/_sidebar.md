@@ -1,7 +1,7 @@
 - [Home](/)
 - **Modul 1 web basics**
 - Course 1 - Introduction
-  - [Preparation](modul-1/introduction/install.md)
+  - [Preparation](modul-1/introduction/preparation.md)
   - [HTML](modul-1/introduction/html.md)
   - [CSS Basic](modul-1/introduction/css_basic.md)
   - [Practice](modul-1/introduction/practice.md)

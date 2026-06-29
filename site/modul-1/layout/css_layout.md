@@ -1,10 +1,15 @@
 ## CSS Box Model
 
+**_Time: 20 min_**
+
 The CSS box model shows how an element's size is built from four parts:
-- Content: the area for text or images.
-- Padding: space inside the border.
-- Border: the line around the box.
-- Margin: the space outside the box.
+
+- `Content`: the area for children, ex: text or images (`width` + `height`).
+- `Padding`: space inside the border.
+- `Border`: the line around the box.
+- `Margin`: the space outside the box.
+
+![CSS Box Model](./img/css-box-model.png)
 
 ### Example
 
@@ -14,8 +19,8 @@ The CSS box model shows how an element's size is built from four parts:
 
 ```css
 .box {
-  width: 200px;
-  height: 100px;
+  width: 100px;
+  height: 200px;
   padding: 20px;
   border: 5px solid black;
   margin: 10px;
@@ -23,11 +28,25 @@ The CSS box model shows how an element's size is built from four parts:
 }
 ```
 
-Total size:
-- width: 200 + 40 + 10 + 20 = 270px
-- height: 100 + 40 + 10 + 20 = 170px
+**Total size = content + padding + border + margin:**
+
+- `width`: 100 + 40 + 10 + 20 = 170px
+- `height`: 200 + 40 + 10 + 20 = 270px
+
+> 🔧 **Short Practice — Box model sizing**
+>
+> Before moving on, open your browser devtools and try this:
+>
+> 1. Create a `<div>` with `width: 100px`, `padding: 20px`, and `border: 5px solid black`.
+> 2. Inspect it in devtools — what is the actual rendered width?
+> 3. Now add `box-sizing: border-box` to the same element. What changed?
+
+> 💡 By default CSS adds padding and border on top of the width you set. `box-sizing: border-box` makes the width include them — most developers add it globally to avoid surprises.
+
+---
 
 ## CSS Display Property
+
 
 The `display` property in CSS determines how an element is displayed on the web page. It is fundamental for controlling the layout and presentation of elements.
 
