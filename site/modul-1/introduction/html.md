@@ -1,6 +1,6 @@
 # Introduction to HTML
 
-<div style="float: right;">~30 minutes</div>
+<div style="float: right;">~20 minutes</div>
 
 HTML (Hypertext Markup Language) is the standard markup language used to create web pages. It provides the basic structure of sites, which is then enhanced and modified by other technologies like CSS and JavaScript.
 
@@ -226,7 +226,6 @@ HTML5 introduced new tags that describe the meaning (semantics) of the content t
         <h2>Breaking News</h2>
         <p>HTML5 tags found making websites more readable worldwide!</p>
       </article>
-      
     </main>
     <footer>
       <p>&copy; 2023 My Awesome Site. All jokes reserved.</p>

@@ -3,7 +3,7 @@
 - Course 1 - Introduction
   - [Preparation](modul-1/introduction/preparation.md)
   - [HTML](modul-1/introduction/html.md)
-  - [CSS Basic](modul-1/introduction/css_basic.md)
+  - [CSS Basics](modul-1/introduction/css.md)
   - [Practice](modul-1/introduction/practice.md)
 - Course 2 - Git
   - [Preparation](modul-1/git/install.md)

@@ -1,10 +1,10 @@
-# CSS Basics Tutorial
-
-## Introduction to CSS
+# CSS Basics
 
 CSS (Cascading Style Sheets) is a stylesheet language used to describe the presentation of an HTML document. It controls the layout, colors, fonts, and overall appearance of a website.
 
 ## Adding CSS to HTML
+
+<div style="float: right;">~10 minutes</div>
 
 You can add CSS to HTML in three ways: Inline, Internal, and External. (Yes, CSS is flexible—like yoga for your website!)
 
@@ -18,7 +18,7 @@ Add styles directly to HTML elements using the `style` attribute. (Great for qui
 
 ### 2. Internal CSS
 
-Include CSS within the `<style>` tag in the `<head>` section of the HTML document. (Perfect for small projects or when you want to keep everything in one place—like a tidy desk!)
+Include CSS within the `<style>` tag in the `<head>` section of the HTML document.
 
 ```html
 <!DOCTYPE html>
@@ -77,8 +77,6 @@ h1 {
   font-size: 24px;
 }
 ```
-
-> **Pro Tip:** Use your browser's DevTools (right-click → Inspect) to experiment with CSS live. It's like a magic wand for your website!
 
 ## CSS Selectors
 
@@ -139,9 +137,6 @@ p {
 
 ---
 
-This version includes corresponding HTML code to show how each CSS selector applies to HTML elements.
-
-> **Common Mistake Alert:** Don't forget the dot (`.`) for classes and the hash (`#`) for IDs! `.my-class` ≠ `my-class`, and `#my-id` ≠ `my-id`.
 
 ## Styling Text
 
@@ -237,51 +232,49 @@ p {
 
 > "CSS: Making the web fabulous, one selector at a time!"
 
-## The CSS Box Model
+## CSS Box Model
 
-Every HTML element is treated as a box in CSS. Understanding the box model is like understanding how to wrap a present—you need to know about the gift (content), the wrapping paper (border), the space inside the box (padding), and the space around the box (margin).
+**_Time: 20 min_**
 
-### Box Model Components
+The CSS box model shows how an element's size is built from four parts:
 
-- **Content**: The actual content of the element (text, images, etc.)
-- **Padding**: The space between the content and the border
-- **Border**: The line around the padding and content
-- **Margin**: The space outside the border
+- `Content`: the area for children, ex: text or images (`width` + `height`).
+- `Padding`: space inside the border.
+- `Border`: the line around the box.
+- `Margin`: the space outside the box.
+
+![CSS Box Model](./img/css-box-model.png)
 
 ### Example
 
+```html
+<div class="box">This is a box.</div>
+```
+
 ```css
 .box {
-  width: 200px;
-  height: 100px;
+  width: 100px;
+  height: 200px;
   padding: 20px;
-  border: 2px solid black;
+  border: 5px solid black;
   margin: 10px;
   background-color: lightblue;
 }
 ```
 
-```html
-<div class="box">This is a box with padding, border, and margin!</div>
-```
+**Total size = content + padding + border + margin:**
 
-> **Fun Fact:** The total width of an element = content + padding + border + margin. It's like a mathematical sandwich!
+- `width`: 100 + 40 + 10 + 20 = 170px
+- `height`: 200 + 40 + 10 + 20 = 270px
 
-### Box Model Properties
+> 🔧 **Short Practice — Box model sizing**
+>
+> Before moving on, open your browser devtools and try this:
+>
+> 1. Create a `<div>` with `width: 100px`, `padding: 20px`, and `border: 5px solid black`.
+> 2. Inspect it in devtools — what is the actual rendered width?
+> 3. Now add `box-sizing: border-box` to the same element. What changed?
 
-```css
-/* Padding */
-padding: 10px; /* All sides */
-padding: 10px 20px; /* Top/bottom, left/right */
-padding: 10px 20px 15px 25px; /* Top, right, bottom, left */
+> 💡 By default CSS adds padding and border on top of the width you set. `box-sizing: border-box` makes the width include them — most developers add it globally to avoid surprises.
 
-/* Border */
-border: 2px solid red; /* Width, style, color */
-border-radius: 5px; /* Rounded corners */
-
-/* Margin */
-margin: 10px; /* All sides */
-margin: 10px auto; /* Center horizontally */
-```
-
-> "Why did the CSS box go to therapy? Because it had too many issues with its inner self!"
+---
