@@ -1,4 +1,4 @@
-# Instalarea Git
+# Git Installation
 
 Git is a program that runs on your computers. It needs to be installed before it can be used. To install Git, follow the steps below:
 

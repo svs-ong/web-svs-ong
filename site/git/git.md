@@ -134,6 +134,8 @@ Our project currently looks like this:
 
 ![!img](img/step-1.png)
 
+>🛠️ Practice: Create a brand new empty folder on your desktop, open your terminal inside it, and initialize it as a fresh Git repository. Then, create a basic file, use git add . followed by git commit -m "Initial file creation" to register your very first project commit history node.
+
 ## Why is the system good?
 
 The cool part is that we could think of the project itself as a list of changes made to a base state of the project. 
@@ -244,6 +246,8 @@ git commit -m "add blue heading"
 The current state of the git repository is the following:
 
 ![!img](img/step-3.png)
+
+>❓ Question: If you switch branches using git checkout main, what happens to the physical files and lines of code inside your local project directory folder?
 
 
 ## Merging branches togheter.
@@ -401,6 +405,7 @@ git push
 
 And boom. We are collaborating across computers.
 
+>❓ Question: Why must you always make it a habit to perform a git pull before starting a brand new coding session locally?
 ## Working in parallel.
 
 However, we still have to pull and push to our branch in order to avoid stupid conflicts. We would like to work truly in parallel.
@@ -412,7 +417,7 @@ If we want to check if there are changes on our branch, we can use the `fetch` c
 ```bash
 git fetch --all
 ```
-
+>❓ Question: If you are working inside your personal isolated feature branch, can another developer's pushes to their own branch break your local files?
 ## Pull Requests
 
 Pull requests are a form of managed merging. normally, we would like to never modify the main branch locally. (in other words: we should never merge from main in our console).

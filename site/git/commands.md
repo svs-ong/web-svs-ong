@@ -13,6 +13,8 @@ To save your work to the server on your remote branch, always remember:
 * `git init` - initialize a new git repository.
 * `git clone URL` - clone an existing repository from a URL.
 
+
+
 ## Connecting your local repository to the server
 
 * `git remote add origin URL` - connect your local repository to a remote server.
@@ -25,7 +27,7 @@ To save your work to the server on your remote branch, always remember:
 
 * `git pull` - get the latest changes from the server for your current branch.
 * `git fetch --all` - get the latest changes from the server for all branches.
-* `git push
+* `git push`
 
 > 💡 `git fetch` will not pull the updates from the server, it will only signal that there are updates on the branches.
 

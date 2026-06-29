@@ -1,7 +1,7 @@
 - [Home](/)
 - **_Modul 1 web basics_**
 - Day 1 - Introduction
-  - [Installation](introduction/install.md)
+  - [Preparation](introduction/install.md)
   - [HTML](introduction/html.md)
   - [CSS Basic](introduction/css_basic.md)
 - Day 2 - Layout
@@ -33,3 +33,5 @@
   - [Installation](modul-2/day-4-nextjs/installation.md)
   - [Next.js](modul-2/day-4-nextjs/nextjs.md)
   - [Material Ui](modul-2/day-4-nextjs/material-ui.md)
+  - **_Modul 3 Advanced_**
+  - [Bibliography](modul-3\bibliography.md)
