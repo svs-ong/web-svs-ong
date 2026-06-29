@@ -1,37 +1,49 @@
 - [Home](/)
-- **_Modul 1 web basics_**
-- Day 1 - Introduction
-  - [Preparation](introduction/install.md)
-  - [HTML](introduction/html.md)
-  - [CSS Basic](introduction/css_basic.md)
-- Day 2 - Layout
-  - [CSS Layout](introduction/css_layout.md)
-- Day 3 - Git
-  - [Installation](git/install.md)
-  - [Git](git/git.md)
-  - [Important commands](git/commands.md)
-- Day 4 - Javascript
-  - [Javascript](introduction/javascript.md)
-- Day 5 - Responsive Design
-  - [Responsive Design](web_dynamics/responsive_design.md)
-- Day 6 - Responsive Design
-  - [Data Fetching](web_dynamics/data_fetching.md)
-- **_Modul 2 Rect & Nextjs_**
-- Day 1 - React Fundamentals
-  - [Installation](modul-2/day-1-react/install.md)
-  - [Typescript](modul-2/day-1-react/typescript.md)
-  - [React Introduction](modul-2/day-1-react/react.md)
-  - [Lab Work](modul-2/day-1-react/lab-work.md)
-- Day 2 - React & MUI
-  - [Installation](modul-2/day-2-mui/installation.md)
-  - [Material Ui](modul-2/day-2-mui/material_ui.md)
-  - [Lab Work](modul-2/day-2-mui/lab-work.md)
-- Day 3 - React hooks
-  - [React Hooks](modul-2/day-3-react-hooks/react-hooks.md)
-  - [Lab Work](modul-2/day-3-react-hooks/lab-work.md)
-- Day 4 - Next.js
-  - [Installation](modul-2/day-4-nextjs/installation.md)
-  - [Next.js](modul-2/day-4-nextjs/nextjs.md)
-  - [Material Ui](modul-2/day-4-nextjs/material-ui.md)
-  - **_Modul 3 Advanced_**
-  - [Bibliography](modul-3\bibliography.md)
+- **Modul 1 web basics**
+- Course 1 - Introduction
+  - [Preparation](modul-1/introduction/install.md)
+  - [HTML](modul-1/introduction/html.md)
+  - [CSS Basic](modul-1/introduction/css_basic.md)
+  - [Practice](modul-1/introduction/practice.md)
+- Course 2 - Git
+  - [Preparation](modul-1/git/install.md)
+  - [Git](modul-1/git/git.md)
+  - [Important commands](modul-1/git/commands.md)
+  - [Practice](modul-1/git/practice.md)
+- Course 3 - Layout
+  - [CSS Layout](modul-1/layout/css_layout.md)
+  - [Lab Work](modul-1/layout/practice.md)
+- Course 4 - Javascript
+  - [Javascript](modul-1/javascript/javascript.md)
+  - [Practice](modul-1/javascript/practice.md)
+- **Modul 2 React & Nextjs**
+- Course 1 - React Fundamentals
+  - [Preparation](modul-2/react/install.md)
+  - [Typescript](modul-2/react/typescript.md)
+  - [React Introduction](modul-2/react/react.md)
+  - [Practice](modul-2/react/lab-work.md)
+- Course 2 - React & MUI
+  - [Preparation](modul-2/mui/installation.md)
+  - [Material Ui](modul-2/mui/material_ui.md)
+  - [Practice](modul-2/mui/lab-work.md)
+- Course 3 - React hooks
+  - [React Hooks](modul-2/react-hooks/react-hooks.md)
+  - [Practice](modul-2/react-hooks/lab-work.md)
+- Course 4 - Next.js
+  - [Preparation](modul-2/nextjs/installation.md)
+  - [Next.js](modul-2/nextjs/nextjs.md)
+  - [Practice](modul-2/nextjs/lab-work.md)
+- **_Modul 3 Web Expert_**
+  - [Mastering React Hooks](modul-3/mastering-react-hooks/mastering-react-hooks.md)
+  - [Firebase & Next.js Starter](modul-3/firebase-with-nextjs/firebase-with-nextjs.md)
+  <!-- - [Code Quality & Standardization](modul-3/code-quality-and-standardization/code-quality-and-standardization.md)
+  - [Browser Debugging](modul-3/browser-debugging/browser-debugging.md)
+  - [Resonsive Design And Testing](modul-3/responsive-design-and-testing/responsive-design-and-testing.md)
+  <!-- - **_Modul 4 Git Advanced_**
+  - [Git History](modul-4/git_history.md)
+  - [Git Activity vs Git Commits](modul-4/git-activity_vs_git-commit.md)
+  - [Git Pull vs Git Merge](modul-4/git-merge_vs_git-pull.md)
+  - [Merging Strategies](modul-4/merging_tactics.md)
+  - [Reverting Commits](modul-4/reverting_commits.md)
+  - [Lab Work](modul-4/lab_work.md)
+    --> -->

@@ -1,10 +1,12 @@
 # React Hooks
 
-In React, a hook is a special function that allows you to "hook into" React features like state, lifecycle methods, and context without writing a class component. Hooks make it easier to organize logic inside components, reuse functionality across components, and write cleaner, more readable code.
+In React, a hook is a special function that allows you to "hook onto" React features like state, lifecycle methods, and context without writing another class component. Hooks make it easier to organize logic inside components, reuse functionality across components, and write cleaner, more readable code.
+
+!! Later when we will introduce NextJS into the equation it is important to know that **most** React Hooks work ***exclusively*** on the client side of the app. In a **pure React** environment everything is compiled client-side so this problem can be ignored until you learn about NextJS. !!
 
 ## `useState`
 
-The `useState` hook allows you to add and manage **state** inside a **functional component** .
+The `useState` hook allows you to add and manage the **state** inside a **functional component** .
 
 Whenever the state changes, React automatically re-renders the component to reflect the new state on the screen.
 In simple words: **State is any data that can change over time** — and when it does, the UI updates
@@ -12,12 +14,15 @@ In simple words: **State is any data that can change over time** — and when it
 ### Syntax
 
 ```js
-const [state, setState] = useState(initialValue);
+const [state, setState] = useState<T>(initialValue);
 ```
 
 - `state`: The current value.
 
+
 - `setState`: A function you call to change the value.
+
+- `T`: The type of the state (optional but recommended in a Typescript environment) 
 
 - `initialValue`: The starting value for the state.
 
@@ -30,7 +35,7 @@ import { useState } from "react";
 import { Button, Typography, Stack } from "@mui/material";
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState<number>(0);
 
   return (
     <Stack spacing={2} textAlign="center" mt={4}>
@@ -61,6 +66,54 @@ export default App;
 
 ---
 
+### An Example from our website svs.ong
+
+
+```js
+const NavDrawer: React.FC = () => {
+  // ... some code
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [animateItems, setAnimateItems] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+
+  // ... some more code
+  
+  return (
+    <>
+      <IconButton edge="start" color="inherit" onClick={handleDrawerToggle}>
+        <MenuIcon />
+      </IconButton>
+
+      <Drawer
+        anchor="left"
+        open={drawerOpen}
+        onClose={handleDrawerToggle}
+        sx={{
+          '& .MuiDrawer-paper': {
+            backgroundColor: theme.palette.grey[900],
+          },
+        }}
+      >
+        <Stack spacing={2} sx={{ p: '10px 10px' }}>
+          <IconButton onClick={handleDrawerToggle} sx={{ alignSelf: 'flex-start' }}>
+            <CloseIcon sx={{ color: theme.palette.common.white }} />
+          </IconButton>
+            //[...]
+        </Stack>
+      </Drawer>
+    </>
+  );
+};
+
+export default NavDrawer;
+
+```
+
+
+
 ### Proper State Updates and Reference Handling
 
 When updating state in React, it's important to handle references correctly, especially when dealing with objects and arrays. Here's an example showing both incorrect and correct ways to update state:
@@ -82,14 +135,7 @@ interface User {
 const App = () => {
   // State with an object
   const [user, setUser] =
-    useState <
-    User >
-    {
-      name: "John",
-      preferences: {
-        notifications: true,
-      },
-    };
+    useState<User>({ name: "John",preferences: {notifications: true,}});
 
   // ❌ Incorrect way: Directly mutating the state
   const handleIncorrectUpdate = () => {
@@ -154,6 +200,23 @@ Remember: React uses reference equality to determine if state has changed. Alway
 ## `useEffect`
 
 The `useEffect` hook lets you perform side effects in function components. Think of it as your component's way of saying "Hey, I need to do something after I render!"
+
+
+### Syntax
+
+```js
+useEffect(()=>{},[]); 
+// or
+useEffect(myFunction(),[dependencies]);
+```
+
+- `useEffect(() =>{},...)` or `useEffect(myFunction(),...)`: The function that needs to be called. (required)
+
+- `useEffect(..., [])` <- The dependency array. (optional)
+---
+
+
+
 
 ### Understanding useEffect Behavior
 
@@ -340,6 +403,61 @@ useEffect(() => {
 const fullName = firstName + " " + lastName;
 ```
 
+### Let's see an example from svs.ong in the NavDrawer.tsx component again!
+
+```js
+
+const NavDrawer: React.FC = () => {
+  //... some code
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [animateItems, setAnimateItems] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+
+  useEffect(() => {
+    if (drawerOpen) {
+      // Allow the drawer to open first, then trigger animations
+      const timer = setTimeout(() => setAnimateItems(true), 50);
+      return () => clearTimeout(timer);
+    } else {
+      setAnimateItems(false);
+    }
+  }, [drawerOpen]);
+    
+    // [...]
+
+            <Box
+              sx={{
+                paddingLeft: '35px',
+                opacity: animateItems ? 1 : 0, /// the opacity changes with the state of animateItems
+                transform: animateItems ? 'translateX(0)' : 'translateX(-20px)',
+                transition: 'opacity 0.3s ease, transform 0.3s ease',
+                transitionDelay: `${index * 100}ms`,
+              }}
+            >
+
+    // [...]
+    </>
+  );
+};
+
+export default NavDrawer;
+
+```
+
+
+**Explanation**:
+
+- When the drawer opens or closes, the state change gets picked up by the useEffect() and calls the function
+to change the state of animateItems.
+
+- We are doing this to make the opening and closing a more seamless animation
+
+
+
+
 Now that we understand the basics, let's look at a more complex example with data fetching...
 
 ### Example: Fetching Data
@@ -483,7 +601,33 @@ This demonstrates how to:
 
 ### Understanding Promise Types in TypeScript
 
-When working with `
+When working with Promises, it is important to use the keyword `await` to ensure that you are working with the resolved value of the Promise,
+rather than the Promise object itself. This is especially important in `useEffect` hooks when performing asynchronous data fetching.
+
+TypeScript can infer the type of the resolved value if the function returning the Promise is properly typed. For example:
+
+```ts
+async function fetchUser(): Promise<User> {
+  const response = await fetch('/api/user');
+  return response.json();
+}
+```
+
+Inside a useEffect, since the callback function **cannot** be `async`, you typically define an **inner** `async function`:
+
+
+```ts
+useEffect(() => {
+  const loadUser = async () => {
+    const user = await fetchUser();
+    setUser(user);
+  };
+
+  loadUser();
+}, []);
+```
+
+***Using await helps TypeScript understand that user is of type User rather than Promise < User >***
 
 ## Data Fetching
 
@@ -735,3 +879,54 @@ const App = () => {
 
 export default App;
 ```
+
+### Like usual, here is an example from our site, svs.ong.
+
+
+```js
+// layoutUtils.ts
+import pages from '@/components/pageRoutes.json';
+import { useMediaQuery, useTheme } from '@mui/material';
+
+/// ... other functions
+
+export const useNavBarLayout = () => {
+  const theme = useTheme();
+  const isDesktopLargeUp = useMediaQuery(theme.breakpoints.up('lg'));
+  const isDesktopUp = useMediaQuery(theme.breakpoints.up('md'));
+
+  return {
+    isDesktopLargeUp,
+    isDesktopUp,
+    isTabletDown: !isDesktopUp,
+    height: { xs: 50, sm: 60 },
+    spacing: { xs: 0.5, sm: 1, md: 1.5 },
+    padding: {
+      xs: theme.spacing(0.5, 1),
+      sm: theme.spacing(0.5, 2),
+      md: theme.spacing(0.5, 4),
+    },
+  };
+};
+```
+**Explanation**:
+
+- We define our own useNavBarLayout in which we call two different hooks that have not been showcased yet:
+
+  - `useTheme()` - to access the theme components such as theme.spacing that are defined in the theme.ts file for Mui
+  
+  - `useMediaQuery()` : for media breakpoints ( responsive design )
+
+
+- This is later used in the main component of the Navbar:
+
+```js
+const NavBar: React.FC = () => {
+  ...
+  const { isTabletDown, isDesktopLargeUp, isDesktopUp, height, padding, spacing } =
+    useNavBarLayout();
+  ...
+}
+
+```
+

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://web.svs.ong/</loc>
+    <priority>1.0</priority>
+  </url>
+<url>
+  <loc>https://web.svs.ong/#/modul-1/git/commands</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-1/git/git</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-1/git/install</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-1/git/practice</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-1/introduction/css_basic</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-1/introduction/html</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-1/introduction/install</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-1/introduction/practice</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-1/javascript/javascript</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-1/javascript/practice</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-1/layout/css_layout</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-1/layout/practice</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-1/web_dynamics/data_fetching</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-1/web_dynamics/fetching_data</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-1/web_dynamics/responsive_design</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-2/mui/installation</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-2/mui/lab-work</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-2/mui/material_ui</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-2/nextjs/installation</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-2/nextjs/lab-work</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-2/nextjs/nextjs</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-2/react/install</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-2/react/lab-work</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-2/react/react</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-2/react/typescript</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-2/react-hooks/lab-work</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-2/react-hooks/react-hooks</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-3/browser-debugging/browser-debugging</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-3/code-quality-and-standardization/code-quality-and-standardization</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-3/firebase-with-nextjs/firebase-with-nextjs</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-3/responsive-design-and-testing/responsive-design-and-testing</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-4/git-activity_vs_git-commit</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-4/git-merge_vs_git-pull</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-4/git_history</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-4/lab_work</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-4/merging_tactics</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/modul-4/reverting_commits</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://web.svs.ong/#/README</loc>
+  <priority>0.8</priority>
+</url>
+</urlset>

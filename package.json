@@ -1,5 +1,12 @@
 {
+  "scripts": {
+    "start": "docsify serve ./site"
+  },
   "dependencies": {
+    "docsify-cli": "^4.4.4",
     "firebase": "^10.12.5"
+  },
+  "devDependencies": {
+    "docsify-sitemap": "^1.1.0"
   }
 }
