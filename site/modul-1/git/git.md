@@ -20,6 +20,7 @@ A commit is a group of changes made to the project. We can think of a project as
 To create such a project, we would like to run the command in the terminal:
 
 ```bash
+
 git init
 ```
 
@@ -124,6 +125,10 @@ git commit -m "modify html add css"
 
 > 💡 Commit messages should be written in present tense: Make changes, create files etc...
 
+❓ What do you think happens if you edit a file *after* committing it, but you forget to run `git add` again before your next commit? Will the change be saved?
+
+🔧 **Short Practice (3 min):** Initialize a new folder as a git repository, create an `index.html` file with a heading inside it, then run `git add` and `git commit` to save your very first commit. Run `git log` afterwards to see it appear.
+
 Now, our official state of the project is the one from the last commit. The last commit created by us is called the `HEAD` of our project. Is the latest version of the project we have.
 
 The timeline of changes we made from the start of the project and until the `HEAD` commit is called a `branch`. Each project starts from the `main` branch, or `master` branch.
@@ -134,8 +139,6 @@ Our project currently looks like this:
 
 ![!img](img/step-1.png)
 
->🛠️ Practice: Create a brand new empty folder on your desktop, open your terminal inside it, and initialize it as a fresh Git repository. Then, create a basic file, use git add . followed by git commit -m "Initial file creation" to register your very first project commit history node.
-
 ## Why is the system good?
 
 The cool part is that we could think of the project itself as a list of changes made to a base state of the project. 
@@ -143,6 +146,8 @@ The cool part is that we could think of the project itself as a list of changes 
 So, if we know all the changes we made to the project, and the base state (the empty folder) we can just apply the modifications from every commit to get to our current version. We can also inspect previous versions of the project, if for example the latest version doesn't work and we need to build the project and show it to our friends.
 
 And basically, every commit is revertable, we can go back to the state that the project was last week, or last month by applying the changes in reverse until we reach that commit.
+
+> 💡 This is also why you should commit often, in small logical chunks. A commit that bundles 10 unrelated changes together is much harder to revert cleanly than 10 small, focused commits.
 
 ## Branches and Parallel Timelines.
 
@@ -167,6 +172,10 @@ git checkout matei
 Now, all commands will apply to the `matei` branch.
 
 This will create a new timeline of changes, whose base commit is the HEAD of the previously selected branch (in our case our `main branch`). The branch will be called "matei".
+
+❓ What do you think would happen if two teammates tried to make commits on the **same** branch at the same time, from two different computers?
+
+🔧 **Short Practice (5 min):** In your practice repo, create a branch with your own name using `git branch`, then switch to it with `git checkout`. Make a small change to a file and commit it. Run `git checkout main` afterwards — notice that your change "disappears" from view, because it only exists on your branch.
 
 Now let's say that Matei would like to modify the font-size of the paragraphs on your website. He will write the following:
 
@@ -247,8 +256,6 @@ The current state of the git repository is the following:
 
 ![!img](img/step-3.png)
 
->❓ Question: If you switch branches using git checkout main, what happens to the physical files and lines of code inside your local project directory folder?
-
 
 ## Merging branches togheter.
 
@@ -264,6 +271,8 @@ git merge matei
 However, we will have some issues, as both we and Matei have added 4 lines at line 4 in the `style.css` file.
 
 When two people have modified a file in the same place and we want to merge our changes togheter, we will get what is called a `merge conflict`.
+
+> 💡 A merge conflict is not an error or a sign you did something wrong — it's git's way of saying "I don't know which of these two changes you want, you decide." It happens to every developer, all the time.
 
 When we have two lines which conflict, then they will be marked with certain symbols that promt you to choose one or both implementations to keep, or combine the changes togheter. It will look something like this:
 ```css
@@ -310,11 +319,17 @@ Now, the timeline of our project will look something like this:
 
 Now both of our changes and Matei's changes will be integrated into the main branch.
 
+🔧 **Short Practice (5 min):** Pair up with a teammate. Both of you check out the same branch, both edit the same line of the same file differently, and both commit. Then one of you merges the other's branch in and resolves the resulting conflict by hand.
+
+❓ Why do you think it's a bad idea to just pick "my version" every time you hit a merge conflict, without reading your teammate's change first?
+
 ## Remote repositories
 
 Ok, ok, but in the previous example both Matei and us were still dependent on working on the same computer. This is impractical if we are not in the same room, and would like to work at the same time on the project.
 
 This is where Github comes in.
+
+❓ Many beginners think "Git" and "GitHub" are the same thing. What do you think the difference is?
 
 Many people confuse git with github, thinking that they are the same thing, however there is a very big distinction between the two. Git is the actual program that runs and keeps track of the changes in a repository. Github on the other hand is a platform for storing and accessing remote repositories stored on a git server.
 
@@ -363,6 +378,8 @@ And git will understand that it needs to add all changes, create a commit and th
 
 Now all of our work is backed up on github and we can see it by going to our own page and viewing our repository on their website.
 
+🔧 **Short Practice (5 min):** Create a new empty repository on GitHub, then connect your local practice repo to it using `git remote add origin`, `git branch -M main`, and `git push -u origin main`. Refresh the GitHub page and confirm your commits show up.
+
 ## Clone, Push & Pull
 
 Now that our repo is on github, we can take that previous url and provide it to our friend Matei.
@@ -395,6 +412,10 @@ git pull
 
 This will update our local copy of the branch and we can begin to make changes.
 
+❓ What do you think would happen if you tried to `git push` your own changes *before* pulling your teammate's latest changes?
+
+🔧 **Short Practice (5 min):** Pair up. One of you pushes a small change to the shared repo. The other clones the repo (or pulls, if already cloned), confirms the change is there, then makes their own change and pushes it back.
+
 When we are done, we repeat the classical trio of commands:
 
 ```bash
@@ -405,7 +426,6 @@ git push
 
 And boom. We are collaborating across computers.
 
->❓ Question: Why must you always make it a habit to perform a git pull before starting a brand new coding session locally?
 ## Working in parallel.
 
 However, we still have to pull and push to our branch in order to avoid stupid conflicts. We would like to work truly in parallel.
@@ -417,7 +437,9 @@ If we want to check if there are changes on our branch, we can use the `fetch` c
 ```bash
 git fetch --all
 ```
->❓ Question: If you are working inside your personal isolated feature branch, can another developer's pushes to their own branch break your local files?
+
+> 💡 `git fetch` only tells you what changed on the remote — it does **not** update the files in your working folder. `git pull` is actually shorthand for `git fetch` followed by a `git merge` of those changes into your current branch.
+
 ## Pull Requests
 
 Pull requests are a form of managed merging. normally, we would like to never modify the main branch locally. (in other words: we should never merge from main in our console).
@@ -425,3 +447,7 @@ Pull requests are a form of managed merging. normally, we would like to never mo
 Instead, we should always merge into our local branch from main. This will introduce all changes merged into main before to our branch. With this merge done, we simply commit and push them to the origin branch, and from github we create a `pull request` which basically says: "ok, I want to merge my changes into the main branch."
 
 This pull request can be approved by a supervisor, or the supervisor can leave comments on your work and ask for changes. When he approves the `pull request` then the changes are introduced to the main branch.
+
+❓ Why might a team prefer reviewing changes through a pull request instead of letting everyone merge straight into `main` whenever they want?
+
+🔧 **Short Practice (5 min):** Push your branch to GitHub, open a pull request comparing it to `main`, and ask a teammate to review and approve it before you merge.
