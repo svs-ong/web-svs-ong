@@ -1,33 +1,5 @@
-## CSS Box Model
-
-The CSS box model shows how an element's size is built from four parts:
-- Content: the area for text or images.
-- Padding: space inside the border.
-- Border: the line around the box.
-- Margin: the space outside the box.
-
-### Example
-
-```html
-<div class="box">This is a box.</div>
-```
-
-```css
-.box {
-  width: 200px;
-  height: 100px;
-  padding: 20px;
-  border: 5px solid black;
-  margin: 10px;
-  background-color: lightblue;
-}
-```
-
-Total size:
-- width: 200 + 40 + 10 + 20 = 270px
-- height: 100 + 40 + 10 + 20 = 170px
-
 ## CSS Display Property
+
 
 The `display` property in CSS determines how an element is displayed on the web page. It is fundamental for controlling the layout and presentation of elements.
 

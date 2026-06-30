@@ -1,10 +1,8 @@
-# HTML Basics Tutorial
+# Introduction to HTML
 
-## Introduction to HTML
+<div style="float: right;">~20 minutes</div>
 
 HTML (Hypertext Markup Language) is the standard markup language used to create web pages. It provides the basic structure of sites, which is then enhanced and modified by other technologies like CSS and JavaScript.
-
-> "Why did the web developer go broke? Because he used up all his cache!"
 
 ## HTML Structure
 
@@ -44,29 +42,25 @@ Here's a brief explanation of the HTML structure shown:
 
   - `<p>This is a paragraph.</p>`: A text paragraph. (Where the story begins...)
 
-### Doctype Declaration
+> ❓ What kind of content goes in `<head>` and what goes in `<body>`? What's the difference between the two?
 
-The `<!DOCTYPE html>` declaration defines the document type and version of HTML. For HTML5, this is simplified to the declaration shown above. (No more cryptic codes from the past!)
+> 💡 The `<meta name="viewport">` line is what makes your page not look tiny on a phone. Without it, mobile browsers zoom out and show a shrunken desktop version. Always include it — mobile first!
 
-### HTML Tags
+## HTML Tags
 
 HTML tags are the building blocks of HTML pages. They define and enclose different parts of the content to make it function or appear a certain way. (Think of them as the LEGO bricks of the web!)
 
-## The Mighty `<div>`
+### The Mighty `<div>`
 
-Before we get too fancy, meet the <div> tag! It's the most basic (and most used) HTML component. Think of it as a plain, invisible box you can use to group other elements together. If HTML had a favorite child, it would probably be `<div>`.
+Before we get too fancy, meet the `<div>` tag! It's the most basic (and most used) HTML component. Think of it as a plain, invisible box you can use to group other elements together. If HTML had a favorite child, it would probably be `<div>`.
 
 ```html
 <div>I am a simple div. I don't do much, but I sure am useful!</div>
 ```
 
-> "Why did the `<div>` go to therapy? Because it had too many issues with its inner self!"
-
 ![A wild collection of nested divs in their natural habitat](./img/divdivdiv.png)
 
-_Figure: A wild collection of nested `<div>`s, as seen in the real world. Sometimes, web pages have so many `<div>`s, it feels like you're in a div jungle!_
-
-## Basic HTML Tags
+> 💡 _Figure: A wild collection of nested `<div>`s, as seen in the real world. Sometimes, web pages have so many `<div>`s, it feels like you're in a div jungle!_
 
 ### Headings
 
@@ -111,6 +105,10 @@ The `<img>` tag is used to embed an image in an HTML page.
 <!-- If you can see this image, your HTML is working! If not, check your spelling. Or your glasses. -->
 ```
 
+> 💡 The `alt` attribute is not just a fallback for broken images — screen readers read it aloud to visually impaired users. Always write a meaningful description, not just `"image"` or `"photo"`. This is very important for search engine optimization (SEO).
+
+> 🔧 **Short Practice** — Add an image and a link to your page. Make the image itself clickable by wrapping `<img>` inside an `<a>` tag. Open it on a 375px mobile viewport to check it's not overflowing.
+
 ### Lists
 
 HTML supports ordered (`<ol>`) and unordered (`<ul>`) lists.
@@ -138,7 +136,7 @@ HTML supports ordered (`<ol>`) and unordered (`<ul>`) lists.
 </ol>
 ```
 
-## Forms
+### Forms
 
 Forms are used for interactive control elements to submit information to a web server. (Or to ask users for their deepest secrets. Just kidding!)
 
@@ -153,7 +151,7 @@ Forms are used for interactive control elements to submit information to a web s
 </form>
 ```
 
-## Tables
+### Tables
 
 The `<table>` tag is used to create a table. (Because sometimes, you just need to organize your data like a boss.)
 
@@ -196,6 +194,8 @@ HTML5 introduced new tags that describe the meaning (semantics) of the content t
 - `<article>`: A self-contained piece of content. (Like a blog post or news article.)
 - `<footer>`: The bottom section of your page or a section. (Where the credits roll!)
 
+> ❓ Why use `<article>` or `<section>` instead of just a `<div>`? What does a browser — or a screen reader — gain from the difference?
+
 ### Example:
 
 ```html
@@ -221,6 +221,7 @@ HTML5 introduced new tags that describe the meaning (semantics) of the content t
         <h2>About This Site</h2>
         <p>This site is so semantic, even search engines smile at it.</p>
       </section>
+
       <article>
         <h2>Breaking News</h2>
         <p>HTML5 tags found making websites more readable worldwide!</p>
@@ -233,4 +234,43 @@ HTML5 introduced new tags that describe the meaning (semantics) of the content t
 </html>
 ```
 
-> "Why did the `<footer>` break up with the `<header>`? Because they just couldn't meet in the middle!"
+### Same example without semantics tags:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Div HTML Example</title>
+  </head>
+  <body>
+    <div>
+      <h1>Welcome to My Awesome Site</h1>
+    </div>
+
+    <div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div>
+        <h2>About This Site</h2>
+        <p>This site is so semantic, even search engines smile at it.</p>
+      </div>
+
+      <div>
+        <h2>Breaking News</h2>
+        <p>HTML5 tags found making websites more readable worldwide!</p>
+      </div>
+    </div>
+
+    <div>
+      <p>&copy; 2023 My Awesome Site. All jokes reserved.</p>
+    </div>
+  </body>
+</html>
+```
