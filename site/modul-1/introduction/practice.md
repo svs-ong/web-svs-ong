@@ -8,7 +8,8 @@ Focus on the `homework` directory for this week's tasks. You can modify everythi
 
    - Meet together with your team members
    - Choose a creative and memorable name for your team
-   - This team name will be used for your branch name in the next step
+   - This team name will be used for your branch name in the next course
+   - Choose a group leader for the next 2 weeks
 
 2. **Repository Access:**
 

@@ -4,7 +4,7 @@ CSS (Cascading Style Sheets) is a stylesheet language used to describe the prese
 
 ## Adding CSS to HTML
 
-<div style="float: right;">~10 minutes</div>
+<div style="float: right;">~15 minutes</div>
 
 You can add CSS to HTML in three ways: Inline, Internal, and External. (Yes, CSS is flexible—like yoga for your website!)
 
@@ -78,15 +78,23 @@ h1 {
 }
 ```
 
+> 🔧 **Short Practice — Which style wins?**
+>
+> Create a page with an `<h1>`. Set its color to `red` in an external CSS file, then override it to `green` in a `<style>` block, then override it again to `blue` with an inline style.
+>
+> Open the page — what color is the heading? Now remove the inline style. What color is it now? Remove the `<style>` block. What color now?
+
+> 💡 **Hint:** CSS has a priority order called **specificity**. When the same element is styled in multiple places, the browser picks the most "specific" one. Inline styles beat `<style>` blocks, which beat external files — think of it as closest-to-the-element wins. This priority order is what "Cascading" means in CSS.
+
 ## CSS Selectors
 
-Selectors are used to target HTML elements to apply styles. (Think of them as the matchmakers of the web—pairing style with substance!)
+<div style="float: right;">~15 minutes</div>
 
-### Common Selectors
+Selectors tell the browser which HTML elements to style. The three most common are **element**, **class**, and **ID** selectors.
 
-- **Element Selector** : Targets elements by their tag name.
+### Element Selector
 
-#### CSS:
+Targets **every** element of that tag type on the page.
 
 ```css
 p {
@@ -94,51 +102,71 @@ p {
 }
 ```
 
-#### HTML:
+### Class Selector
 
-```html
-<p>This paragraph will be red.</p>
-<p>So will this one.</p>
-```
-
-- **Class Selector** : Targets elements by their class attribute.
-
-#### CSS:
+Targets elements that have a matching `class` attribute. A class can be reused on as many elements as you like.
 
 ```css
-.my-class {
+.highlight {
   color: green;
 }
 ```
 
-#### HTML:
-
 ```html
-<p class="my-class">This paragraph will be green.</p>
-<p>This paragraph will not be green.</p>
+<p class="highlight">This will be green.</p>
+<p>This won't — no class.</p>
 ```
 
-- **ID Selector** : Targets a single element by its ID attribute.
+### ID Selector
 
-#### CSS:
+Targets a **single** element by its `id`. Each ID must be unique on the page.
 
 ```css
-#my-id {
+#title {
   color: blue;
 }
 ```
 
-#### HTML:
-
 ```html
-<p id="my-id">This paragraph will be blue.</p>
-<p>This paragraph will not be blue.</p>
+<h1 id="title">This will be blue.</h1>
 ```
 
----
+### Seeing them all together
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      p {
+        color: red;
+      }
+      .highlight {
+        color: green;
+      }
+      #title {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title">Blue heading — matched by ID</h1>
+    <p>Red paragraph — matched by element selector.</p>
+    <p class="highlight">Green paragraph — matched by class.</p>
+    <p>Also red — the element selector applies here too.</p>
+  </body>
+</html>
+```
+
+> 🔧 **Short Practice — Selectors**
+>
+> Create a list of 5 `<li>` items. Style all of them gray using an element selector. Then add a class `important` to two items and make those red. Finally, give one item the ID `featured` and make it bold and underlined.
+
+> 💡 **Hint:** You can combine selectors on the same element — an `<li>` can have both a class and an ID at the same time. The most specific selector wins when styles conflict (remember the cascade!).
 
 ## Styling Text
+
+<div style="float: right;">~10 minutes</div>
 
 CSS provides various properties to style text, allowing you to change its appearance and improve readability. (Because nobody likes boring text!)
 
@@ -146,51 +174,15 @@ CSS provides various properties to style text, allowing you to change its appear
 
 - **Color** : Sets the text color.
 
-```css
-p {
-  color: navy;
-}
-```
-
 - **Font Family** : Specifies the font of the text.
-
-```css
-p {
-  font-family: Arial, sans-serif;
-}
-```
 
 - **Font Size** : Defines the size of the text.
 
-```css
-p {
-  font-size: 16px;
-}
-```
-
 - **Font Weight** : Controls the thickness of the text.
-
-```css
-p {
-  font-weight: bold;
-}
-```
 
 - **Text Align** : Aligns the text within its container.
 
-```css
-p {
-  text-align: center;
-}
-```
-
 - **Text Decoration** : Adds decoration to text, such as underline, overline, or line-through.
-
-```css
-p {
-  text-decoration: underline;
-}
-```
 
 ### Example
 
@@ -215,7 +207,7 @@ p {
         font-family: "Arial", sans-serif;
         font-size: 16px;
         text-align: justify;
-        text-decoration: none;
+        text-decoration: underline dotted red;
       }
     </style>
   </head>
@@ -230,11 +222,15 @@ p {
 </html>
 ```
 
-> "CSS: Making the web fabulous, one selector at a time!"
+> ❓ Look at this page — how many heading levels is it using? Can you spot an `<h1>`, `<h2>`, `<h3>`? How do they help you navigate the content?
+
+> 💡 Most pages use 2–3 heading levels at most. Every extra size you add competes for attention — too many and the hierarchy collapses, leaving the reader unsure what to read first.
+
+> ❓ Why do you think most websites use a different font for headings than for body text — what does mixing fonts achieve?
 
 ## CSS Box Model
 
-**_Time: 20 min_**
+<div style="float: right;">~20 minutes</div>
 
 The CSS box model shows how an element's size is built from four parts:
 
@@ -276,5 +272,29 @@ The CSS box model shows how an element's size is built from four parts:
 > 3. Now add `box-sizing: border-box` to the same element. What changed?
 
 > 💡 By default CSS adds padding and border on top of the width you set. `box-sizing: border-box` makes the width include them — most developers add it globally to avoid surprises.
+
+## Using DevTools
+
+<div style="float: right;">~15 minutes</div>
+
+Every browser ships with built-in developer tools that let you see exactly how your CSS is being applied — no guessing required.
+
+1. **Right-click** any element on a page and choose **Inspect** (or press `F12` / `Ctrl+Shift+I`).
+2. Click the **device toolbar** icon (or press `Ctrl+Shift+M`) to switch into mobile view first — since we build **mobile first**, this is how you'll spend most of your time in DevTools. Pick a specific device (iPhone, Pixel, etc.) from the dropdown, or drag the viewport edges to test custom widths.
+3. The **Elements** panel shows the page's HTML — click a tag to select it.
+4. The **Styles** panel shows every CSS rule applied to the selected element, including which ones are crossed out (overridden by the cascade). Changes here — and your media queries — update live as you resize the mobile viewport.
+5. Scroll down in the Styles panel to find the **box model diagram** — it shows the live content, padding, border, and margin values for the selected element.
+
+![Inspecting an element in DevTools](./img/dev-tools.png)
+
+> 🔧 **Short Practice — Live editing**
+>
+> Open DevTools on [svs.ong](https://www.svs.ong). Change to mobile view. Select a heading or paragraph, then in the Styles panel try changing its `color` or `font-size`. Watch the page update instantly.
+>
+> Nothing you change here is saved — refresh the page and it's back to normal. This makes DevTools a safe place to experiment before touching your actual CSS file.
+
+> 💡 DevTools is the single most useful tool for learning CSS. When a style isn't doing what you expect, inspecting the element usually shows you why — a more specific selector elsewhere, a typo in a property name, or a value being overridden.
+
+> 💡 The device toolbar simulates screen size and touch input, but it doesn't run on real mobile hardware. Always do a final check on an actual phone before calling a page done.
 
 ---
