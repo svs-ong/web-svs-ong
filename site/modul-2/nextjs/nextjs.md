@@ -1,73 +1,100 @@
 ## Next.js Tutorial
 
-<div style="float: right;">~70 minutes</div>
-
 ### What is Next.js?
 
-Next.js is a full-stack React framework for building modern web applications. It extends React with features such as routing, server rendering, data fetching, API endpoints, and performance optimizations.
+Next.js is a robust framework that builds upon React, facilitating the development of various web applications. It supports server-rendered applications, static websites, and complex web apps. Here's a brief overview:
 
-Some of its key features include:
+- Static websites consist of fixed content pre-generated during the build process. These sites are fast and efficient, ideal for content that does not change often.
 
-- Server Components by default for improved performance.
-- Client Components for interactive UI when needed.
-- File-based routing using the app directory.
-- Static and dynamic rendering depending on your application's needs.
-- API routes for backend functionality without a separate server.
-- Built-in support for TypeScript, image optimization, fonts, and more.
-- Server and Client Components
+- Next.js and Static Websites: Next.js uses Static Generation to pre-render pages at build time, delivering high-speed loading and optimized SEO by serving pages from a CDN.
 
-**With the `App Router`, components are Server Components by default. They render on the server, reducing the amount of JavaScript sent to the browser and improving performance.**
+- Server-rendered applications dynamically generate content per request, providing unique HTML based on user interactions or backend state.
 
-When a component needs browser features such as **state**, **event** handlers, or hooks (`useState`, `useEffect`), add the :
-```javascript
-"use client"
-``` 
-directive to make it a Client Component.
+- Next.js for Server Rendering: Next.js seamlessly handles server rendering, allowing for dynamic content delivery while maintaining fast performance and enhancing SEO, compared to client-side-only frameworks.
 
-### **Next.js** vs **React**
+### Server and Client at the Same Time
 
-**React is a library for building user interfaces, while Next.js is a framework built on top of React that provides everything needed for a production-ready application.**
+Next.js operates both on the server and the client, providing a versatile environment to manage rendering and data fetching. On the server, Next.js pre-renders pages by default, allowing your initial HTML to be generated ahead of client requests for better performance and SEO. On the client, it handles dynamic interactions and ensures the application behaves as a single-page application (SPA) once loaded.
 
-Compared to a standard React application, Next.js includes:
+### Differences from React
 
-- File-based routing using the app directory.
-- Server-side rendering (SSR) and Static Site Generation (SSG).
-- API routes and server-side code.
-- Built-in optimizations for images, fonts, metadata, and performance.
+While React is a library for building user interfaces, Next.js is a framework that provides an extensive set of tools to build a complete web application:
 
-### Project Structure
+- **Server-Side Rendering (SSR)** : React apps are typically client-side rendered, meaning that JavaScript runs in the browser to construct the UI. Next.js can render these components on the server first, send them to the browser fully rendered, and then enable interactivity with JavaScript.
 
-A common project structure for a Next.js application is shown below:
+- **File-based Routing** : In React, routing is handled with libraries like React Router, where routes are declared explicitly in the code. Next.js uses a file-based routing system where pages correspond to files in the `pages` directory.
+
+- **Built-in API Routes** : Next.js allows you to create API routes. These are server-side functions that you can build into your Next.js app to handle backend functionality without needing a separate server.
+
+## Project Structure
+
+In this section, we'll explore a well-organized project structure for a Next.js application using Material-UI (MUI). This structure is designed to enhance maintainability, scalability, and readability, ensuring that your codebase remains clean and manageable as your project grows.
+
 **Project Structure Overview**
 
 ```plaintext
 project-root/
-├── public/                  # Static assets
-├── src/
-│   ├── app/                 # App Router pages and layouts
-│   │   ├── layout.tsx
-│   │   ├── page.tsx
-│   │   ├── about/
-│   │   │   └── page.tsx
-│   │   └── contact/
-│   │       └── page.tsx
-│   ├── components/          # Reusable UI components
-│   ├── lib/                 # Utilities, helpers, and hooks
-│   ├── services/            # API requests and business logic
-│   ├── types/               # TypeScript types and interfaces
-│   ├── theme/               # Material UI theme configuration
-│   └── models/              # Application models (optional)
-├── package.json
-└── tsconfig.json
+├── public/                     # Static assets
+│   ├── images/                 # Image files
+│   │   ├── logo.png
+│   │   └── hero-bg.jpg
+│   └── icons/                  # Icon files
+└── src/
+    ├── api/                    # API-related files
+    │   ├── auth.ts             # Authentication API functions
+    │   └── users.ts            # User-related API functions
+    ├── app/
+    │   ├── layout.tsx          # Root layout component
+    │   ├── page.tsx            # Home page component
+    │   ├── about/
+    │   │   └── page.tsx        # About page component
+    │   └── contact/
+    │       ├── page.tsx        # Contact page component
+    │       └── components/     # Components specific to contact page
+    │           ├── ContactForm.tsx
+    │           └── ContactInfo.tsx
+    ├── components/
+    │   ├── atomic/             # Small, reusable components
+    │   │   ├── Button/
+    │   │   │   └── Button.tsx
+    │   │   └── [Other atomic components]
+    │   └── organism/           # Larger, composed components
+    │       ├── Header/
+    │       │   └── Header.tsx
+    │       ├── Footer/
+    │       │   └── Footer.tsx
+    │       └── [Other reusable components]
+    ├── lib/
+    │   ├── utils.ts            # Utility functions
+    │   └── hooks/              # Custom React hooks
+    │       ├── useLocalStorage.ts
+    │       └── useFetch.ts
+    └── model/
+        ├── user                # Example data model file
+        └── article             # Example data model file
 ```
+
+### Folder Explanations
+
+**`public/`** - Static assets directory containing images, icons, and other files served directly by the web server.
+
+**`src/api/`** - API-related functions for communicating with backend services (authentication, user management, etc.).
+
+**`src/app/`** - Main application pages and routing structure using Next.js App Router.
+
+**`src/components/`** - Reusable UI components organized using atomic design principles (atomic and organism components).
+
+**`src/lib/`** - Utility functions and custom React hooks for common functionality across the application.
+
+**`src/model/`** - TypeScript interfaces and data models defining the structure of application data.
 
 ## Navigation theory
 
-The `src/app/` directory is the heart of Next.js applications, introducing the new App Router that replaces the older Pages Router. This directory uses file-system based routing with several important conventions and reserved names.
+The `src/app/` directory is the heart of Next.js 13+ applications, introducing the new App Router that replaces the older Pages Router. This directory uses file-system based routing with several important conventions and reserved names.
 
 ### How App Router Works
 
-**File-based Routing**: Each folder represents a **route segment**, and files define the UI for that route. The `page.tsx` file is the main component that renders when someone visits that route.
+**File-based Routing**: Each folder represents a route segment, and files define the UI for that route. The `page.tsx` file is the main component that renders when someone visits that route.
 
 **Reserved File Names**: Next.js reserves certain filenames for special purposes:
 
@@ -123,36 +150,23 @@ export default function DashboardLayout({ children }) {
 - `app/(marketing)/about/page.tsx` → `/about`
 - `app/(shop)/products/page.tsx` → `/products`
 
+**Dynamic Routes**: Use square brackets `[paramName]` for dynamic segments:
+
+- `app/blog/[slug]/page.tsx` → `/blog/any-post-title`
+
 **Parallel Routes**: Use `@folder` syntax for parallel routes that can be rendered simultaneously.
-
-### ***Dynamic Routes***: Use square brackets `[paramName]` for dynamic segments:
-### - `app/blog/[slug]/page.tsx` → `/blog/any-post-title`
-
 
 ### Why App Router Matters
 
-Instead of simply organizing pages, the `App Router` introduces several modern features that make Next.js applications faster and easier to build. 
-As you work through this tutorial, you'll see many of these features in action.
+1. **Server Components by Default**: Components are server-side rendered by default, improving performance
+2. **Streaming**: Supports streaming and progressive rendering
+3. **Simplified Data Fetching**: Built-in data fetching with async components
+4. **Better SEO**: Improved metadata handling and static generation
+5. **Type Safety**: Better TypeScript support and type inference
 
-1. **Server Components** by default for better performance.
-2. **Streaming** so pages can load progressively.
-3. **Simplified data** fetching using async components.
-4. **Improved SEO** with built-in metadata support.
-5. **Excellent TypeScript** integration with strong type inference.
+## Navigation Example
 
-### Navigation Example
-
-**In this exercise, you'll build a small multi-page application using the App Router.**
-
-By the end, you'll know how to:
-
-- Create multiple pages.
-- Navigate between routes.
-- Build a dynamic route using [id].
-- Display data based on the URL.
-- Use Material UI to create a clean interface.
-
-### Rather than focusing on design, we'll use this project to understand how routing works in Next.js.
+**Objective**: In this exercise, we will create a simple Next.js application with three pages: a main page (`/`), a contact page (`/contact`), and a dynamic article page (`/article/[id]`). We will use Material-UI components to build these pages and set up navigation between them. The goal is to demonstrate how to structure basic pages in a Next.js application, implement dynamic routing, and navigate between pages using Material-UI for the UI elements.
 
 **Project Structure**
 
@@ -423,43 +437,28 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 }
 ```
 
-## **Server vs Client Components**
+## Server vs Client
 
-One of the biggest changes in modern Next.js is understanding where your code runs.
+Next.js 13+ introduces a fundamental distinction between Server Components and Client Components. Understanding this difference is crucial for building efficient applications.
 
-Before continuing, ask yourself:
-1. **Does this component need to be interactive?**
-  - If the answer is no, it can usually remain a Server Component, which is faster and sends less JavaScript to the browser.
-  - If the answer is yes—for example, it uses `useState`, responds to button clicks, or accesses the browser—you'll make it a Client Component by adding `"use client"`.
+### What are Server Components?
 
-In the next example, we'll compare both approaches and see where the code executes.
+**Server Components** are the default in Next.js 13+. They:
 
-### What are Server Components
-
-**Server Components are the default in the App Router.**
-
-Think of them as components that prepare the page before it reaches the browser. They're great for loading data, rendering content, and keeping your application fast.
-
-#### Server Components can:
-
-- Fetch data directly from databases or APIs.
-- Reduce the amount of JavaScript sent to users.
-- Improve loading performance and SEO.
-
-However, they cannot use browser APIs or React hooks like `useState` or `useEffect`.
+- Run on the server during build time or request time
+- Can directly access backend resources (databases, APIs)
+- Are not sent to the browser (no JavaScript bundle)
+- Cannot use browser APIs (localStorage, window, etc.)
+- Cannot use React hooks (useState, useEffect, etc.)
 
 ### What are Client Components?
 
-### **Client Components run inside the browser after the page has loaded.**
+**Client Components** run in the browser and:
 
-Use them whenever your UI needs to respond to user actions, such as:
-
-- Clicking buttons.
-- Filling out forms.
-- Managing component state.
-- Using React hooks or browser APIs.
-
-Because they ship JavaScript to the browser, it's good practice to use them only when interactivity is needed.
+- Can use browser APIs and React hooks
+- Handle user interactions and state
+- Are interactive and dynamic
+- Increase the JavaScript bundle size
 
 ### Example: Contact Page with Console Logs
 
@@ -567,14 +566,40 @@ export default function ContactPage() {
 
 ### Console Log Differences
 
-**Let's prove where each component runs.**
+**Server Component Console Logs:**
 
-As you complete the next example, **watch both**:
+- Appear in your terminal/server logs
+- Run during build time or server-side rendering
+- Cannot access browser-specific information
+- Example: `Contact page rendered on server`
 
-- Your terminal (server output).
-- Your browser's Developer Console (F12).
+**Client Component Console Logs:**
 
-#### Notice where each console.log() appears—you'll immediately see the difference between Server and Client Components.
+- Appear in the browser's Developer Tools console
+- Run when the component mounts and during interactions
+- Can access browser APIs and user interactions
+- Examples:
+  - `Contact page rendered on client`
+  - `Current form data: {name: "", email: "", message: ""}`
+  - `name changed to: John`
+
+### When to Use Each Type
+
+**Use Server Components when:**
+
+- Fetching data from databases or APIs
+- Accessing backend resources
+- Rendering static content
+- SEO optimization
+- Reducing client bundle size
+
+**Use Client Components when:**
+
+- Handling user interactions (forms, buttons)
+- Using React hooks (useState, useEffect)
+- Accessing browser APIs (localStorage, window)
+- Managing component state
+- Creating interactive UI elements
 
 ### Best Practices
 
