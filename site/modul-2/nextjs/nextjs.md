@@ -423,7 +423,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 }
 ```
 
-## **Server vs Client Components**
+## Server vs Client Components
 
 One of the biggest changes in modern Next.js is understanding where your code runs.
 
