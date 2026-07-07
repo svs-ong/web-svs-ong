@@ -1,10 +1,11 @@
 {
   "name": "node-json-server",
   "version": "1.0.0",
-  "description": "A simple Node.js server to read article data from articles.json",
+  "description": "A simple Node.js server to read data from db.json",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "generate-json": "node server.js --generate"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",

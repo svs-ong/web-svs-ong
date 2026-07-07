@@ -17,8 +17,3 @@ To start the server, run:
 ```bash
 npm start
 ```
-
-The server reads article data from `articles.json` and exposes:
-
-- `GET /articles` — short article data (title, category, excerpt, date, etc.) for the home / articles list page.
-- `GET /articles/:slug` — full detailed data for a single article page.
