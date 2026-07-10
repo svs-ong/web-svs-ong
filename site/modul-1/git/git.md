@@ -20,7 +20,6 @@ A commit is a group of changes made to the project. We can think of a project as
 To create such a project, we would like to run the command in the terminal:
 
 ```bash
-
 git init
 ```
 
@@ -125,29 +124,21 @@ git commit -m "modify html add css"
 
 > 💡 Commit messages should be written in present tense: Make changes, create files etc...
 
-❓ What do you think happens if you edit a file *after* committing it, but you forget to run `git add` again before your next commit? Will the change be saved?
+> ❓ What do you think happens if you edit a file *after* committing it, but you forget to run `git add` again before your next commit? Will the change be saved?
 
-🔧 **Short Practice (3 min):** Initialize a new folder as a git repository, create an `index.html` file with a heading inside it, then run `git add` and `git commit` to save your very first commit. Run `git log` afterwards to see it appear.
+Now, our official state of the project is the one from the last commit. The last commit created by us is called the `HEAD` of our project — the latest version we have.
 
-Now, our official state of the project is the one from the last commit. The last commit created by us is called the `HEAD` of our project. Is the latest version of the project we have.
+The timeline of changes from the start of the project until the `HEAD` commit is called a `branch`. Each project starts from the `main` branch.
 
-The timeline of changes we made from the start of the project and until the `HEAD` commit is called a `branch`. Each project starts from the `main` branch, or `master` branch.
-
-> 🤓 The `master` branch was the default branch in git. However, in 2020, the name of the default branch was changed to `main` in order to remove any racial connotations. You may notice that the diagrams still have the name master. When I use `main` and `master`, I reffer to the `main` branch. 
+> 🤓 The `master` branch was the default branch in git. In 2020, the default was changed to `main`. You may notice the diagrams still say master — both names refer to the same concept.
 
 Our project currently looks like this:
 
 ![!img](img/step-1.png)
 
-## Why is the system good?
+Since git tracks every change as a commit, you can always go back to any previous state — last week, last month — by reversing commits one by one.
 
-The cool part is that we could think of the project itself as a list of changes made to a base state of the project. 
-
-So, if we know all the changes we made to the project, and the base state (the empty folder) we can just apply the modifications from every commit to get to our current version. We can also inspect previous versions of the project, if for example the latest version doesn't work and we need to build the project and show it to our friends.
-
-And basically, every commit is revertable, we can go back to the state that the project was last week, or last month by applying the changes in reverse until we reach that commit.
-
-> 💡 This is also why you should commit often, in small logical chunks. A commit that bundles 10 unrelated changes together is much harder to revert cleanly than 10 small, focused commits.
+> 💡 Commit often, in small logical chunks. A commit that bundles 10 unrelated changes is much harder to revert cleanly than 10 focused commits.
 
 ## Branches and Parallel Timelines.
 
@@ -169,13 +160,9 @@ Then, we will select our branch with the `checkout` command:
 git checkout matei
 ```
 
-Now, all commands will apply to the `matei` branch.
+Now, all commands will apply to the `matei` branch. This creates a new timeline of changes whose base commit is the HEAD of the previously selected branch.
 
-This will create a new timeline of changes, whose base commit is the HEAD of the previously selected branch (in our case our `main branch`). The branch will be called "matei".
-
-❓ What do you think would happen if two teammates tried to make commits on the **same** branch at the same time, from two different computers?
-
-🔧 **Short Practice (5 min):** In your practice repo, create a branch with your own name using `git branch`, then switch to it with `git checkout`. Make a small change to a file and commit it. Run `git checkout main` afterwards — notice that your change "disappears" from view, because it only exists on your branch.
+> 🔧 **Short Practice (5 min):** Create a branch with your own name using `git branch`, then switch to it with `git checkout`. Make a small change to a file and commit it. Run `git checkout main` afterwards — notice that your change "disappears" from view, because it only exists on your branch.
 
 Now let's say that Matei would like to modify the font-size of the paragraphs on your website. He will write the following:
 
@@ -319,9 +306,7 @@ Now, the timeline of our project will look something like this:
 
 Now both of our changes and Matei's changes will be integrated into the main branch.
 
-🔧 **Short Practice (5 min):** Pair up with a teammate. Both of you check out the same branch, both edit the same line of the same file differently, and both commit. Then one of you merges the other's branch in and resolves the resulting conflict by hand.
-
-❓ Why do you think it's a bad idea to just pick "my version" every time you hit a merge conflict, without reading your teammate's change first?
+> ❓ Why do you think it's a bad idea to just pick "my version" every time you hit a merge conflict, without reading your teammate's change first?
 
 ## Remote repositories
 
@@ -329,13 +314,9 @@ Ok, ok, but in the previous example both Matei and us were still dependent on wo
 
 This is where Github comes in.
 
-❓ Many beginners think "Git" and "GitHub" are the same thing. What do you think the difference is?
+> ❓ Many beginners think "Git" and "GitHub" are the same thing. What do you think the difference is?
 
-Many people confuse git with github, thinking that they are the same thing, however there is a very big distinction between the two. Git is the actual program that runs and keeps track of the changes in a repository. Github on the other hand is a platform for storing and accessing remote repositories stored on a git server.
-
-Basically, our project lives on our machine. But we would like to share it with other people. 
-
-We would do this by literally copying the project from our machine and creating a clone on a remote server, which can be provided by different websites like Github, Gitlab, Bitbucket or even our own personal remote git server.
+Git is the program that runs on your machine and tracks changes. GitHub is a platform for hosting those repositories remotely so others can access them. Alternatives exist — GitLab, Bitbucket — but GitHub is the most widely used.
 
 First, we would need to go to github and to create an empty repository. Once a repository is created, we can copy the link given to us, in our case `https://github.com/aniteicristi/repo_test.git`.
 
@@ -362,23 +343,9 @@ Then we would do what is called a `push` using this command:
 git push -u origin main
 ```
 
-Now, the push command is used to push all changes on our local branches to the remote equivalent. In our case, we want to push all changes we have done to the origin (or our github repository).
+The push command sends all local commits to the remote. The `-u` flag sets origin as the default, so from then on a plain `git push` is enough.
 
-When we specify that `-u` flag, it will set origin as the default push location. This is so we don't have to specify origin all the time. 
-
-When we make a new change, all we have to do is the following three commands:
-
-```bash
-git add .
-git commit -m "message"
-git push
-```
-
-And git will understand that it needs to add all changes, create a commit and then push this commit to the remote repository.
-
-Now all of our work is backed up on github and we can see it by going to our own page and viewing our repository on their website.
-
-🔧 **Short Practice (5 min):** Create a new empty repository on GitHub, then connect your local practice repo to it using `git remote add origin`, `git branch -M main`, and `git push -u origin main`. Refresh the GitHub page and confirm your commits show up.
+Now all of our work is backed up on GitHub and visible on the repository page.
 
 ## Clone, Push & Pull
 
@@ -410,35 +377,13 @@ In order to get the latest changes from the remote, we will use the `pull` comma
 git pull
 ```
 
-This will update our local copy of the branch and we can begin to make changes.
+This will update our local copy of the branch and we can begin to make changes. When we are done, the classic trio pushes everything back up.
 
-❓ What do you think would happen if you tried to `git push` your own changes *before* pulling your teammate's latest changes?
+> 🔧 **Short Practice (5 min):** Pair up. One of you pushes a small change to the shared repo. The other clones the repo (or pulls, if already cloned), confirms the change is there, then makes their own change and pushes it back.
 
-🔧 **Short Practice (5 min):** Pair up. One of you pushes a small change to the shared repo. The other clones the repo (or pulls, if already cloned), confirms the change is there, then makes their own change and pushes it back.
+To work truly in parallel, each developer keeps their own branch. When changes are pushed, the branch is also created on GitHub. Use `git fetch --all` to check for updates on all branches without modifying your local files.
 
-When we are done, we repeat the classical trio of commands:
-
-```bash
-git add .
-git commit -m "message"
-git push
-```
-
-And boom. We are collaborating across computers.
-
-## Working in parallel.
-
-However, we still have to pull and push to our branch in order to avoid stupid conflicts. We would like to work truly in parallel.
-
-To do that, we can just create a separate branch with our name. When we make changes to this branch and run the command trio, this branch will also be created on github. As long as Matei stays away from our branch, then we only need to push our changes and when we are done, to merge them.
-
-If we want to check if there are changes on our branch, we can use the `fetch` command. If we want to check for changes on all branches, we would use 
-
-```bash
-git fetch --all
-```
-
-> 💡 `git fetch` only tells you what changed on the remote — it does **not** update the files in your working folder. `git pull` is actually shorthand for `git fetch` followed by a `git merge` of those changes into your current branch.
+> 💡 `git fetch` only tells you what changed on the remote — it does **not** update your working folder. `git pull` is shorthand for `git fetch` + `git merge`.
 
 ## Pull Requests
 
@@ -448,6 +393,4 @@ Instead, we should always merge into our local branch from main. This will intro
 
 This pull request can be approved by a supervisor, or the supervisor can leave comments on your work and ask for changes. When he approves the `pull request` then the changes are introduced to the main branch.
 
-❓ Why might a team prefer reviewing changes through a pull request instead of letting everyone merge straight into `main` whenever they want?
-
-🔧 **Short Practice (5 min):** Push your branch to GitHub, open a pull request comparing it to `main`, and ask a teammate to review and approve it before you merge.
+> ❓ Why might a team prefer reviewing changes through a pull request instead of letting everyone merge straight into `main` whenever they want?
