@@ -1,396 +1,257 @@
 # Git
-Git is a software project management and version control system. It is used to track changes in source code and collaborate with other developers.
+Git is a version control system that tracks changes in your code and lets you collaborate with other developers. It is one of the most essential tools in the industry.
 
-Git is one of the essential tools for software developers and is commonly used in the IT industry.
+## Repositories & Commits 
 
-In this course, we will explore how to use Git to collaborate and transfer our projects and code from one computer to another.
+<div style="float: right;">~20 minutes</div>
 
-## Repositories & Commits
+Git tracks a project as a folder where lines are added and removed over time. Each bundle of changes is called a `commit`. A project is simply a timeline of commits applied to an empty starting point.
 
-In essence, a project always starts from an empty project on your computer.
-
-In that folder, we can create files. And each file is actually a list of lines. This list of lines is unlimited, because files can be as large as we want.
-
-A project is the sum of its lines of code.
-
-Git is a system that tracks the changes made in a folder. It sees a project as a folder to which lines are added and removed. These additions and removals are all grouped under a bundle of changes called a `commit`.
-
-A commit is a group of changes made to the project. We can think of a project as a list of commits that are progressively applied to a starting point (an empty folder).
-
-To create such a project, we would like to run the command in the terminal:
+To start tracking a folder, run:
 
 ```bash
 git init
 ```
 
-This command will initialize a project (or as git calls it: a `repository`).
+This creates a `repository` — git's name for a tracked project.
 
-> 🤓 Under the hood, git will create an invisible folder called .git which will store all the project information and track all the changes.
+> 🤓 Under the hood, git creates an invisible `.git` folder that stores all the project history.
 
-Let's say we want to create a website. In a commit, we would like to add `index.html`.
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Simple HTML Site</title>
-</head>
-<body>
-    <h1>Welcome to My Simple HTML Site!</h1>
-    <p>This is a basic HTML site with minimal content.</p>
-</body>
-</html>
-```
-When we create this file, git will percieve it as:
-
-In file `index.html`, 10 lines were added at line 0.
-
-Every change we make by creating or editing files is an untracked change. These changes have not been "officialized" by git, so we can modify everything to our heart's content.
-
-However, when we are done with our work, we need to tell git to track the changes we have made.
-
-To do this, we will write in the terminal:
-
-```bash
-git add index.html
-```
-
-This wil track all the changes made in `index.html`.
-
-But if we had made a lot of changes in a lot of files and we want to track everything? Do we need to do that for each file?
-
-NO. We can just write:
+Let's say we create a website and add `index.html`. Once we're happy with it, we tell git to include it in a commit:
 
 ```bash
 git add .
+git commit -m "Add the base html page"
 ```
 
-This will track all changes.
+`git add .` stages all changed files. `git commit` saves them permanently to the timeline with a message describing what changed. If you only want to stage one specific file instead of everything, you can use `git add index.html`.
 
-However, even if we track the changes, they are not official. To officialize the changes, we need to make a `commit`.
+Now let's say we modify the paragraph text and also add a `style.css` file. Git sees this as:
 
-We will do this with the commit command:
+1. In `index.html`: 1 line removed, 1 line added.
+2. In `style.css`: 3 new lines added.
 
-```bash
-git commit -m "Add the base html page."
-```
-
-The thing in the quotes is the commit message. The commmit message must explain briefly what the commit contains.
-
-After the changes have been commited, they are forever added to the timeline of changes to the project.
-
-Now, each subsequent change we will make will be counted from the last commit.
-
-Let's say we want to change the text in our html, like so:
-
-```html
-<!-- index.html-->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Simple HTML Site</title>
-</head>
-<body>
-    <h1>Welcome to My Simple HTML Site!</h1>
---    <p>This is a basic HTML site with minimal content.</p>
-++    <p>Some stuff</p>
-</body>
-</html>
-```
-
-And also add a stylesheet:
-
-```css
-/* style.css */
-p {
-    font-size: 24px;
-}
-```
-
-Git will percieve this change as:
-
-1. In index.html:
-   1. Remove line 7.
-   2. Add 1 line at line 7.
-2. In style.css
-   1. Add the 3 lines at line 0.
-
-Then, when we would like to officialize this change, we would write again:
+We commit again:
 
 ```bash
 git add .
-git commit -m "modify html add css"
+git commit -m "Modify html and add css"
 ```
 
-> 💡 Commit messages should be written in present tense: Make changes, create files etc...
+At any point you can check what git currently sees with:
 
-> ❓ What do you think happens if you edit a file *after* committing it, but you forget to run `git add` again before your next commit? Will the change be saved?
+```bash
+git status   # shows staged and unstaged changes
+git log      # shows the full commit history
+```
 
-Now, our official state of the project is the one from the last commit. The last commit created by us is called the `HEAD` of our project — the latest version we have.
+> 💡 Commit messages should be in present tense and be short but descriptive. Commit often in small chunks — a focused commit is much easier to undo than a large messy one.
 
-The timeline of changes from the start of the project until the `HEAD` commit is called a `branch`. Each project starts from the `main` branch.
+> ❓ What happens if you edit a file after committing it, but forget to run `git add` before the next commit?
 
-> 🤓 The `master` branch was the default branch in git. In 2020, the default was changed to `main`. You may notice the diagrams still say master — both names refer to the same concept.
-
-Our project currently looks like this:
+The most recent commit is called the `HEAD` — the latest version of the project. The full timeline of commits is called a `branch`, and every project starts on the `main` branch.
 
 ![!img](img/step-1.png)
 
-Since git tracks every change as a commit, you can always go back to any previous state — last week, last month — by reversing commits one by one.
+> 🤓 The default branch used to be called `master`. In 2020 it was renamed to `main`. The diagrams still say master — both mean the same thing.
 
-> 💡 Commit often, in small logical chunks. A commit that bundles 10 unrelated changes is much harder to revert cleanly than 10 focused commits.
+## Branches and Parallel Timelines
 
-## Branches and Parallel Timelines.
+ <div style="float: right;">~20 minutes</div>
 
-Ok. So, up to now, git has been a cool system to manage the versions of your project. However we claimed that git lets you collaborate and share code with your colleagues.
+Branches let multiple people work on the same project without interfering with each other. Each branch is an independent timeline of commits that starts from an existing point.
 
-Git is an essential tool because it allows programmers to work in parallel. By "work in parallel" we mean making changes to the base state of the project at the same time. However, there can not be two people that modify the same branch at the same time.
-
-Let's say another programmer named Matei joins your project. He would like to take all your changes and make his own contributions, but doesn't want to interfere with your commits.
-
-What he can do is create another branch, using the comand:
+Let's say a teammate named Matei joins the project. He creates his own branch so his changes don't interfere with yours:
 
 ```bash
 git branch matei
-```
-
-Then, we will select our branch with the `checkout` command:
-
-```bash
 git checkout matei
 ```
 
-Now, all commands will apply to the `matei` branch. This creates a new timeline of changes whose base commit is the HEAD of the previously selected branch.
+> 💡 You can also create and switch in one command: `git checkout -b matei`
 
-> 🔧 **Short Practice (5 min):** Create a branch with your own name using `git branch`, then switch to it with `git checkout`. Make a small change to a file and commit it. Run `git checkout main` afterwards — notice that your change "disappears" from view, because it only exists on your branch.
-
-Now let's say that Matei would like to modify the font-size of the paragraphs on your website. He will write the following:
+Now any commits Matei makes only exist on the `matei` branch. He wants to change the font size of paragraphs:
 
 ```css
 /* style.css */
 p {
---    font-size: 24px;
-++    font-size: 32px;
+    font-size: 32px; /* changed from 24px */
 }
 ```
 
-Similary, Matei will add and commit these changes under a new commit.
-
 ```bash
 git add .
-git commit -m "change font size"
+git commit -m "Change font size"
 ```
 
-The project will now look like this:
+> 🔧 **Short Practice (5 min):** Create a branch with your own name, make a small change to a CSS property and commit it. Then run `git checkout main` — notice your change disappears because it only lives on your branch.
+
+The project now has two separate timelines:
 
 ![!img](img/step-2.png)
 
-Let's say that Matei leaves from the computer, but still wants to make more changes later.
+Meanwhile, you switch back to `main` and add your own changes — styling the `h1` element:
 
-Now we return to the computer and want to make our own changes, however, we want the following:
-
-- We don't want to have Matei's changes on our work.
-- We don't want to discard or modify what he changed either.
-
-So what we can do is to return to the `main` branch. To select a different branch from the current one, we simply run:
+```css
+/* style.css */
+h1 {
+    color: yellow;
+    font-weight: bold;
+}
+```
 
 ```bash
 git checkout main
+git add .
+git commit -m "Add heading style"
 ```
 
-What this does is it reverts the state of the project to the `HEAD` of the selected branch, in this case `main HEAD`.
-
-Now, we want to add styling for the h1 elements:
+Then Matei returns and adds his own `h1` styling on his branch:
 
 ```css
 /* style.css */
-p {
-    font-size: 24px;
+h1 {
+    color: blue;
+    font-style: italic;
 }
-++h1 {
-++    color: yellow;
-++    font-weight: bold;
-++}
 ```
 
-We are happy with our work, so we commit. As always:
-
-```bash
-git add .
-git commit -m "add heading"
-```
-
-So we leave our computer again, then Matei comes back and wants to add his own styling to the h1 element. So he will checkout his own branch, make the changes and commit his changes.
-
-Adds:
-```css
-/* style.css */
-p {
-    font-size: 24px;
-}
-++h1 {
-++    color: blue;
-++    font-style: italic;
-++}
-```
-
-```bash
-git add .
-git commit -m "add blue heading"
-```
-
-The current state of the git repository is the following:
+Both branches now have diverged with different changes to the same file:
 
 ![!img](img/step-3.png)
 
+## Merging Branches
 
-## Merging branches togheter.
+<div style="float: right;">~20 minutes</div>
 
-Now that we've all made our changes, we need to bring them all togheter.
-
-To bring all changes togheter, we need to select a branch *into* which we want to make our merge using checkout. Then we want to use the `merge` command and give as an argument the branch whose changes we want to merge into ours:
+To bring changes together, switch to the branch you want to merge *into* and run `merge`:
 
 ```bash
 git checkout main
 git merge matei
 ```
 
-However, we will have some issues, as both we and Matei have added 4 lines at line 4 in the `style.css` file.
+Since both branches modified the same lines in `style.css`, git doesn't know which version to keep. This is a `merge conflict`. Git marks the file so you can decide:
 
-When two people have modified a file in the same place and we want to merge our changes togheter, we will get what is called a `merge conflict`.
-
-> 💡 A merge conflict is not an error or a sign you did something wrong — it's git's way of saying "I don't know which of these two changes you want, you decide." It happens to every developer, all the time.
-
-When we have two lines which conflict, then they will be marked with certain symbols that promt you to choose one or both implementations to keep, or combine the changes togheter. It will look something like this:
 ```css
-/* style.css */
-p {
-    font-size: 24px;
-}
 <<<<<< HEAD
-h1 {
-    color: blue;
-    font-style: italic;
-}
-=======
 h1 {
     color: yellow;
     font-weight: bold;
 }
+=======
+h1 {
+    color: blue;
+    font-style: italic;
+}
 >>>>>> matei
 ```
 
-Here we can look at both the changes and pick the one we want to eventually keep. Normally, you just pull your coleague and look at these togheter, or if you know what to do, you can just apply the changes yourself. In our case, we want to keep the color blue and font-style italic.
+Everything between `<<<<<<` and `=======` is your version. Everything between `=======` and `>>>>>>` is Matei's. Edit the file to keep what you want — for example, combining both:
 
 ```css
-/* style.css */
-p {
-    font-size: 24px;
-}
 h1 {
-    color: yellow;
+    color: blue;
     font-style: italic;
+    font-weight: bold;
 }
 ```
 
-The merge will combine all changes and after all conflicts are resolved, we can just add everything and create a commit (it will be a special merge commit).
+Then commit the resolution:
 
 ```bash
 git add .
-git commit -m "merge commit"
+git commit -m "Merge matei branch"
 ```
 
-Now, the timeline of our project will look something like this:
+> 💡 A merge conflict is not an error — it's git asking you to make a decision. It happens to every developer, every day.
 
 ![!img](img/step-4.png)
 
-Now both of our changes and Matei's changes will be integrated into the main branch.
+> ❓ Why is it a bad idea to always pick "my version" when resolving a conflict without reading your teammate's change?
 
-> ❓ Why do you think it's a bad idea to just pick "my version" every time you hit a merge conflict, without reading your teammate's change first?
+## Remote Repositories 
 
-## Remote repositories
-
-Ok, ok, but in the previous example both Matei and us were still dependent on working on the same computer. This is impractical if we are not in the same room, and would like to work at the same time on the project.
-
-This is where Github comes in.
+<div style="float: right;">~10 minutes</div>
 
 > ❓ Many beginners think "Git" and "GitHub" are the same thing. What do you think the difference is?
 
-Git is the program that runs on your machine and tracks changes. GitHub is a platform for hosting those repositories remotely so others can access them. Alternatives exist — GitLab, Bitbucket — but GitHub is the most widely used.
+**Git** is the program running on your machine that tracks changes. **GitHub** is a platform for hosting git repositories remotely so your whole team can access them. Alternatives exist — GitLab, Bitbucket — but GitHub is the most widely used.
 
-First, we would need to go to github and to create an empty repository. Once a repository is created, we can copy the link given to us, in our case `https://github.com/aniteicristi/repo_test.git`.
+To share your project, first create an empty repository on GitHub and copy the URL it gives you:
 
 ![!github](img/github.png)
 
-With this link, we need to run a command on our machine to connect our local repository to the remote repository.
+Then connect your local repo to it and push:
 
 ```bash
 git remote add origin https://github.com/aniteicristi/repo_test.git
-```
-
-This will add the repository created on github as a remote to our current repository.
-
-Then we would run the following comand:
-```bash
 git branch -M main
-```
-
-What this command does is it renames our current branch to main, in order to match the main branch from github.
-
-Then we would do what is called a `push` using this command:
-
-```bash
 git push -u origin main
 ```
 
-The push command sends all local commits to the remote. The `-u` flag sets origin as the default, so from then on a plain `git push` is enough.
+- `git remote add origin` links your local repo to the GitHub remote.
+- `git branch -M main` renames your branch to `main` to match GitHub's default.
+- `git push -u origin main` uploads your commits. The `-u` flag makes `origin` the default, so future pushes only need `git push`.
 
-Now all of our work is backed up on GitHub and visible on the repository page.
+Your commits are now backed up on GitHub and visible to your team.
 
-## Clone, Push & Pull
+## Clone, Push & Pull 
 
-Now that our repo is on github, we can take that previous url and provide it to our friend Matei.
+<div style="float: right;">~10 minutes</div>
 
-Matei is now at his computer. He would like to copy the project to his device too. In order to copy an existing repository to your device, you need to use the clone command:
+A teammate who wants to work on the project downloads it with:
 
 ```bash
 git clone https://github.com/aniteicristi/repo_test.git
 ```
 
-If matei runs that in a terminal, he will notice a new folder created with the title `repo_test`. This folder will contain our whole project. Now matei can add his own modifications from his computer.
+This creates a local copy of the entire repo — including the full commit history. The cloned folder is already connected to the remote, so there's no need to run `git remote add origin` again.
 
-Let's say that Matei wants to add another change. After he is done, he will use the calssic trio:
+When they're done making changes, they push using the classic trio:
 
 ```bash
 git add .
-git commit -m "message"
+git commit -m "My changes"
 git push
 ```
 
-And the main branch of the remote repository will have his updates.
-
-Now, we would like to work on the project too, but we cannot modify our project before we get the latest changes from matei, or else we will have some problems.
-
-In order to get the latest changes from the remote, we will use the `pull` command.
+Before you push your own work, always pull first to get your teammates' latest changes:
 
 ```bash
 git pull
 ```
 
-This will update our local copy of the branch and we can begin to make changes. When we are done, the classic trio pushes everything back up.
+If you skip this and push on top of changes you haven't seen, git will reject the push. You'll have to pull anyway, resolve any conflicts, and push again. Pulling first avoids that loop.
 
-> 🔧 **Short Practice (5 min):** Pair up. One of you pushes a small change to the shared repo. The other clones the repo (or pulls, if already cloned), confirms the change is there, then makes their own change and pushes it back.
+> 🔧 **Short Practice (5 min):** Pair up. One of you pushes a small change. The other clones (or pulls) the repo, confirms the change is there, makes their own change and pushes it back.
 
-To work truly in parallel, each developer keeps their own branch. When changes are pushed, the branch is also created on GitHub. Use `git fetch --all` to check for updates on all branches without modifying your local files.
+For true parallel work, each person works on their own named branch. Run `git fetch --all` to check what has changed on the remote without modifying your local files. When you push a branch for the first time, you need to tell git where to send it:
 
-> 💡 `git fetch` only tells you what changed on the remote — it does **not** update your working folder. `git pull` is shorthand for `git fetch` + `git merge`.
+```bash
+git push -u origin your-branch-name
+```
 
-## Pull Requests
+After that, a plain `git push` is enough for that branch.
 
-Pull requests are a form of managed merging. normally, we would like to never modify the main branch locally. (in other words: we should never merge from main in our console).
+> 💡 `git fetch` only signals that updates exist — it does not apply them. `git pull` = `git fetch` + `git merge`.
 
-Instead, we should always merge into our local branch from main. This will introduce all changes merged into main before to our branch. With this merge done, we simply commit and push them to the origin branch, and from github we create a `pull request` which basically says: "ok, I want to merge my changes into the main branch."
+## Pull Requests 
 
-This pull request can be approved by a supervisor, or the supervisor can leave comments on your work and ask for changes. When he approves the `pull request` then the changes are introduced to the main branch.
+<div style="float: right;">~5 minutes</div>
 
-> ❓ Why might a team prefer reviewing changes through a pull request instead of letting everyone merge straight into `main` whenever they want?
+A pull request is a managed way of merging — instead of merging directly in the terminal, you ask a supervisor to review your changes first.
+
+The workflow looks like this:
+
+1. On your branch, merge `main` into it to pick up any changes your teammates have already merged.
+2. Resolve any conflicts and push your branch to GitHub.
+3. On GitHub, open a **pull request** comparing your branch to `main`.
+
+A supervisor can now read your code line by line, leave inline comments, and request specific changes. You can then push follow-up commits directly to the same branch — the pull request updates automatically. When the supervisor is satisfied, they approve and merge.
+
+This creates a full audit trail: every change to `main` was reviewed, discussed, and intentionally approved before landing.
+
+> 💡 Remember: never merge directly into `main` from the terminal. Always go through a pull request so someone can review the code first.
+
+> ❓ Why might a team prefer pull requests over letting everyone merge into `main` directly?
