@@ -1,6 +1,8 @@
 # Vanilla JavaScript Tutorial
 
-## Primitives Types
+## Types of data
+
+### Primitives Types
 
 JavaScript defines six primitive data types:
 
@@ -66,6 +68,23 @@ city = "Los Angeles"; // Allowed
 const country = "USA";
 country = "Canada"; // Error: Assignment to constant variable
 ```
+
+### Objects
+
+Objects are collections of properties and methods.
+
+```javascript
+const person = {
+  name: "Alice",
+  age: 25,
+  greet() {
+    return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+  },
+};
+
+console.log(person.greet()); // Output: Hello, my name is Alice and I am 25 years old.
+```
+
 
 ## Conditions & Loops
 
@@ -159,43 +178,6 @@ console.log(greet("Bob")); // Output: Hello, Bob!
 4. **Calling the Function**
    `greet("Bob")` runs the function with `"Bob"` and `console.log` prints the result.
 
-## Classes and Objects
-
-### Classes
-
-Classes are templates for creating objects.
-
-```javascript
-class Person {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-  }
-
-  greet() {
-    return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
-  }
-}
-
-const john = new Person("John", 30);
-console.log(john.greet()); // Output: Hello, my name is John and I am 30 years old.
-```
-
-### Objects
-
-Objects are collections of properties and methods.
-
-```javascript
-const person = {
-  name: "Alice",
-  age: 25,
-  greet() {
-    return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
-  },
-};
-
-console.log(person.greet()); // Output: Hello, my name is Alice and I am 25 years old.
-```
 
 ## Try Catch
 
