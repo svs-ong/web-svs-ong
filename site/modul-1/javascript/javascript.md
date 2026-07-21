@@ -333,23 +333,45 @@ console.log(sorted === numbers); // true — same array, not a copy
 
 ## Try Catch
 
-In JavaScript, error handling is an important part of writing robust code. The `try-catch` statement allows you to handle exceptions gracefully. This tutorial will guide you through using `try-catch` to manage errors in your JavaScript code.
+The `try-catch` statement appears in many programming languages, in more or less the same form so it shouldn't be unfamiliar:
+
+#### In Python you would do it like this:
+
+```python
+try:
+  # code here to try
+except TypeError:
+  # what happpens when it gives error ( Here its TypeError ).
+  # This is also called a "fallback" statement
+```
+This statement allows for an elegant method of handling errors in a way that won't crash your production builds instantly when an one eventually pops up.
+
+#### In C++ you would do this:
+```cpp
+try {
+  // Code that may throw an exception
+  throw 505;
+}
+catch (int errorCode) {
+  cout << "Error occurred: " << errorCode;
+} of code to handle errors
+```
+
+
+In JavaScript, error handling is an important part of writing robust code, as the language is quite unpredictable. 
+This tutorial will guide you through using `try-catch` to manage errors in your JavaScript code.
 
 **1. Basic Try-Catch Structure** The `try` block lets you test a block of code for errors. The `catch` block lets you handle the error.
 
 ```javascript
 try {
+
   // Code to try
-  console.log("Start of try runs"); // This will run
 
-  // Error occurs here
-  lalala; // This will throw ReferenceError: lalala is not defined
+}
+catch (err) { // err needs to be here
 
-  console.log("End of try runs"); // This will not run
-} catch (err) {
-  console.log("Error has occurred!"); // This will run
-  console.log(err.name); // Output: ReferenceError
-  console.log(err.message); // Output: lalala is not defined
+  // Code to execute if error occurs
 }
 ```
 
@@ -357,16 +379,18 @@ try {
 
 ```javascript
 try {
-  console.log("Try block executed.");
-  throw new Error("Something went wrong!");
-} catch (err) {
-  console.log("Caught an error:", err.message);
-} finally {
+  // ... 
+} 
+catch (err) {
+  //... 
+} 
+finally {
   console.log("Finally block executed.");
 }
 ```
 
 **3. Throwing Custom Errors** You can throw your own exceptions using the `throw` statement. This is useful when you want to create custom error responses.
+We use the `new` statement to instantiate a new `Error` object wher you can write your own!
 
 ```javascript
 try {
@@ -377,6 +401,124 @@ try {
 } catch (err) {
   console.log(err.message); // Output: User has no email!
 }
+```
+## Promises
+
+A **Promise** in JavaScript is a way to handle actions that don’t happen instantly — like waiting for a server to respond, loading a file, or setting a timer.
+
+Think of it like this:
+
+> “I promise to give you an answer later — either I succeed, or I fail.”
+
+So a Promise can:
+
+- **Resolve** (success) and return a result
+- **Reject** (failure) and return an error
+
+**Creating a Promise**
+Here’s a simple example of creating and using a promise:
+
+```javascript
+  let promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    const success = true; // You can change this to false to test rejection
+
+    if (success) {
+      resolve("Promise resolved successfully!");
+    } else {
+      reject("Promise was rejected.");
+    }
+  }, 1000); // Waits 1 second (1000ms = 1s)
+  });
+
+promise
+  .then((result) => console.log(result)) // Runs if the promise resolves
+  .catch((error) => console.error(error)); // Runs if the promise is rejected
+```
+
+### Async/Await Mechanism
+
+`async` and `await` are built on top of promises and make working with them more intuitive and easier to manage.
+
+- **`async` function** : Declares a function as asynchronous and enables the use of `await` within it.
+
+- **`await`** : Pauses the function execution until the Promise is resolved or rejected, and then returns the resolved value or throws the rejected error.
+
+Think of it as stopping at a coffee shop on your way to work ( Suppose you can't live without it ):
+
+  - You are waiting in line and thus don't progress on your way to work **(async)**
+
+  - You need to wait until the barista makes your coffee **(await)**
+
+  - If the coffee is satisfactory, you continue on with your day and drink it, if not you go back home since it ruined your entire mood. **(rejected or resolved)**
+
+#### Async must always be present in a function that calls promises with await. These two statements have a **interdependence** relation.
+A function can be `async` without an `await` in it, but if there's an `await` statement in a function, it MUST be `async`
+
+  **Example of Async/Await**
+```javascript
+async function fetchUserData(userId) {
+  try {
+    const response = await fetch(`https://api.example.com/users/${userId}`);
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+  }
+}
+
+fetchUserData(1);
+```
+
+- The function `fetchUserData` is marked with `async`, which means it works with promises.
+- The keyword `await` is used to wait for two things:
+  - The data to be fetched from the internet using `fetch(...)`
+  - The result to be turned into usable JSON using `.json()`
+
+### Combining Async/Await with .then() and .catch()
+
+```javascript
+async function processUserAndPosts(userId) {
+  try {
+    const user = await fetch(`https://api.example.com/users/${userId}`).then(
+      (response) => response.json()
+    );
+    const posts = await fetch(
+      `https://api.example.com/users/${userId}/posts`
+    ).then((response) => response.json());
+    console.log("User:", user, "Posts:", posts);
+  } catch (error) {
+    console.error("Error processing user and posts:", error);
+  }
+}
+
+processUserAndPosts(1);
+```
+
+In this example, `then()` is used for converting the fetch response to JSON, separating data transformation from error handling, which is managed by `await` and `try/catch`.
+
+**Handling Errors in Async/Await** Handling errors in `async/await` is straightforward with `try/catch`, as it closely resembles synchronous error handling, which makes it a preferred method in modern JavaScript.
+
+### Detailed Error Handling
+
+```javascript
+async function secureFetch(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch:", error);
+    return null; // Return a neutral value or further handle the error
+  }
+}
+
+secureFetch("https://api.example.com/data")
+  .then((data) => console.log(data))
+  .catch((error) => console.error("Caught in then:", error));
 ```
 
 
@@ -490,114 +632,6 @@ window.onload = function () {
 </html>
 ```
 
-## Promises
-
-A **Promise** in JavaScript is a way to handle actions that don’t happen instantly — like waiting for a server to respond, loading a file, or setting a timer.
-
-Think of it like this:
-
-> “I promise to give you an answer later — either I succeed, or I fail.”
-
-So a Promise can:
-
-- **Resolve** (success) and return a result
-- **Reject** (failure) and return an error
-
-**Creating a Promise**
-Here’s a simple example of creating and using a promise:
-
-```javascript
-let promise = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    const success = true; // You can change this to false to test rejection
-
-    if (success) {
-      resolve("Promise resolved successfully!");
-    } else {
-      reject("Promise was rejected.");
-    }
-  }, 1000); // Waits 1 second
-});
-
-// Using the promise
-promise
-  .then((result) => console.log(result)) // Runs if the promise resolves
-  .catch((error) => console.error(error)); // Runs if the promise is rejected
-```
-
-### Async/Await Mechanism
-
-`async` and `await` are built on top of promises and make working with them more intuitive and easier to manage.
-
-- **`async` function** : Declares a function as asynchronous and enables the use of `await` within it.
-
-- **`await`** : Pauses the function execution until the Promise is resolved or rejected, and then returns the resolved value or throws the rejected error.
-  **Example of Async/Await**
-
-```javascript
-async function fetchUserData(userId) {
-  try {
-    const response = await fetch(`https://api.example.com/users/${userId}`);
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.error("Error fetching user data:", error);
-  }
-}
-
-fetchUserData(1);
-```
-
-- The function `fetchUserData` is marked with `async`, which means it works with promises.
-- The keyword `await` is used to wait for two things:
-  - The data to be fetched from the internet using `fetch(...)`
-  - The result to be turned into usable JSON using `.json()`
-
-### Combining Async/Await with .then() and .catch()
-
-```javascript
-async function processUserAndPosts(userId) {
-  try {
-    const user = await fetch(`https://api.example.com/users/${userId}`).then(
-      (response) => response.json(),
-    );
-    const posts = await fetch(
-      `https://api.example.com/users/${userId}/posts`,
-    ).then((response) => response.json());
-    console.log("User:", user, "Posts:", posts);
-  } catch (error) {
-    console.error("Error processing user and posts:", error);
-  }
-}
-
-processUserAndPosts(1);
-```
-
-In this example, `then()` is used for converting the fetch response to JSON, separating data transformation from error handling, which is managed by `await` and `try/catch`.
-
-**Handling Errors in Async/Await** Handling errors in `async/await` is straightforward with `try/catch`, as it closely resembles synchronous error handling, which makes it a preferred method in modern JavaScript.
-
-### Detailed Error Handling
-
-```javascript
-async function secureFetch(url) {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Failed to fetch:", error);
-    return null; // Return a neutral value or further handle the error
-  }
-}
-
-secureFetch("https://api.example.com/data")
-  .then((data) => console.log(data))
-  .catch((error) => console.error("Caught in then:", error));
-```
 
 ## `getElementFromFile`
 
