@@ -151,7 +151,9 @@ console.log(typeof a, rest);
 ```
  
 <details>
+
 <summary>Show answer</summary>
+
 `"number" [ 30, 40 ]` — `a` is destructured as the first array element (a number), and the rest pattern (`...rest`) collects everything after `a` and `b` into a new array.
  
 </details>
@@ -299,7 +301,10 @@ try {
 }
 ```
 
-## DOM Manipulation
+
+## Manipulation&Events
+
+### DOM Manipulation
  
 The DOM (Document Object Model) is the browser's live version of your HTML. **DOM manipulation** means using JavaScript to select and change it directly, no page reload needed.
  
@@ -342,7 +347,7 @@ newItem.remove(); // takes it back out
  
 **The pattern to remember:** select → change (or create) → attach.
  
-## Events & onload
+### Events & onload
  
 **Events** let your page react to the user — clicks, hovers, typing, and more. `addEventListener` says: "when this happens, run this function."
  
@@ -379,9 +384,14 @@ window.onload = function () {
  
 **In short:** DOM manipulation changes the page, events make it respond to the user.
 
-🔧 Exercises
- 
-Use this HTML page as your starting point (link a `script.js` file at the bottom, just like earlier in this chapter):
+>🔧 Exercises
+>
+>Use this HTML page as your starting point (link a `script.js` file at the bottom, just like earlier in this chapter):
+>1. Select the `#box` div using `querySelector` and change its background color to `"orange"`.
+>2. Create a new `<p>` element containing the text `"Hello from JavaScript!"` and append it to the end of `document.body`.
+>3. Add a `click` event listener to a button that changes its own text to `"Clicked!"` when pressed.
+>4. Add both `mouseover` and `mouseout` listeners to a div so its border color changes on hover and reverts when the mouse leaves.
+>5. Wrap your DOM code in `window.onload` and explain, in your own words, why it's needed.
  
 ```html
 <!DOCTYPE html>
@@ -401,14 +411,6 @@ Use this HTML page as your starting point (link a `script.js` file at the bottom
   </body>
 </html>
 ```
- 
-1. Select the `#box` div using `querySelector` and change its background color to `"orange"`.
-2. Create a new `<p>` element containing the text `"Hello from JavaScript!"` and append it to the end of `document.body`.
-3. Add a `click` event listener to a button that changes its own text to `"Clicked!"` when pressed.
-4. Add both `mouseover` and `mouseout` listeners to a div so its border color changes on hover and reverts when the mouse leaves.
-5. Wrap your DOM code in `window.onload` and explain, in your own words, why it's needed.
-
-
 
 ## Promises
 
