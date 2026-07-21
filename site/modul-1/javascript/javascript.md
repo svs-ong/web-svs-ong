@@ -159,8 +159,9 @@ console.log(typeof a, rest);
 </details>
 
 
+## Functions & Loops
 
-## Conditions & Loops
+<div style="float: right;">~20 minutes</div>
 
 ### Conditions
 
@@ -193,9 +194,53 @@ switch (expression) {
 }
 ```
 
+### Functions
+
+A function is just a value, so it can be stored in a variable like any other:
+
+```javascript
+const nr = 4;
+const greet = (name) => {
+  return `Hello, ${name}!`;
+};
+
+console.log(greet("Bob")); // Output: Hello, Bob!
+```
+
+`greet` is a variable holding a function. Because it's a value, we can check its type just like we would for a string or a number:
+
+```javascript
+console.log(typeof greet); // Output: "function"
+```
+
+### Unnamed (anonymous) functions
+
+Not every function needs a name. An anonymous function is one with no name of its own — most often you'll see it created on the spot and handed straight to another function, instead of being stored in a variable first.
+
+```javascript
+const repeat = (action, time) => {
+  for (let i = 1; i <= time; i++) action();
+};
+```
+
+`repeat` takes a function called `action` and just calls it `time` times — it doesn't care what that function does. Now call `repeat` with a function created right there, with no name of its own:
+
+```javascript
+repeat(() => {
+  console.log("Hello1!");
+}, 3);
+
+repeat(() => console.log("Hello2!"), 2);
+```
+
+`() => console.log("Hello!")` is never named or stored in a variable — it's built right inside the call to `repeat` and only exists to be run those 3 times. Same idea with an arrow function passed to `forEach`:
+
+> 💡 `greet` from before is technically anonymous as well — `(name) => { ... }` has no name of its own, it's just been assigned to a variable. We refer to it as "`greet`" because of the variable, not because the function itself is named.
+
 ### Loops
 
 Loops are used to execute a block of code repeatedly.
+
 `for` Loop
 
 ```javascript
@@ -214,44 +259,77 @@ while (i < 5) {
 }
 ```
 
-## Functions
+### Array Methods — map, filter, forEach & sort
 
-Functions are blocks of code designed to perform a particular task.
+`map`, `filter`, `forEach` and `sort` all loop over an array for you, but they don't all give you the same thing back.
 
-### Function Declaration
+**`map(fn)`** runs `fn` on every item and returns a **new array** of the same length, built from the results. The original array is left untouched.
 
 ```javascript
-function greet(name) {
-  return `Hello, ${name}!`;
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map((n) => n * 2);
+
+console.log(doubled); // [2, 4, 6, 8, 10]
+console.log(numbers); // [1, 2, 3, 4, 5] — untouched
+```
+
+**Same result with a normal `for` loop:**
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+const doubled = [];
+
+for (let i = 0; i < numbers.length; i++) {
+  doubled.push(numbers[i] * 2);
 }
 
-console.log(greet("Alice")); // Output: Hello, Alice!
-console.log(greet(123)); // Output: Hello, 123!
+console.log(doubled); // [2, 4, 6, 8, 10]
 ```
 
-### Function Expression
+Both produce the same `doubled` array. The `for` loop needs an empty array set up beforehand and a manual `push` on every iteration; `map` does both automatically and just returns the finished array.
+
+**`forEach(fn)`** runs `fn` on every item too, but it returns `undefined` — there's no new array. It exists purely to run a side effect for each item (`console.log`, updating the DOM, pushing into some other variable), not to build data.
 
 ```javascript
-const greet = (name) => {
-  return `Hello, ${name}!`;
-};
+const numbers = [1, 2, 3, 4, 5];
+const result = numbers.forEach((n) => console.log(n * 2)); // logs 2 4 6 8 10
 
-console.log(greet("Bob")); // Output: Hello, Bob!
+console.log(result); // undefined — forEach gives you nothing back
 ```
 
-1. **Function Definition**
-   `greet` is a function that takes a name as input and returns a greeting message.
+**`filter(fn)`** runs a true/false test on every item and returns a **new array** with only the items that passed. Just like `map`, the original is untouched, but the result can be shorter.
 
-2. **Arrow Function (=>)**
-   This is a shorter way to write a function in JavaScript.
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+const evens = numbers.filter((n) => n % 2 === 0);
 
-3. **Template Literal (${name})**
-   We use backticks \` to insert the value of `name` into the message:
-   → `"Hello, Bob!"` if `name = "Bob"`
+console.log(evens); // [2, 4]
+console.log(numbers); // [1, 2, 3, 4, 5] — untouched
+```
 
-4. **Calling the Function**
-   `greet("Bob")` runs the function with `"Bob"` and `console.log` prints the result.
+**`sort(fn)`** is the odd one out: it **mutates the original array** in place and returns that same array — not a copy.
 
+```javascript
+const numbers = [5, 3, 1, 4, 2];
+const sorted = numbers.sort((a, b) => a - b);
+
+console.log(sorted); // [1, 2, 3, 4, 5]
+console.log(numbers); // [1, 2, 3, 4, 5] — the original got rearranged too!
+console.log(sorted === numbers); // true — same array, not a copy
+```
+
+**At a glance:**
+
+| Method    | Returns        | New array? | Mutates original? | Use it to...                                        |
+| --------- | -------------- | ---------- | ----------------- | --------------------------------------------------- |
+| `map`     | new array      | ✅ yes     | ❌ no             | transform every item into something else            |
+| `forEach` | `undefined`    | ❌ no      | ❌ no             | run a side effect per item — no output array needed |
+| `filter`  | new array      | ✅ yes     | ❌ no             | keep only the items matching a condition            |
+| `sort`    | the same array | ❌ no      | ✅ yes            | reorder the items in place                          |
+
+> 🔧 Given `const prices = [12, 45, 7, 89, 23];`, write one line using `filter` to keep only prices above 20, then one line using `map` to add 19% VAT on top of those.
+
+> 💡 Common mistake: reaching for `map` when you only need to log or update the DOM for each item — you're building and throwing away an array for nothing; use `forEach` instead. Rule of thumb: **need a new array back → `map`/`filter`. Just doing something with each item → `forEach`.**
 
 ## Try Catch
 
@@ -481,10 +559,10 @@ fetchUserData(1);
 async function processUserAndPosts(userId) {
   try {
     const user = await fetch(`https://api.example.com/users/${userId}`).then(
-      (response) => response.json()
+      (response) => response.json(),
     );
     const posts = await fetch(
-      `https://api.example.com/users/${userId}/posts`
+      `https://api.example.com/users/${userId}/posts`,
     ).then((response) => response.json());
     console.log("User:", user, "Posts:", posts);
   } catch (error) {
