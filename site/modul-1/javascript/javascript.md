@@ -53,6 +53,28 @@ let message = `Hello, my name is ${name} and I am ${age} years old.`;
 
 These primitive types form the foundation of data manipulation in JavaScript, each serving specific roles in programming tasks.
 
+### The `typeof` Operator
+
+Sometimes you need to check what type of data a variable holds — that's what the `typeof` operator is for. It returns a string naming the type of its operand, which is especially useful for debugging or validating values before using them.
+
+```javascript
+
+console.log(typeof "Hello"); // Output: "string"
+
+console.log(typeof 42); // Output: "number"
+
+console.log(typeof true); // Output: "boolean"
+
+console.log(typeof undefined); // Output: "undefined"
+
+console.log(typeof Symbol("id")); // Output: "symbol"
+
+console.log(typeof { name: "Alice" }); // Output: "object"
+
+```
+
+> **Watch out:** `typeof null` returns `"object"`, not `"null"`. This is a well-known quirk (and bug) that has existed in JavaScript since its earliest versions.
+
 `let` and `const` (Differences)
 
 - **`let`** : Used to declare variables that can be reassigned.
@@ -83,6 +105,28 @@ const person = {
 };
 
 console.log(person.greet()); // Output: Hello, my name is Alice and I am 25 years old.
+```
+#### Restructuring and Destructuring
+ 
+**Destructuring** unpacks values from arrays or objects into variables. **Spread (`...`)** does the opposite — it expands an array or object out.
+ 
+**Object destructuring**
+```javascript
+const user = { name: "Sarah", age: 28 };
+const { name: userName, city = "Boston" } = user;
+ 
+console.log(userName); // Output: Sarah
+console.log(city); // Output: Boston
+```
+ 
+**Spread** copies/combines arrays and objects:
+ 
+```javascript
+const nums = [1, 2, 3];
+const moreNums = [...nums, 4, 5]; // Output: [1, 2, 3, 4, 5]
+ 
+const settings = { theme: "dark", ...{ fontSize: 16 } };
+// Output: { theme: "dark", fontSize: 16 }
 ```
 
 ## Functions & Loops
