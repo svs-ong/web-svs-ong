@@ -1,6 +1,8 @@
 # Vanilla JavaScript Tutorial
 
-## Primitives Types
+## Types of data
+
+### Primitives Types
 
 JavaScript defines six primitive data types:
 
@@ -51,6 +53,28 @@ let message = `Hello, my name is ${name} and I am ${age} years old.`;
 
 These primitive types form the foundation of data manipulation in JavaScript, each serving specific roles in programming tasks.
 
+### The `typeof` Operator
+
+Sometimes you need to check what type of data a variable holds — that's what the `typeof` operator is for. It returns a string naming the type of its operand, which is especially useful for debugging or validating values before using them.
+
+```javascript
+
+console.log(typeof "Hello"); // Output: "string"
+
+console.log(typeof 42); // Output: "number"
+
+console.log(typeof true); // Output: "boolean"
+
+console.log(typeof undefined); // Output: "undefined"
+
+console.log(typeof Symbol("id")); // Output: "symbol"
+
+console.log(typeof { name: "Alice" }); // Output: "object"
+
+```
+
+> **Watch out:** `typeof null` returns `"object"`, not `"null"`. This is a well-known quirk (and bug) that has existed in JavaScript since its earliest versions.
+
 `let` and `const` (Differences)
 
 - **`let`** : Used to declare variables that can be reassigned.
@@ -67,7 +91,77 @@ const country = "USA";
 country = "Canada"; // Error: Assignment to constant variable
 ```
 
-## Conditions & Loops
+### Objects
+
+Objects are collections of properties and methods.
+
+```javascript
+const person = {
+  name: "Alice",
+  age: 25,
+  greet() {
+    return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+  },
+};
+
+console.log(person.greet()); // Output: Hello, my name is Alice and I am 25 years old.
+```
+#### Restructuring and Destructuring
+ 
+**Destructuring** unpacks values from arrays or objects into variables. **Spread (`...`)** does the opposite — it expands an array or object out.
+ 
+**Object destructuring**
+```javascript
+const user = { name: "Sarah", age: 28 };
+const { name: userName, city = "Boston" } = user;
+ 
+console.log(userName); // Output: Sarah
+console.log(city); // Output: Boston
+```
+ 
+**Spread** copies/combines arrays and objects:
+ 
+```javascript
+const nums = [1, 2, 3];
+const moreNums = [...nums, 4, 5]; // Output: [1, 2, 3, 4, 5]
+ 
+const settings = { theme: "dark", ...{ fontSize: 16 } };
+// Output: { theme: "dark", fontSize: 16 }
+```
+
+**Rest (`...`)** collects remaining values:
+ 
+```javascript
+const [top, ...rest] = [95, 88, 76];
+console.log(rest); // Output: [88, 76]
+ 
+function sumAll(...nums) {
+  return nums.reduce((total, n) => total + n, 0);
+}
+console.log(sumAll(1, 2, 3)); // Output: 6
+```
+
+### Quick Question
+ 
+> ❓What will the following code log to the console, and why?
+ 
+```javascript
+const [a, b, ...rest] = [10, 20, 30, 40];
+console.log(typeof a, rest);
+```
+ 
+<details>
+
+<summary>Show answer</summary>
+
+`"number" [ 30, 40 ]` — `a` is destructured as the first array element (a number), and the rest pattern (`...rest`) collects everything after `a` and `b` into a new array.
+ 
+</details>
+
+
+## Functions & Loops
+
+<div style="float: right;">~20 minutes</div>
 
 ### Conditions
 
@@ -100,9 +194,53 @@ switch (expression) {
 }
 ```
 
+### Functions
+
+A function is just a value, so it can be stored in a variable like any other:
+
+```javascript
+const nr = 4;
+const greet = (name) => {
+  return `Hello, ${name}!`;
+};
+
+console.log(greet("Bob")); // Output: Hello, Bob!
+```
+
+`greet` is a variable holding a function. Because it's a value, we can check its type just like we would for a string or a number:
+
+```javascript
+console.log(typeof greet); // Output: "function"
+```
+
+### Unnamed (anonymous) functions
+
+Not every function needs a name. An anonymous function is one with no name of its own — most often you'll see it created on the spot and handed straight to another function, instead of being stored in a variable first.
+
+```javascript
+const repeat = (action, time) => {
+  for (let i = 1; i <= time; i++) action();
+};
+```
+
+`repeat` takes a function called `action` and just calls it `time` times — it doesn't care what that function does. Now call `repeat` with a function created right there, with no name of its own:
+
+```javascript
+repeat(() => {
+  console.log("Hello1!");
+}, 3);
+
+repeat(() => console.log("Hello2!"), 2);
+```
+
+`() => console.log("Hello!")` is never named or stored in a variable — it's built right inside the call to `repeat` and only exists to be run those 3 times. Same idea with an arrow function passed to `forEach`:
+
+> 💡 `greet` from before is technically anonymous as well — `(name) => { ... }` has no name of its own, it's just been assigned to a variable. We refer to it as "`greet`" because of the variable, not because the function itself is named.
+
 ### Loops
 
 Loops are used to execute a block of code repeatedly.
+
 `for` Loop
 
 ```javascript
@@ -121,101 +259,119 @@ while (i < 5) {
 }
 ```
 
-## Functions
+### Array Methods — map, filter, forEach & sort
 
-Functions are blocks of code designed to perform a particular task.
+`map`, `filter`, `forEach` and `sort` all loop over an array for you, but they don't all give you the same thing back.
 
-### Function Declaration
+**`map(fn)`** runs `fn` on every item and returns a **new array** of the same length, built from the results. The original array is left untouched.
 
 ```javascript
-function greet(name) {
-  return `Hello, ${name}!`;
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map((n) => n * 2);
+
+console.log(doubled); // [2, 4, 6, 8, 10]
+console.log(numbers); // [1, 2, 3, 4, 5] — untouched
+```
+
+**Same result with a normal `for` loop:**
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+const doubled = [];
+
+for (let i = 0; i < numbers.length; i++) {
+  doubled.push(numbers[i] * 2);
 }
 
-console.log(greet("Alice")); // Output: Hello, Alice!
-console.log(greet(123)); // Output: Hello, 123!
+console.log(doubled); // [2, 4, 6, 8, 10]
 ```
 
-### Function Expression
+Both produce the same `doubled` array. The `for` loop needs an empty array set up beforehand and a manual `push` on every iteration; `map` does both automatically and just returns the finished array.
+
+**`forEach(fn)`** runs `fn` on every item too, but it returns `undefined` — there's no new array. It exists purely to run a side effect for each item (`console.log`, updating the DOM, pushing into some other variable), not to build data.
 
 ```javascript
-const greet = (name) => {
-  return `Hello, ${name}!`;
-};
+const numbers = [1, 2, 3, 4, 5];
+const result = numbers.forEach((n) => console.log(n * 2)); // logs 2 4 6 8 10
 
-console.log(greet("Bob")); // Output: Hello, Bob!
+console.log(result); // undefined — forEach gives you nothing back
 ```
 
-1. **Function Definition**
-   `greet` is a function that takes a name as input and returns a greeting message.
-
-2. **Arrow Function (=>)**
-   This is a shorter way to write a function in JavaScript.
-
-3. **Template Literal (${name})**
-   We use backticks \` to insert the value of `name` into the message:
-   → `"Hello, Bob!"` if `name = "Bob"`
-
-4. **Calling the Function**
-   `greet("Bob")` runs the function with `"Bob"` and `console.log` prints the result.
-
-## Classes and Objects
-
-### Classes
-
-Classes are templates for creating objects.
+**`filter(fn)`** runs a true/false test on every item and returns a **new array** with only the items that passed. Just like `map`, the original is untouched, but the result can be shorter.
 
 ```javascript
-class Person {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-  }
+const numbers = [1, 2, 3, 4, 5];
+const evens = numbers.filter((n) => n % 2 === 0);
 
-  greet() {
-    return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
-  }
-}
-
-const john = new Person("John", 30);
-console.log(john.greet()); // Output: Hello, my name is John and I am 30 years old.
+console.log(evens); // [2, 4]
+console.log(numbers); // [1, 2, 3, 4, 5] — untouched
 ```
 
-### Objects
-
-Objects are collections of properties and methods.
+**`sort(fn)`** is the odd one out: it **mutates the original array** in place and returns that same array — not a copy.
 
 ```javascript
-const person = {
-  name: "Alice",
-  age: 25,
-  greet() {
-    return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
-  },
-};
+const numbers = [5, 3, 1, 4, 2];
+const sorted = numbers.sort((a, b) => a - b);
 
-console.log(person.greet()); // Output: Hello, my name is Alice and I am 25 years old.
+console.log(sorted); // [1, 2, 3, 4, 5]
+console.log(numbers); // [1, 2, 3, 4, 5] — the original got rearranged too!
+console.log(sorted === numbers); // true — same array, not a copy
 ```
+
+**At a glance:**
+
+| Method    | Returns        | New array? | Mutates original? | Use it to...                                        |
+| --------- | -------------- | ---------- | ----------------- | --------------------------------------------------- |
+| `map`     | new array      | ✅ yes     | ❌ no             | transform every item into something else            |
+| `forEach` | `undefined`    | ❌ no      | ❌ no             | run a side effect per item — no output array needed |
+| `filter`  | new array      | ✅ yes     | ❌ no             | keep only the items matching a condition            |
+| `sort`    | the same array | ❌ no      | ✅ yes            | reorder the items in place                          |
+
+> 🔧 Given `const prices = [12, 45, 7, 89, 23];`, write one line using `filter` to keep only prices above 20, then one line using `map` to add 19% VAT on top of those.
+
+> 💡 Common mistake: reaching for `map` when you only need to log or update the DOM for each item — you're building and throwing away an array for nothing; use `forEach` instead. Rule of thumb: **need a new array back → `map`/`filter`. Just doing something with each item → `forEach`.**
 
 ## Try Catch
 
-In JavaScript, error handling is an important part of writing robust code. The `try-catch` statement allows you to handle exceptions gracefully. This tutorial will guide you through using `try-catch` to manage errors in your JavaScript code.
+The `try-catch` statement appears in many programming languages, in more or less the same form so it shouldn't be unfamiliar:
+
+#### In Python you would do it like this:
+
+```python
+try:
+  # code here to try
+except TypeError:
+  # what happpens when it gives error ( Here its TypeError ).
+  # This is also called a "fallback" statement
+```
+This statement allows for an elegant method of handling errors in a way that won't crash your production builds instantly when an one eventually pops up.
+
+#### In C++ you would do this:
+```cpp
+try {
+  // Code that may throw an exception
+  throw 505;
+}
+catch (int errorCode) {
+  cout << "Error occurred: " << errorCode;
+} of code to handle errors
+```
+
+
+In JavaScript, error handling is an important part of writing robust code, as the language is quite unpredictable. 
+This tutorial will guide you through using `try-catch` to manage errors in your JavaScript code.
 
 **1. Basic Try-Catch Structure** The `try` block lets you test a block of code for errors. The `catch` block lets you handle the error.
 
 ```javascript
 try {
+
   // Code to try
-  console.log("Start of try runs"); // This will run
 
-  // Error occurs here
-  lalala; // This will throw ReferenceError: lalala is not defined
+}
+catch (err) { // err needs to be here
 
-  console.log("End of try runs"); // This will not run
-} catch (err) {
-  console.log("Error has occurred!"); // This will run
-  console.log(err.name); // Output: ReferenceError
-  console.log(err.message); // Output: lalala is not defined
+  // Code to execute if error occurs
 }
 ```
 
@@ -223,16 +379,18 @@ try {
 
 ```javascript
 try {
-  console.log("Try block executed.");
-  throw new Error("Something went wrong!");
-} catch (err) {
-  console.log("Caught an error:", err.message);
-} finally {
+  // ... 
+} 
+catch (err) {
+  //... 
+} 
+finally {
   console.log("Finally block executed.");
 }
 ```
 
 **3. Throwing Custom Errors** You can throw your own exceptions using the `throw` statement. This is useful when you want to create custom error responses.
+We use the `new` statement to instantiate a new `Error` object wher you can write your own!
 
 ```javascript
 try {
@@ -244,205 +402,6 @@ try {
   console.log(err.message); // Output: User has no email!
 }
 ```
-
-## DOM Manipulation
-
-DOM (Document Object Model) manipulation is a powerful feature in JavaScript that allows you to dynamically change the contents and structure of HTML documents.
-
-**HTML and CSS**
-Start by setting up the basic HTML and CSS for the page. This will provide the structure and styling we will manipulate with JavaScript.
-**HTML Code:**
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DOM Manipulation Tutorial</title>
-    <style>
-      div {
-        border: 1px solid #ccc;
-        margin: 10px;
-        padding: 10px;
-      }
-      .example {
-        color: green;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="example">This is a div element identified by ID.</div>
-    <div class="example">First Element with class</div>
-    <div class="example">Second Element with class</div>
-    <div id="changeColor">Color me!</div>
-    <div id="textContent">Initial text content.</div>
-    <div id="parentDiv">Parent Div:</div>
-    <div id="container">
-      <div id="firstChild">First child</div>
-    </div>
-
-    <!-- Link to JavaScript file -->
-    <script src="script.js"></script>
-  </body>
-</html>
-```
-
-### Save the following code into a separate file called **script.js**:
-
-**1. getElementById** `getElementById` selects a single element with the specified ID.
-
-**JavaScript Example:**
-
-```javascript
-const element = document.getElementById("example");
-console.log(element.innerText); // Output: This is a div element identified by ID.
-```
-
-**2. getElementsByClassName** `getElementsByClassName` selects all elements that share the same class name.
-
-**JavaScript Example:**
-
-```javascript
-const elements = document.getElementsByClassName("example");
-console.log(elements[0].innerText); // Output: First Element with class
-console.log(elements[1].innerText); // Output: Second Element with class
-```
-
-**3. Changing Background Color and Other Properties**
-Modify CSS properties of elements dynamically.
-
-**JavaScript Example:**
-
-```javascript
-const colorDiv = document.getElementById("changeColor");
-colorDiv.style.backgroundColor = "lightblue";
-colorDiv.style.color = "white";
-colorDiv.style.padding = "10px";
-```
-
-**4. Changing innerText and innerHTML** `innerText` changes the text content, and `innerHTML` changes the inner HTML of an element.
-
-**JavaScript Example:**
-
-```javascript
-const textDiv = document.getElementById("textContent");
-textDiv.innerText = "Updated text content using innerText.";
-textDiv.innerHTML = "<strong>Now with bold HTML content!</strong>";
-```
-
-**5. Appending and Inserting Elements**
-Demonstrate how to add new elements to the DOM.
-
-**JavaScript for Appending Elements:**
-
-```javascript
-const parent = document.getElementById("parentDiv");
-const newElement = document.createElement("div");
-newElement.innerText = "I am a new child!";
-parent.appendChild(newElement);
-```
-
-**JavaScript for Inserting Elements:**
-
-```javascript
-const container = document.getElementById("container");
-const newDiv = document.createElement("div");
-newDiv.innerText = "Inserted at the beginning";
-container.insertBefore(newDiv, container.firstChild);
-```
-
-## Events & onload
-
-Event listeners are crucial for making web pages interactive. They listen for events like clicks, keystrokes, and loads, and then trigger specific functions in response. The `onload` property of the `window` object is a specific event listener that executes code after the entire page, including all dependent resources like stylesheets and images, is fully loaded.
-
-### Using Event Listeners
-
-**1. Basic Event Listener** You can add an event listener to any DOM element to handle events like `click`, `mouseover`, etc. Here's an example of how to add a click event listener to a button:
-
-**HTML:**
-
-```html
-<button id="clickButton">Click Me!</button>
-```
-
-**JavaScript:**
-
-```javascript
-const button = document.getElementById("clickButton");
-button.addEventListener("click", function () {
-  alert("Button was clicked!");
-});
-```
-
-This code snippet creates a button that, when clicked, will show an alert box saying `"Button was clicked!"`.
-
-**2. Event Listener with Multiple Events**
-You can also add event listeners for different types of events on the same element:
-
-**HTML:**
-
-```html
-<div id="hoverDiv">Hover over me!</div>
-```
-
-**JavaScript:**
-
-```javascript
-const hoverDiv = document.getElementById("hoverDiv");
-hoverDiv.addEventListener("mouseover", function () {
-  hoverDiv.style.color = "red";
-});
-hoverDiv.addEventListener("mouseout", function () {
-  hoverDiv.style.color = "black";
-});
-```
-
-In this example, the text color of the `div` changes to red when the mouse hovers over it and returns to black when the mouse moves away.
-
-### Using the onload Property
-
-The `onload` property is especially useful when you need to be sure that all the HTML elements are fully loaded before your JavaScript code attempts to manipulate them.
-
-**Using onload in Body Tag** You can specify an `onload` event directly in the HTML `body` tag to run JavaScript code after the entire page is loaded:
-
-**HTML:**
-
-```html
-<body onload="doSomething();">
-  <!-- page content -->
-</body>
-```
-
-**JavaScript:**
-
-```javascript
-function doSomething() {
-  console.log("Page fully loaded!");
-}
-```
-
-**Using onload with the Window Object** Alternatively, you can add an `onload` event listener to the `window` object in your JavaScript file:
-
-**JavaScript:**
-
-```javascript
-window.onload = function () {
-  console.log("Page fully loaded and all resources are ready!");
-};
-```
-
-**When to Use onload** Use the `onload` property when:
-
-- Your JavaScript needs to manipulate DOM elements, and you want to ensure they are fully loaded before accessing them.
-
-- Your script depends on external resources like images or stylesheets, and you need everything to be loaded before your script runs.
-
-- You want to initialize JavaScript functionality, such as setting up event listeners or starting animations, only after the entire page is ready.
-  Using `onload` ensures that your JavaScript code doesn't run prematurely, preventing errors related to trying to manipulate non-existent DOM elements and ensuring a smoother user experience.
-
-**Conclusion** Understanding and using event listeners and the `onload` property effectively are fundamental skills in web development. They make your web applications interactive and ensure that scripts run at the appropriate time, enhancing reliability and user experience.
-
 ## Promises
 
 A **Promise** in JavaScript is a way to handle actions that don’t happen instantly — like waiting for a server to respond, loading a file, or setting a timer.
@@ -460,7 +419,7 @@ So a Promise can:
 Here’s a simple example of creating and using a promise:
 
 ```javascript
-let promise = new Promise((resolve, reject) => {
+  let promise = new Promise((resolve, reject) => {
   setTimeout(() => {
     const success = true; // You can change this to false to test rejection
 
@@ -469,10 +428,9 @@ let promise = new Promise((resolve, reject) => {
     } else {
       reject("Promise was rejected.");
     }
-  }, 1000); // Waits 1 second
-});
+  }, 1000); // Waits 1 second (1000ms = 1s)
+  });
 
-// Using the promise
 promise
   .then((result) => console.log(result)) // Runs if the promise resolves
   .catch((error) => console.error(error)); // Runs if the promise is rejected
@@ -485,8 +443,19 @@ promise
 - **`async` function** : Declares a function as asynchronous and enables the use of `await` within it.
 
 - **`await`** : Pauses the function execution until the Promise is resolved or rejected, and then returns the resolved value or throws the rejected error.
-  **Example of Async/Await**
 
+Think of it as stopping at a coffee shop on your way to work ( Suppose you can't live without it ):
+
+  - You are waiting in line and thus don't progress on your way to work **(async)**
+
+  - You need to wait until the barista makes your coffee **(await)**
+
+  - If the coffee is satisfactory, you continue on with your day and drink it, if not you go back home since it ruined your entire mood. **(rejected or resolved)**
+
+#### Async must always be present in a function that calls promises with await. These two statements have a **interdependence** relation.
+A function can be `async` without an `await` in it, but if there's an `await` statement in a function, it MUST be `async`
+
+  **Example of Async/Await**
 ```javascript
 async function fetchUserData(userId) {
   try {
@@ -551,6 +520,118 @@ secureFetch("https://api.example.com/data")
   .then((data) => console.log(data))
   .catch((error) => console.error("Caught in then:", error));
 ```
+
+
+## Manipulation&Events
+
+### DOM Manipulation
+ 
+The DOM (Document Object Model) is the browser's live version of your HTML. **DOM manipulation** means using JavaScript to select and change it directly, no page reload needed.
+ 
+**1. Selecting elements** — `querySelector` is the easiest way; it works just like a CSS selector (`#id`, `.class`, `tag`) and grabs the first match. Its sibling `querySelectorAll` returns *every* match instead.
+ 
+```html
+<div id="box">Click the button to change me.</div>
+```
+ 
+```javascript
+const box = document.querySelector("#box"); // "#" means "match by id"
+console.log(box.innerText); // Output: Click the button to change me.
+```
+ 
+> 💡 You'll also see `getElementById` and `getElementsByClassName` in older code — they do the same job, but `querySelector` covers both cases with one consistent syntax.
+ 
+**2. Changing styles** — reach into `.style` and set any CSS property, camelCased instead of dashed (`backgroundColor`, not `background-color`).
+ 
+```javascript
+box.style.backgroundColor = "lightblue";
+box.style.padding = "10px";
+```
+ 
+**3. Changing content** — `innerText` for plain text, `innerHTML` for actual HTML tags.
+ 
+```javascript
+box.innerText = "New text!";
+box.innerHTML = "<strong>Bold now!</strong>";
+```
+ 
+**4. Creating, adding, and removing elements**
+ 
+```javascript
+const newItem = document.createElement("div");
+newItem.innerText = "I'm new here!";
+document.body.appendChild(newItem); // adds it at the end
+ 
+newItem.remove(); // takes it back out
+```
+ 
+**The pattern to remember:** select → change (or create) → attach.
+ 
+### Events & onload
+ 
+**Events** let your page react to the user — clicks, hovers, typing, and more. `addEventListener` says: "when this happens, run this function."
+ 
+```html
+<button id="clickButton">Click Me!</button>
+```
+ 
+```javascript
+const button = document.getElementById("clickButton");
+ 
+button.addEventListener("click", () => {
+  alert("Button was clicked!");
+});
+```
+ 
+You can also listen for a *pair* of events, like hovering in and out:
+ 
+```javascript
+const hoverDiv = document.querySelector("#hoverDiv");
+ 
+hoverDiv.addEventListener("mouseover", () => (hoverDiv.style.color = "red"));
+hoverDiv.addEventListener("mouseout", () => (hoverDiv.style.color = "black"));
+```
+ 
+Common events: `click`, `mouseover`, `mouseout`, `keydown`, `submit`.
+ 
+**The `onload` problem it solves:** if your script runs before the page finishes loading, it won't find its elements yet. `window.onload` waits until everything — HTML, CSS, and images — is ready:
+ 
+```javascript
+window.onload = function () {
+  console.log("Page fully loaded!");
+};
+```
+ 
+**In short:** DOM manipulation changes the page, events make it respond to the user.
+
+>🔧 Exercises
+>
+>Use this HTML page as your starting point (link a `script.js` file at the bottom, just like earlier in this chapter):
+>1. Select the `#box` div using `querySelector` and change its background color to `"orange"`.
+>2. Create a new `<p>` element containing the text `"Hello from JavaScript!"` and append it to the end of `document.body`.
+>3. Add a `click` event listener to a button that changes its own text to `"Clicked!"` when pressed.
+>4. Add both `mouseover` and `mouseout` listeners to a div so its border color changes on hover and reverts when the mouse leaves.
+>5. Wrap your DOM code in `window.onload` and explain, in your own words, why it's needed.
+ 
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOM Exercises</title>
+  </head>
+  <body>
+    <div id="box">Click the button to change me.</div>
+    <div id="hoverDiv" style="border: 2px solid black; padding: 10px;">
+      Hover over me!
+    </div>
+    <button>Click Me!</button>
+ 
+    <script src="script.js"></script>
+  </body>
+</html>
+```
+
 
 ## `getElementFromFile`
 
