@@ -1,26 +1,79 @@
-# Practice Work
+# Practice
 
-For this week's tasks, focus on the `homework` directory. You can modify everything in this directory, but avoid making changes to the `server` folder.
+## Starter
 
-### Tasks
+Everyone works through this on their own before the team work below — a checkpoint, not a team deliverable.
 
-1. **Open your project**
- - Continue working on the internship homework [Github repository](https://github.com/svs-ong/web-intership-homework)
+### 🔧 Exercise: Fetch the Articles
 
-2. **Get Started:**
-   - You will set up a server that provides some sample articles data (you can imagine that this data comes from a database). Then, you will create a script that fetches this data from the server and displays it on a `HTML` file.
-   - Open the repository folder and go to `server > ReadME.md`. Follow the instructions to get started.
-   - Install the required dependencies by running `npm install` in the `server` folder.
-   - Start the server by running the command specified in `server > ReadME.md`.
-   - Go to `homework > api > fetchArticles`. You will see a `test` folder and a `fetch_articles.js` file. Open the `test` folder and view `test.html` to see what the test does. Make sure the server is running at `localhost:3000`.
+**Step 1 — Install Node.js/npm.** Search it yourself ("how to install Node.js") and install it — `npm` comes bundled with it, you don't install it separately. Confirm it worked in a terminal:
 
+```bash
+node -v
+npm -v
+```
 
-3. **Understand the code:**
-- Check the comments and understand how the code works.
-- Inside the `server` folder you can see what the articles look like inside the `db.json` file.
+**Step 2 — Start the server.** Open a terminal in `homework/server` and follow its own `README.md`:
 
-4. **Task:**
+```bash
+npm install
+npm start
+```
 
-- Create a JavaScript script that fetches articles from the server and dynamically inserts the necessary HTML code to display these articles in the page.
-- Use the CSS styles you wrote in the previous homeworks to style the inserted HTML code.
-- Make sure to set the correct classes when inserting the HTML code.
+Confirm it's actually running by opening `http://localhost:3000/articles` directly in your browser — you should see the raw article data as JSON.
+
+**Step 3 — Starter page.** With the server still running, create this page:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch Practice</title>
+  </head>
+  <body>
+    <h1>Article Titles</h1>
+    <div id="titles"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+```
+
+**Step 4 — Write `script.js` using `async`/`await` and `try`/`catch` — no `.then()`.** Fetch `http://localhost:3000/articles`, map the response down to just the titles, then insert each title into the `#titles` div (one `<p>` per title, created and appended — not `innerHTML`).
+
+```javascript
+async function loadTitles() {
+  try {
+    // fetch + await response.json() here
+    // map the articles down to just their titles
+    // create a <p> per title and append it into #titles
+  } catch (error) {
+    // what should happen if the fetch fails or the server is down?
+  }
+}
+
+loadTitles();
+```
+
+**Verify:**
+
+- `node -v` and `npm -v` both print a version number.
+- `http://localhost:3000/articles` loads valid JSON in the browser.
+- Opening your page (server running) shows one line of text per article title inside `#titles` — nothing hardcoded in the HTML.
+- Stop the server and reload the page — your `catch` block should run instead of the page silently doing nothing.
+
+---
+
+## Team Work
+
+Same shared project from Course 1 — continue building on your team's repo, together.
+
+Fetching in the console proved the data's there — now wire it into the real site. Replace the hardcoded article cards in `index.html` with cards built from the live `/articles` data.
+
+- Write a script that runs on page load, fetches `http://localhost:3000/articles`, and for each article builds the same card markup you already styled in the Layout course (`.card`, `.pill`, ...) — then inserts it into the page instead of the hardcoded cards.
+- The category filter pills should now filter the *fetched* data by `article.category`, not something baked into the HTML.
+- Clicking a card should take you to `article.html?slug=...` using that article's `slug`. `article.html` should then fetch `http://localhost:3000/articles/:slug` and fill in the detail page from that response, instead of always showing the same static article.
+
+> 💡 Keep fetching and rendering as two separate functions — one gets the data, another turns data into HTML. That split is what lets you reuse the rendering logic for both the home page list and the single article page.
