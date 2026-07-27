@@ -1,6 +1,6 @@
-# Practice Work
+# Practice
 
-## Individual Work
+## Starter
 
 ### Prank a friend with DevTools
 

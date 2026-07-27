@@ -12,7 +12,7 @@
   - [Practice](modul-1/git/practice.md)
 - Course 3 - Layout
   - [CSS Layout](modul-1/layout/css_layout.md)
-  - [Lab Work](modul-1/layout/practice.md)
+  - [Practice](modul-1/layout/practice.md)
 - Course 4 - Javascript
   - [Javascript](modul-1/javascript/javascript.md)
   - [Practice](modul-1/javascript/practice.md)
