@@ -21,11 +21,11 @@
   - [Preparation](modul-2/react/install.md)
   - [Typescript](modul-2/react/typescript.md)
   - [React Introduction](modul-2/react/react.md)
-  - [Practice](modul-2/react/lab-work.md)
+  - [Practice](modul-2/react/practice.md)
 - Course 2 - React & MUI
   - [Preparation](modul-2/mui/installation.md)
   - [Material Ui](modul-2/mui/material_ui.md)
-  - [Practice](modul-2/mui/lab-work.md)
+  - [Practice](modul-2/mui/practice.md)
 - Course 3 - React hooks
   - [React Hooks](modul-2/react-hooks/react-hooks.md)
   - [Practice](modul-2/react-hooks/lab-work.md)
