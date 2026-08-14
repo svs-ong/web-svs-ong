@@ -27,9 +27,10 @@
   - [Material Ui](modul-2/mui/material_ui.md)
   - [Practice](modul-2/mui/practice.md)
 - Course 3 - React hooks
+  - [Preparation](modul-2/react-hooks/preparation.md)
   - [React Hooks](modul-2/react-hooks/react-hooks.md)
   - [Practice](modul-2/react-hooks/lab-work.md)
-- Course 4 - Next.js
+- Course 5 - Next.js
   - [Preparation](modul-2/nextjs/installation.md)
   - [Next.js](modul-2/nextjs/nextjs.md)
   - [Practice](modul-2/nextjs/lab-work.md)
