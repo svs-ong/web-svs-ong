@@ -56,7 +56,7 @@ A literal type narrows a type down to one exact value — usually combined with 
 let direction: "up" | "down" | "left" | "right" = "up";
 ```
 
-> 💡 Prefer an `enum` (see below) over this pattern once the options represent a closed, named set of related values, like `Difficulty` in the next section. An enum gives every option one canonical name (`Difficulty.Easy`) that autocompletes and renames safely everywhere it's used — a string literal has to be retyped identically in every file, with no compiler help if you rename it later.
+> 💡 Give the union its own name once the options represent a closed, named set of related values, like `Difficulty` in the next section — `type Difficulty = "EASY" | "MEDIUM" | "HARD"` instead of repeating the union inline everywhere it's used. That alone gets every option one canonical, autocomplete-friendly, rename-safe name. Reach for an `as const` object (see below) only once the values themselves are also needed at runtime, not just the type.
 
 ### `void` and `never`
 
@@ -166,32 +166,40 @@ printChallenge(coding); // works too — so is a CodingChallenge
 
 ## Enums
 
-An enum names a fixed set of related values, so you're not scattering the same magic strings or numbers across your code.
+A fixed set of related values — a difficulty, a status, a direction — deserves its own name, so the same magic strings or numbers aren't scattered across the codebase. Two ways to do that cover everything you'll need day to day.
+
+### String union types
+
+The simplest option: a union of string literals, given its own name.
 
 ```ts
-enum Difficulty {
-  Easy,
-  Medium,
-  Hard,
-}
+type Difficulty = "EASY" | "MEDIUM" | "HARD";
 
-console.log(Difficulty.Easy); // Output: 0
-console.log(Difficulty.Hard); // Output: 2
+let level: Difficulty = "EASY";
 ```
 
-By default, an enum's values are numbers starting at 0. Give them string values instead when the number itself is meaningless and you'd rather read the value directly — in a network request or a log line, for example:
+This disappears completely once compiled — there's no `Difficulty` at runtime, only ever at the type level. Reach for it whenever code only needs to *restrict* a value, not loop over the options or look one up by name.
+
+### `as const` objects
+
+When the actual values are needed at runtime too — to populate a dropdown, to check something a user typed against the valid options — reach for a plain object marked `as const`, and derive the type from it instead of writing the set out twice:
 
 ```ts
-enum Difficulty {
-  Easy = "EASY",
-  Medium = "MEDIUM",
-  Hard = "HARD",
-}
+const Difficulty = {
+  Easy: "EASY",
+  Medium: "MEDIUM",
+  Hard: "HARD",
+} as const;
+
+type Difficulty = (typeof Difficulty)[keyof typeof Difficulty];
 
 console.log(Difficulty.Easy); // Output: EASY
+console.log(Object.values(Difficulty)); // Output: ["EASY", "MEDIUM", "HARD"] — a real, usable array
 ```
 
-Enums plug straight into the `Challenge` interface from before:
+`Difficulty.Easy` reads exactly like a named constant, with autocomplete and safe renames — but `Difficulty` is a real object now, so `Object.values`/`Object.keys` actually work on it, which the string union alone can never give you.
+
+Either version plugs straight into the `Challenge` interface from before the same way:
 
 ```ts
 interface Challenge {
@@ -205,11 +213,27 @@ const quiz: Challenge = {
   id: 1,
   title: "What does `typeof null` return?",
   points: 10,
-  difficulty: Difficulty.Easy,
+  difficulty: Difficulty.Easy, // or "EASY" directly, with the plain union-type version
 };
 ```
 
-> ❓ Why is `difficulty: Difficulty.Easy` safer here than just writing `difficulty: "EASY"` as a plain string?
+> ❓ Why is `difficulty: Difficulty` safer here than typing that same field as a plain `string` would be?
+
+### What about the `enum` keyword?
+
+TypeScript also has a dedicated `enum` keyword, and it's worth being able to recognize — other tutorials and older codebases use it a lot:
+
+```ts
+enum Difficulty {
+  Easy = "EASY",
+  Medium = "MEDIUM",
+  Hard = "HARD",
+}
+```
+
+It looks like the `as const` version above and behaves similarly at the call site (`Difficulty.Easy`), but with one real difference: `enum` is the one construct in this tutorial that doesn't fully disappear at compile time — it generates actual runtime code of its own, unlike every other type covered here. That's exactly what TypeScript 5.8's `--erasableSyntaxOnly` compiler flag was built to catch, flagging `enum` as an error for projects that want to run `.ts` files directly without a build step. Current guidance is to reach for a string union or an `as const` object instead, and save `enum` for the one thing it still does that they can't: a *numeric* enum with reverse mapping (`Difficulty[0] === "Easy"`).
+
+> 💡 Default to a plain union type. Reach for `as const` specifically once the values themselves are needed at runtime, not just the type.
 
 ## Generics
 
@@ -286,7 +310,7 @@ A few habits worth building early, all of which this tutorial already follows:
 
 - **Avoid `any`.** It switches off type-checking instead of describing a type. If you truly don't know the shape of a value yet (an API response, user input), type it as `unknown` and narrow it with a check before you use it.
 - **Use `interface` for anything shaped like an object**, not `type` — you get `extends` for free, and interfaces stay open to being extended later, which object `type` aliases don't support as cleanly.
-- **Reach for `enum` once a value has a closed, named set of options**, instead of a string literal union — `Difficulty.Easy` is one canonical, autocomplete-friendly name; `"EASY"` typed out in five different files is five chances to introduce a typo.
+- **Name a closed set of options as its own union type** (`type Difficulty = "EASY" | "MEDIUM" | "HARD"`), not `enum` — `enum` is the one construct here that doesn't fully disappear at compile time, and current guidance (including TypeScript's own `--erasableSyntaxOnly` flag) steers new code away from it. Reach for an `as const` object instead of the plain union only once the values themselves are needed at runtime, not just the type.
 - **Keep functions as `const name = (...) => { ... }`.** One consistent shape for every function in the codebase, instead of mixing `function` declarations and arrow functions.
 - **Let TypeScript infer what it already can.** `const age = 30;` doesn't need `: number` — only annotate when the type isn't obvious from the value, like function parameters or an empty array.
 

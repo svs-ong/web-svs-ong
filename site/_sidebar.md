@@ -30,6 +30,8 @@
   - [Preparation](modul-2/react-hooks/preparation.md)
   - [React Hooks](modul-2/react-hooks/react-hooks.md)
   - [Practice](modul-2/react-hooks/lab-work.md)
+- Course 4 - React Best Practices
+  - [React Best Practices](modul-2/best-practices/best-practices.md)
 - Course 5 - Next.js
   - [Preparation](modul-2/nextjs/installation.md)
   - [Next.js](modul-2/nextjs/nextjs.md)
