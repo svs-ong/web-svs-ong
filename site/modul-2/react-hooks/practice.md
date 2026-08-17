@@ -2,15 +2,7 @@
 
 ## Starter
 
-> 🔧 **Exercise** — given `PostsPage.tsx`, write only `usePosts.ts`:
->
-> **Requirements — write `usePosts.ts`:**
->
-> - Fetch from `https://jsonplaceholder.typicode.com/posts`, same endpoint as the `Fetching data` example in the lesson.
-> - Return the **full** `Post` object for every item — `id`, `userId`, `title`, `body` — not just the title like the lesson's trimmed example.
-> - Track `loading`: `true` while a fetch is in flight, `false` once it settles — whether it succeeded or failed.
-> - Track `error`: `null` normally, or a message string if the fetch throws or the response isn't `ok`.
-> - Return a `reload` function that re-runs the fetch on demand — `PostsPage` below already wires it to a button.
+> 🔧 **Exercise** — given `PostsPage.tsx`, write only `usePosts.ts`, one step at a time.
 >
 > **Verify:**
 >
@@ -82,7 +74,32 @@ export const usePosts = (): UsePostsResult => {
 };
 ```
 
-> 💡 Same trick as the lesson's `usePosts` exercise: a `reloadKey` piece of state, bumped by `reload`, sitting in the effect's dependency array without the fetch logic ever reading it, is enough to make the effect run again on demand.
+### Step 1 — State
+
+- `posts: Post[]`, starting empty.
+- `loading: boolean`, starting `true` — there's a fetch in flight from the very first render.
+- `error: string | null`, starting `null`.
+
+### Step 2 — Fetch inside an effect
+
+- One `useEffect`, firing on mount.
+- Before the fetch starts: `setLoading(true)` and `setError(null)` — `reload` can run after a previous error, so both need resetting every time, not just once.
+- `fetch("https://jsonplaceholder.typicode.com/posts")`, the same endpoint as the lesson's `Fetching data` example.
+- Check `res.ok` — the happy path never 404s, but this exercise's own verify step points the URL somewhere that does, so it has to be a real check, not an assumption.
+- On success: `setPosts` with the **full** `Post` shape — `id`, `userId`, `title`, `body` — not just the title like the lesson's trimmed example. Then `setLoading(false)`.
+- On failure — `res.ok` is `false`, or the `fetch` itself throws — `setError` to a message, then `setLoading(false)`.
+
+### Step 3 — Make `reload` actually reload
+
+- Add one more piece of state: a `reloadKey`, starting at `0`.
+- Add `reloadKey` to the effect's dependency array, even though nothing inside the effect ever reads it — the effect only needs to re-run when it changes, not to use its value.
+- `reload` becomes `() => setReloadKey((k) => k + 1)` — bumping a number the effect depends on is enough to make it run again, no other plumbing required.
+
+### Step 4 — Return the result
+
+- `return { posts, loading, error, reload }`, matching `UsePostsResult` — `PostsPage` below is already wired to exactly this shape.
+
+> 💡 Steps 1 and 2 alone are enough to make `PostsPage` render real posts end to end. Step 3 is what makes the "Reload" button do something.
 
 ---
 

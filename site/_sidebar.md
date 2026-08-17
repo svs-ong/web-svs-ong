@@ -29,13 +29,14 @@
 - Course 3 - React hooks
   - [Preparation](modul-2/react-hooks/preparation.md)
   - [React Hooks](modul-2/react-hooks/react-hooks.md)
-  - [Practice](modul-2/react-hooks/lab-work.md)
+  - [Practice](modul-2/react-hooks/practice.md)
 - Course 4 - React Best Practices
   - [React Best Practices](modul-2/best-practices/best-practices.md)
+  - [Practice](modul-2/best-practices/practice.md)
 - Course 5 - Next.js
   - [Preparation](modul-2/nextjs/installation.md)
   - [Next.js](modul-2/nextjs/nextjs.md)
-  - [Practice](modul-2/nextjs/lab-work.md)
+  - [Practice](modul-2/nextjs/practice.md)
 - **_Modul 3 Web Expert_**
   - [Mastering React Hooks](modul-3/mastering-react-hooks/mastering-react-hooks.md)
   - [Firebase & Next.js Starter](modul-3/firebase-with-nextjs/firebase-with-nextjs.md)
