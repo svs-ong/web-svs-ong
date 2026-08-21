@@ -18,12 +18,12 @@
   - [Practice](modul-1/javascript/practice.md)
 - **Modul 2 React & Nextjs**
 - Course 1 - React Fundamentals
-  - [Preparation](modul-2/react/install.md)
+  - [Preparation](modul-2/react/preparation.md.md)
   - [Typescript](modul-2/react/typescript.md)
   - [React Introduction](modul-2/react/react.md)
   - [Practice](modul-2/react/practice.md)
 - Course 2 - React & MUI
-  - [Preparation](modul-2/mui/installation.md)
+  - [Preparation](modul-2/mui/preparation.md.md)
   - [Material Ui](modul-2/mui/material_ui.md)
   - [Practice](modul-2/mui/practice.md)
 - Course 3 - React hooks
@@ -34,7 +34,7 @@
   - [React Best Practices](modul-2/best-practices/best-practices.md)
   - [Practice](modul-2/best-practices/practice.md)
 - Course 5 - Next.js
-  - [Preparation](modul-2/nextjs/installation.md)
+  - [Preparation](modul-2/nextjs/preparation.md.md)
   - [Next.js](modul-2/nextjs/nextjs.md)
   - [Practice](modul-2/nextjs/practice.md)
 - **_Modul 3 Web Expert_**
