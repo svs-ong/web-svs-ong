@@ -113,3 +113,4 @@ export default HomePage;
 5. Delete `src/app/favicon.ico`, `src/app/globals.css`, `src/app/page.module.css` and `public` images.
 
 `npm run dev` again — a styled MUI button confirms the theme is wired up.
+

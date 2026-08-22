@@ -75,7 +75,7 @@ export const NewsHomePage = () => {
 
 ## Team Work
 
-Same shared project — this is where it gets finished. Take the page/component split from the React Fundamentals course and turn it into the real thing: fully styled with MUI, matching `design.pdf`, mobile and desktop.
+Same shared project — this is where it gets finished. Take the page/component split from the React Intro course and turn it into the real thing: fully styled with MUI, matching `design.pdf`, mobile and desktop.
 
 - **Build a `theme.ts`** with `createTheme()` — `palette` for the cream background and navy accent color from `design.pdf`, `typography` for the serif display font on headings.
 - **Wrap the app once**, in `main.tsx`/`App.tsx`, with `<ThemeProvider theme={theme}>` and `<CssBaseline />` — every page picks up the theme from there, nothing set up per page.

@@ -17,7 +17,7 @@
   - [Javascript](modul-1/javascript/javascript.md)
   - [Practice](modul-1/javascript/practice.md)
 - **Modul 2 React & Nextjs**
-- Course 1 - React Fundamentals
+- Course 1 - React Intro
   - [Preparation](modul-2/react/preparation.md.md)
   - [Typescript](modul-2/react/typescript.md)
   - [React Introduction](modul-2/react/react.md)
@@ -30,13 +30,17 @@
   - [Preparation](modul-2/react-hooks/preparation.md)
   - [React Hooks](modul-2/react-hooks/react-hooks.md)
   - [Practice](modul-2/react-hooks/practice.md)
-- Course 4 - React Best Practices
-  - [React Best Practices](modul-2/best-practices/best-practices.md)
+- Course 4 - React Patterns
+  - [React Patterns](modul-2/best-practices/best-practices.md)
   - [Practice](modul-2/best-practices/practice.md)
-- Course 5 - Next.js
-  - [Preparation](modul-2/nextjs/preparation.md.md)
-  - [Next.js](modul-2/nextjs/nextjs.md)
+- Course 5 - Next.js Intro
+  - [Preparation](modul-2/nextjs/preparation.md)
+  - [Next.js Intro](modul-2/nextjs/nextjs.md)
   - [Practice](modul-2/nextjs/practice.md)
+- Course 6 - Next.js Patterns
+  - [Preparation](modul-2/nextjs-advanced/preparation.md)
+  - [Next.js Patterns](modul-2/nextjs-advanced/nextjs-advanced.md)
+  - [Practice](modul-2/nextjs-advanced/practice.md)
 - **_Modul 3 Web Expert_**
   - [Mastering React Hooks](modul-3/mastering-react-hooks/mastering-react-hooks.md)
   - [Firebase & Next.js Starter](modul-3/firebase-with-nextjs/firebase-with-nextjs.md)
