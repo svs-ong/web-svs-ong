@@ -1,4 +1,4 @@
-# React Best Practices |
+# React Patterns
 
 ## Explicit Types
 
