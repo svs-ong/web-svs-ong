@@ -127,6 +127,7 @@ export default CatDetailPage;
 - Read `id` from `params` — a `Promise`, same as every dynamic route in this course — not from `window.location.search`.
 - Make the component `async`, and call `getCat(Number(id))` directly, `await`ed. Delete `useState`, `useEffect`, and the `URLSearchParams` line entirely.
 
+<<<<<<< HEAD
 ### Step 4 — A `loading.tsx`, for once the data isn't instant
 
 `getCats`/`getCat` are both `async` now, but they resolve immediately — there's nothing to actually wait for yet. Give them a delay, then let Next.js show something while they run, without either page lifting a finger:
@@ -161,16 +162,27 @@ export default Loading;
 - Visit `/cats/1` too. The same `loading.tsx` covers it, even though it lives one folder up — Next.js applies the *nearest* `loading.tsx` above a route, and `src/app/cats/loading.tsx` is the nearest one for anything under `/cats`, `[id]` included, unless a more specific `src/app/cats/[id]/loading.tsx` is added.
 
 ### Step 5 — `notFound()`, not an inline check
+=======
+### Step 4 — `notFound()`, not an inline check
+>>>>>>> 373622f7c504451e9d70cbd03280511ebe73e8c0
 
 - Replace `if (!cat) return <Typography>Cat not found</Typography>;` with `if (!cat) notFound();`, imported from `next/navigation`.
 - Add `src/app/cats/not-found.tsx`. It'll render automatically now, for this route and any other unmatched one under `/cats` — nothing has to call it by hand.
 
+<<<<<<< HEAD
 ### Step 6 — `<Link>`, not `<a>`
+=======
+### Step 5 — `<Link>`, not `<a>`
+>>>>>>> 373622f7c504451e9d70cbd03280511ebe73e8c0
 
 - Replace `<a href={...}>` in the cats list with `<Link href={...}>`, imported from `next/link`.
 - Point it at `/cats/${cat.id}` instead of `/cats/detail?id=${cat.id}`.
 
+<<<<<<< HEAD
 > 💡 Every step here removes something — a `useState`/`useEffect` pair, a query string, an inline check — or adds exactly one small reserved-name file that Next.js wires up on its own, the same way `loading.tsx` needed zero imports in `CatsPage` to start working. If a step ever makes a file longer, or makes a page import something just to render it, it's probably the wrong direction.
+=======
+> 💡 Every step here removes something — a `useState`/`useEffect` pair, a query string, an inline check — because the conventions this course already taught (Server Components by default, `model/` for domain data, `[id]` segments, `not-found.tsx`) do that job on their own. If a step ever makes a file longer, it's probably the wrong direction.
+>>>>>>> 373622f7c504451e9d70cbd03280511ebe73e8c0
 
 ---
 
