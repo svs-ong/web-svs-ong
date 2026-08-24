@@ -101,12 +101,14 @@ const CatDetailPage = () => {
 export default CatDetailPage;
 ```
 
-### Step 1 — `lib/cats.ts` → `model/cat.ts`
+### Step 1 — Split `lib/cats.ts` into a model and an API
 
-`lib/` is for generic, no-directive helpers that don't belong to any one domain — a `formatDate`, a `debounce`. A list of cats, and the two functions that read it, are exactly what this course's `model/` folder is for instead.
+`lib/cats.ts` mixes two different things: the `Cat` shape and its data, and the functions that read that data. This course keeps those separate — the shape and its data in `model/`, the functions that read it in `lib/`, under a name that says what they actually are.
 
-- Move `src/lib/cats.ts` to `src/model/cat.ts`.
+- Create `src/model/cat.ts`, and move the `Cat` interface and the `cats` array into it — `export` both.
+- Rename `src/lib/cats.ts` to `src/lib/cats-api.ts`. Import `Cat` and `cats` from `@/model/cat` there instead of declaring them locally.
 - Make `getCats` and `getCat` return a `Promise` — `async () => cats`, `async (id) => cats.find(...)` — the same shape `getCat`/`getCats` already had in the Dynamic Routes chapter. Even over a plain in-memory array, this is what lets a real database call replace the inside later without changing anything that calls it.
+- Update both page files: `Cat` now comes from `@/model/cat`, `getCats`/`getCat` from `@/lib/cats-api`.
 
 ### Step 2 — The list, back to a Server Component
 
@@ -125,17 +127,50 @@ export default CatDetailPage;
 - Read `id` from `params` — a `Promise`, same as every dynamic route in this course — not from `window.location.search`.
 - Make the component `async`, and call `getCat(Number(id))` directly, `await`ed. Delete `useState`, `useEffect`, and the `URLSearchParams` line entirely.
 
-### Step 4 — `notFound()`, not an inline check
+### Step 4 — A `loading.tsx`, for once the data isn't instant
+
+`getCats`/`getCat` are both `async` now, but they resolve immediately — there's nothing to actually wait for yet. Give them a delay, then let Next.js show something while they run, without either page lifting a finger:
+
+```ts
+// src/lib/cats-api.ts
+import { cats, type Cat } from "@/model/cat";
+
+export const getCats = async (): Promise<Cat[]> => {
+  await new Promise((resolve) => setTimeout(resolve, 1000)); // pretend network delay
+  return cats;
+};
+
+export const getCat = async (id: number): Promise<Cat | undefined> => {
+  await new Promise((resolve) => setTimeout(resolve, 1000)); // pretend network delay
+  return cats.find((cat) => cat.id === id);
+};
+```
+
+- Add `src/app/cats/loading.tsx`:
+
+```ts
+// src/app/cats/loading.tsx
+import { CircularProgress } from "@mui/material";
+
+const Loading = () => <CircularProgress />;
+
+export default Loading;
+```
+
+- Run the app and visit `/cats`. For that one second, `Loading` shows up on its own — `CatsPage` never imports it, never renders it, never mentions it anywhere. Next.js finds it by its reserved filename, the same way it finds `not-found.tsx`, and shows it automatically while `CatsPage` is still `await`ing `getCats()` — swapping in the real page the instant the data resolves.
+- Visit `/cats/1` too. The same `loading.tsx` covers it, even though it lives one folder up — Next.js applies the *nearest* `loading.tsx` above a route, and `src/app/cats/loading.tsx` is the nearest one for anything under `/cats`, `[id]` included, unless a more specific `src/app/cats/[id]/loading.tsx` is added.
+
+### Step 5 — `notFound()`, not an inline check
 
 - Replace `if (!cat) return <Typography>Cat not found</Typography>;` with `if (!cat) notFound();`, imported from `next/navigation`.
 - Add `src/app/cats/not-found.tsx`. It'll render automatically now, for this route and any other unmatched one under `/cats` — nothing has to call it by hand.
 
-### Step 5 — `<Link>`, not `<a>`
+### Step 6 — `<Link>`, not `<a>`
 
 - Replace `<a href={...}>` in the cats list with `<Link href={...}>`, imported from `next/link`.
 - Point it at `/cats/${cat.id}` instead of `/cats/detail?id=${cat.id}`.
 
-> 💡 Every step here removes something — a `useState`/`useEffect` pair, a query string, an inline check — because the conventions this course already taught (Server Components by default, `model/` for domain data, `[id]` segments, `not-found.tsx`) do that job on their own. If a step ever makes a file longer, it's probably the wrong direction.
+> 💡 Every step here removes something — a `useState`/`useEffect` pair, a query string, an inline check — or adds exactly one small reserved-name file that Next.js wires up on its own, the same way `loading.tsx` needed zero imports in `CatsPage` to start working. If a step ever makes a file longer, or makes a page import something just to render it, it's probably the wrong direction.
 
 ---
 
