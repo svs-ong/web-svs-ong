@@ -155,7 +155,26 @@ export default function CatPage({ params }: CatPageProps) {
 
 ### Step 5 — A loading state while `likeCat` is in flight
 
-- Give `getCats`/`getCat`/`likeCat` a `setTimeout`-based delay, same as `getLikes`/`getTag` elsewhere in this course, so there's something to actually wait for.
+- Give `getCats`, `getCat`, and `likeCat` a `setTimeout`-based delay, same as `getLikes`/`getTag` elsewhere in this course, so there's something to actually wait for:
+
+  ```ts
+  export const getCats = async (): Promise<Cat[]> => {
+    await new Promise((resolve) => setTimeout(resolve, 1000)); // pretend network delay
+    return cats;
+  };
+
+  export const getCat = async (id: number): Promise<Cat | undefined> => {
+    await new Promise((resolve) => setTimeout(resolve, 1000)); // pretend network delay
+    return cats.find((cat) => cat.id === id);
+  };
+
+  export const likeCat = async (id: number): Promise<Cat | undefined> => {
+    await new Promise((resolve) => setTimeout(resolve, 1000)); // pretend network delay
+    cats = cats.map((cat) => (cat.id === id ? { ...cat, likes: cat.likes + 1 } : cat));
+    return cats.find((cat) => cat.id === id);
+  };
+  ```
+
 - Add a `loading` boolean to `LikeButton`, `true` while `handleLike`'s `await likeCat(cat.id)` is pending. Disable the button and swap its label for a `CircularProgress` while it's `true`.
 
 ### Step 6 — Metadata: one for the list, one generated per cat
