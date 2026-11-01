@@ -1,0 +1,46 @@
+{
+  "cats": [
+    {
+      "id": 1,
+      "name": "Whiskers",
+      "breed": "Tabby",
+      "imageUrl": "/images/whiskers.jpg",
+      "likes": 12
+    },
+    {
+      "id": 2,
+      "name": "Luna",
+      "breed": "Red Tabby",
+      "imageUrl": "/images/luna.jpg",
+      "likes": 9
+    },
+    {
+      "id": 3,
+      "name": "Milo",
+      "breed": "British Shorthair",
+      "imageUrl": "/images/milo.jpg",
+      "likes": 7
+    },
+    {
+      "id": 4,
+      "name": "Snowball",
+      "breed": "Turkish Angora",
+      "imageUrl": "/images/snowball.jpg",
+      "likes": 15
+    },
+    {
+      "id": 5,
+      "name": "Professor Mittens",
+      "breed": "Calico",
+      "imageUrl": "/images/professor-mittens.jpg",
+      "likes": 11
+    },
+    {
+      "id": 6,
+      "name": "Mango",
+      "breed": "Ginger",
+      "imageUrl": "/images/mango.jpg",
+      "likes": 4
+    }
+  ]
+}

@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cat Café · Next.js caching lab
 
-## Getting Started
+Starter project for the **Next.js Caching** lesson ([web.svs.ong → Modul 3 → Next.js Caching](https://web.svs.ong/#/modul-3/next-caching/next-caching)).
 
-First, run the development server:
+It is a small cat app with two pages that read and change the same list of cats:
+
+| Page           | URL            | What you can do                                  |
+| -------------- | -------------- | ------------------------------------------------ |
+| Cat Gallery    | `/cats`        | see every cat A–Z, like, add, rename, remove     |
+| Top Cats       | `/leaderboard` | see the cats sorted by likes, like them          |
+
+The data comes from the Express server in `homework/server`, and **every call to it takes 500 ms**. Right now the app caches nothing, so every click waits for that slow server. The lesson walks you through adding caching step by step.
+
+## Getting started
+
+You need two terminals.
+
+**Terminal 1: the cats API** (port 3000)
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd homework/server
+npm install
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Leave it running: it prints one line for every request that reaches it, for example `[18:03:45.120] GET /cats → 200 (503 ms)`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Terminal 2: this app** (port 3001)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cd homework/next-caching
+npm install
+npm run prod
+```
 
-## Learn More
+Open [http://localhost:3001](http://localhost:3001).
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Script         | Does                                                                       |
+| -------------- | -------------------------------------------------------------------------- |
+| `npm run prod` | builds and starts the production app on port 3001 — **use this in the lesson** |
+| `npm run dev`  | development mode on port 3001                                              |
+| `npm run build`| production build only                                                      |
+| `npm start`    | starts the last production build                                           |
+| `npm run lint` | ESLint                                                                     |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+> Caching only behaves like the real thing in a production build. In `npm run dev`, links are never prefetched and every code change throws the cache away. Stop the app (`Ctrl + C`) and run `npm run prod` again after each change.
 
-## Deploy on Vercel
+The API must be running while `npm run prod` builds, because a build that uses `"use cache"` already reads the cats once.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Where the lesson's changes go
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| File                 | What lives there                                                   |
+| -------------------- | ------------------------------------------------------------------ |
+| `src/lib/cats.ts`    | `getCats()` — reads the cats from the API                          |
+| `src/lib/actions.ts` | Server Actions — like, add, rename, remove, reset                  |
+
+Everything else (components, pages, styles) can stay as it is.
+
+## Useful tools in the app
+
+- **🕒 Data fetched at …** above each list shows when `getCats()` really talked to the API, and how old that data is now.
+- **🙋 Guest** in the header: click it to give this browser a name (stored in a cookie). Handy when you open the app in two browsers as two different users.
+- **↺ Reset** puts the original cats back.

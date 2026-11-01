@@ -1,0 +1,92 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.photo {
+  position: relative;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.rank {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
+
+.body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+}
+
+.info {
+  min-width: 0;
+}
+
+.name {
+  font-size: 1.15rem;
+  overflow-wrap: anywhere;
+}
+
+.breed {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.likeArea {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.like {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  background: var(--accent-soft);
+  border-color: transparent;
+}
+
+.admin {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px 14px;
+}
+
+.admin input {
+  flex: 1 1 140px;
+}
+
+.danger {
+  color: var(--danger);
+}
+
+.error {
+  width: 100%;
+  color: var(--danger);
+  font-size: 0.85rem;
+  text-align: right;
+}

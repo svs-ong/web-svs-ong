@@ -1,0 +1,51 @@
+.form {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 12px;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius);
+}
+
+.preview {
+  width: 96px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.submit {
+  grid-column: 1 / -1;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
+
+.error {
+  grid-column: 1 / -1;
+  color: var(--danger);
+  font-size: 0.85rem;
+}
+
+@media (min-width: 768px) {
+  .form {
+    grid-template-columns: 96px 1fr auto;
+    align-items: center;
+  }
+
+  .fields {
+    flex-direction: row;
+  }
+
+  .submit {
+    grid-column: auto;
+  }
+}

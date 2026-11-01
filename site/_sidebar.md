@@ -44,6 +44,7 @@
 - **_Modul 3 Web Expert_**
   - [Mastering React Hooks](modul-3/mastering-react-hooks/mastering-react-hooks.md)
   - [Firebase & Next.js Starter](modul-3/firebase-with-nextjs/firebase-with-nextjs.md)
+  - [Next.js Caching](modul-3/next-caching/next-caching.md)
   <!-- - [Code Quality & Standardization](modul-3/code-quality-and-standardization/code-quality-and-standardization.md)
   - [Browser Debugging](modul-3/browser-debugging/browser-debugging.md)
   - [Resonsive Design And Testing](modul-3/responsive-design-and-testing/responsive-design-and-testing.md)

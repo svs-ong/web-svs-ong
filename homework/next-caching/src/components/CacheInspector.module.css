@@ -1,0 +1,40 @@
+.inspector {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  align-self: flex-start;
+}
+
+.inspector strong {
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.fresh,
+.old {
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.fresh {
+  background: #d8f3dc;
+  color: #1b5e20;
+}
+
+.old {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+@media (min-width: 768px) {
+  .inspector {
+    align-self: auto;
+  }
+}
