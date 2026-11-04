@@ -59,8 +59,8 @@ Plain version: a two-page cat app that talks to a deliberately slow API. Right n
 If you don't have the homework repository yet:
 
 ```bash
-git clone https://github.com/svs-ong/web-intership-homework.git
-cd web-intership-homework
+npx degit svs-ong/web-svs-ong/homework homework
+cd homework
 ```
 
 If you already have it, `git pull` to get the `next-caching` folder and the new cats API in `server`.
