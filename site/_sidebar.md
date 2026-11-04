@@ -18,12 +18,12 @@
   - [Practice](modul-1/javascript/practice.md)
 - **Modul 2 React & Nextjs**
 - Course 1 - React Intro
-  - [Preparation](modul-2/react/preparation.md.md)
+  - [Preparation](modul-2/react/preparation.md)
   - [Typescript](modul-2/react/typescript.md)
   - [React Introduction](modul-2/react/react.md)
   - [Practice](modul-2/react/practice.md)
 - Course 2 - React & MUI
-  - [Preparation](modul-2/mui/preparation.md.md)
+  - [Preparation](modul-2/mui/preparation.md)
   - [Material Ui](modul-2/mui/material_ui.md)
   - [Practice](modul-2/mui/practice.md)
 - Course 3 - React hooks
@@ -44,6 +44,7 @@
 - **_Modul 3 Web Expert_**
   - [Mastering React Hooks](modul-3/mastering-react-hooks/mastering-react-hooks.md)
   - [Firebase & Next.js Starter](modul-3/firebase-with-nextjs/firebase-with-nextjs.md)
+  - [Next.js Caching](modul-3/next-caching/next-caching.md)
   <!-- - [Code Quality & Standardization](modul-3/code-quality-and-standardization/code-quality-and-standardization.md)
   - [Browser Debugging](modul-3/browser-debugging/browser-debugging.md)
   - [Resonsive Design And Testing](modul-3/responsive-design-and-testing/responsive-design-and-testing.md)

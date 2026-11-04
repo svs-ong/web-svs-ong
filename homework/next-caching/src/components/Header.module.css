@@ -1,0 +1,88 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.nav {
+  order: 3;
+  width: 100%;
+  display: flex;
+  gap: 8px;
+}
+
+.navLink {
+  flex: 1;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-weight: 600;
+}
+
+.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.tools {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.visitor {
+  font-weight: 600;
+  background: var(--accent-soft);
+  border-color: transparent;
+}
+
+.visitorFallback {
+  color: var(--muted);
+}
+
+.visitorForm {
+  display: flex;
+  gap: 6px;
+}
+
+.visitorForm input {
+  width: 120px;
+  padding: 6px 10px;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding: 12px 24px;
+    flex-wrap: nowrap;
+  }
+
+  .nav {
+    order: 0;
+    width: auto;
+  }
+
+  .navLink {
+    flex: none;
+  }
+}

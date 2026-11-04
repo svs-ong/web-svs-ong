@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 480" width="600" height="480" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>The life of one cached copy with cacheLife("minutes")</title>
+  <rect x="0" y="0" width="600" height="480" rx="18" fill="#fff8f0"/>
+
+  <text x="300" y="38" text-anchor="middle" font-size="20" font-weight="700" fill="#2b2118">One copy of the cats, cacheLife("minutes")</text>
+  <text x="300" y="62" text-anchor="middle" font-size="14" fill="#7a6a5c">time since getCats() really called the API (not to scale)</text>
+  <text x="300" y="348" text-anchor="middle" font-size="13" fill="#8e2318">"expired" only happens when nobody asked for the cats for a whole hour</text>
+
+  <!-- axis -->
+  <line x1="40" y1="300" x2="572" y2="300" stroke="#7a6a5c" stroke-width="2"/>
+  <g font-size="14" fill="#5c4d40" text-anchor="middle">
+    <line x1="40" y1="294" x2="40" y2="306" stroke="#7a6a5c" stroke-width="2"/><text x="40" y="326">0</text>
+    <line x1="170" y1="294" x2="170" y2="306" stroke="#7a6a5c" stroke-width="2"/><text x="170" y="326">1 min</text>
+    <line x1="300" y1="294" x2="300" y2="306" stroke="#7a6a5c" stroke-width="2"/><text x="300" y="326">5 min</text>
+    <line x1="460" y1="294" x2="460" y2="306" stroke="#7a6a5c" stroke-width="2"/><text x="460" y="326">1 hour</text>
+  </g>
+
+  <!-- server row -->
+  <text x="40" y="96" font-size="16" font-weight="700" fill="#5b2d0c">On the server (shared)</text>
+  <rect x="40" y="108" width="130" height="64" rx="8" fill="#d8f3dc" stroke="#2e7d32"/>
+  <text x="105" y="136" text-anchor="middle" font-size="15" font-weight="700" fill="#1b5e20">fresh</text>
+  <text x="105" y="158" text-anchor="middle" font-size="13" fill="#1b5e20">served as is</text>
+  <rect x="170" y="108" width="290" height="64" rx="8" fill="#fff1c9" stroke="#c99a06"/>
+  <text x="315" y="136" text-anchor="middle" font-size="15" font-weight="700" fill="#6b5200">stale</text>
+  <text x="315" y="158" text-anchor="middle" font-size="13" fill="#6b5200">served once more, refreshed in the background</text>
+  <rect x="460" y="108" width="112" height="64" rx="8" fill="#fbd9d5" stroke="#c0392b"/>
+  <text x="516" y="136" text-anchor="middle" font-size="15" font-weight="700" fill="#8e2318">expired</text>
+  <text x="516" y="158" text-anchor="middle" font-size="13" fill="#8e2318">visitor waits</text>
+
+  <!-- browser row -->
+  <text x="40" y="206" font-size="16" font-weight="700" fill="#1f3f5b">In each browser (private)</text>
+  <rect x="40" y="218" width="260" height="56" rx="8" fill="#e3f0fb" stroke="#4a90c2"/>
+  <text x="170" y="243" text-anchor="middle" font-size="15" font-weight="700" fill="#1f3f5b">stale: reused without asking</text>
+  <text x="170" y="263" text-anchor="middle" font-size="13" fill="#1f3f5b">no request on navigation</text>
+  <text x="436" y="243" text-anchor="middle" font-size="13" fill="#41627d">after that, the next</text>
+  <text x="436" y="263" text-anchor="middle" font-size="13" fill="#41627d">navigation asks the server</text>
+
+  <!-- on-demand -->
+  <text x="40" y="384" font-size="16" font-weight="700" fill="#2b2118">Ending a copy early, from a Server Action</text>
+  <rect x="40" y="394" width="252" height="66" rx="8" fill="#fbd9d5" stroke="#c0392b"/>
+  <text x="166" y="420" text-anchor="middle" font-size="14" font-weight="700" fill="#8e2318">updateTag("cats")</text>
+  <text x="166" y="442" text-anchor="middle" font-size="13" fill="#8e2318">expired now: next read waits</text>
+  <rect x="308" y="394" width="264" height="66" rx="8" fill="#fff1c9" stroke="#c99a06"/>
+  <text x="440" y="420" text-anchor="middle" font-size="14" font-weight="700" fill="#6b5200">revalidateTag("cats", "max")</text>
+  <text x="440" y="442" text-anchor="middle" font-size="13" fill="#6b5200">stale now: one more old answer</text>
+</svg>
