@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main # or your default branch
-      - fix
-
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
